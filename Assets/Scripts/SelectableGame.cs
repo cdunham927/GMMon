@@ -8,10 +8,12 @@ public class SelectableGame : MonoBehaviour, IPointerClickHandler
 {
     public string gameName;
     Button b;
+    private Color originalColor;
 
     void Awake()
     {
         b = GetComponent<Button>();
+        originalColor = b.image.color;
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -19,10 +21,12 @@ public class SelectableGame : MonoBehaviour, IPointerClickHandler
         if (eventData.button == PointerEventData.InputButton.Left)
         {
             AddGame();
+            Highlight();
         }
         else if (eventData.button == PointerEventData.InputButton.Right)
         {
             SubGame();
+            Unhighlight();
         }
     }
 
@@ -34,5 +38,15 @@ public class SelectableGame : MonoBehaviour, IPointerClickHandler
     void SubGame()
     {
         GameManager.instance.SubMinigame(gameName);
+    }
+
+    public void Highlight()
+    {
+        b.image.color = Color.yellow;
+    }
+
+    public void Unhighlight()
+    {
+        b.image.color = originalColor;
     }
 }
