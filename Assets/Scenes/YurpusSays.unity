@@ -123,6 +123,65 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &826410385
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 826410387}
+  - component: {fileID: 826410386}
+  m_Layer: 0
+  m_Name: YurpusSaysController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &826410386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 826410385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88da0677aff1fa049803e0aaef4f6b8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  commands:
+  - Up
+  - Down
+  - Left
+  - Right
+  - Not
+  yurpusCommands:
+  - Glorp
+  - Norf
+  - Mim
+  - Farn
+  - Zerp
+  round: 0
+  hintObj: {fileID: 0}
+  commandText: {fileID: 0}
+  yurpusCommandText: {fileID: 0}
+--- !u!4 &826410387
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 826410385}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 451.67596, y: 245.69405, z: -106.99385}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1092748253
 GameObject:
   m_ObjectHideFlags: 0
@@ -401,7 +460,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 142063623267088235, guid: 289a89d79a25c5f46960f688b9381796, type: 3}
       propertyPath: m_text
-      value: Welcome, players!
+      value: 'Yurpus Says!
+
+
+        Welcome, players!'
       objectReference: {fileID: 0}
     - target: {fileID: 142063623267088235, guid: 289a89d79a25c5f46960f688b9381796, type: 3}
       propertyPath: m_fontSize
@@ -1134,34 +1196,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6790341311785821656, guid: 3b5a9563cbc6bac45a7a55ab9d82ec2e, type: 3}
       propertyPath: m_text
-      value: 'Weird Simon Says
-
-
-        YN: "I will see how easily you can learn
-        the Slypyernian language, used by the Council. Here is a quick lesson: GLEEP
-        means up, NORT means down, MEEF means left, FARN means right, and ZERP meant
-        not. You will point in the direction I announce (or point elsewhere, if I
-        say "ZERP"). Failure means you will be out.
-
-        AA:
+      value: 'Yurpus Says
 
 
 
-        "Gleep"
-        means point up!
 
-        "Nort" means point down!
-
-        "Meep" means point
-        left!
-
-        "Farn" means point right!
-
-        "Zerp" means "don''t"!
-        (Zerp Gleep means don''t point right)
-
-        Failure to listen to Yurpus''
-        instructions means you are out!'
+        "A good proof of intelligence is being able
+        to follow instructions. In this game, I will say a direction, and you will
+        point in that direction. However, the instructions will be given in my home
+        tongue. GLEEP means up, NORF mean down, FARN means your right, and MIM means
+        your left. ZERP means not, by the way, so don''t point that way. Now, if
+        you are too slow or point in the wrong direction at any time, you are out!"'
       objectReference: {fileID: 0}
     - target: {fileID: 6790341311785821656, guid: 3b5a9563cbc6bac45a7a55ab9d82ec2e, type: 3}
       propertyPath: m_fontSize

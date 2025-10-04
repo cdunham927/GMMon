@@ -58,11 +58,14 @@ public class GameManager : MonoBehaviour
 
     public void Continue()
     {
-        ListExtensions.Shuffle(games);
+        if (games.Count > 0)
+        {
+            ListExtensions.Shuffle(games);
 
-        //Load first scene
-        SceneManager.LoadScene(games[0]);
-        games.Remove(games[0]);
+            //Load first scene
+            SceneManager.LoadScene(games[0]);
+            games.Remove(games[0]);
+        }
     }
 
     public void StartGame()
