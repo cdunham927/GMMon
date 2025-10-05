@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 
 public class PlayerScoreButton : MonoBehaviour, IPointerClickHandler
 {
+    public bool outIn;
     public int thisPlayer;
     TMP_Text text;
 
@@ -29,17 +30,45 @@ public class PlayerScoreButton : MonoBehaviour, IPointerClickHandler
         if (GameManager.instance.playerScores[thisPlayer] > 0) GameManager.instance.playerScores[thisPlayer]--;
     }
 
+    public void PlayerOut()
+    {
+        //Change color to red
+
+    }
+
+    public void PlayerIn()
+    {
+        //Change color to white
+
+    }
+
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (eventData.button == PointerEventData.InputButton.Left)
+        if (!outIn)
         {
-            //Debug.Log("Left Clicked");
-            AddScore();
+            if (eventData.button == PointerEventData.InputButton.Left)
+            {
+                //Debug.Log("Left Clicked");
+                AddScore();
+            }
+            else if (eventData.button == PointerEventData.InputButton.Right)
+            {
+                //Debug.Log("Right Clicked");
+                SubScore();
+            }
         }
-        else if (eventData.button == PointerEventData.InputButton.Right)
+        else
         {
-            //Debug.Log("Right Clicked");
-            SubScore();
+            if (eventData.button == PointerEventData.InputButton.Left)
+            {
+                //Debug.Log("Left Clicked");
+                PlayerOut();
+            }
+            else if (eventData.button == PointerEventData.InputButton.Right)
+            {
+                //Debug.Log("Right Clicked");
+                PlayerIn();
+            }
         }
     }
 }

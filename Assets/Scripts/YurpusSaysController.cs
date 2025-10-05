@@ -26,7 +26,12 @@ public class YurpusSaysController : MonoBehaviour
     {
         int index = Random.Range(0, commands.Length - 1);
 
-        commandText.text = commands[index];
-        commandText.text = yurpusCommands[index];
+        commandText.text = "Current command: " + commands[index];
+        yurpusCommandText.text = yurpusCommands[index];
+    }
+
+    public void PlayerOut()
+    {
+
     }
 }
