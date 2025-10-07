@@ -3,21 +3,56 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class PlayerScoreButton : MonoBehaviour, IPointerClickHandler
 {
+    GameManager cont;
+    [HideInInspector]
+    public int playerPlace;
+    IPlayerOut pOut;
     public bool outIn;
     public int thisPlayer;
-    TMP_Text text;
+    [HideInInspector]
+    public TMP_Text text;
+    Image i;
 
-    private void Awake()
+    private void Start()
     {
+        cont = FindObjectOfType<GameManager>();
+        playerPlace = -1;
         text = GetComponentInChildren<TMP_Text>();
+        pOut = FindObjectOfType<IPlayerOut>();
+        i = GetComponent<Button>().GetComponent<Image>();
     }
 
     private void Update()
     {
-        text.text = "Player " + (thisPlayer + 1).ToString() + " - " + GameManager.instance.playerScores[thisPlayer].ToString();
+        if (!outIn) text.text = "Player " + (thisPlayer + 1).ToString() + " - " + GameManager.instance.playerScores[thisPlayer].ToString();
+
+        if (outIn)
+        {
+            string t = "";
+            if (playerPlace != -1)
+            {
+                if (playerPlace == 1) t = (playerPlace + 1).ToString() + "st";
+                else if (playerPlace == 2) t = (playerPlace + 1).ToString() + "nd";
+                else if (playerPlace == 3) t = (playerPlace + 1).ToString() + "rd";
+                else t = (playerPlace + 1).ToString() + "th";
+
+                text.text = "Player " + (thisPlayer + 1).ToString() + " - " + t;
+            }
+            else {
+                if (pOut.curPlace == 1) t = (pOut.curPlace + 1) + "st";
+                else if (pOut.curPlace == 2) t = (pOut.curPlace + 1) + "nd";
+                else if (pOut.curPlace == 3) t = (pOut.curPlace + 1) + "rd";
+                else t = (pOut.curPlace).ToString() + "th";
+
+                text.text = "Player " + (thisPlayer + 1).ToString() + " - " + t;
+            }
+
+            i.color = (playerPlace == -1) ? Color.white : Color.red;
+        }
     }
 
     public void AddScore()
@@ -32,43 +67,39 @@ public class PlayerScoreButton : MonoBehaviour, IPointerClickHandler
 
     public void PlayerOut()
     {
-        //Change color to red
+        if (playerPlace == -1)
+        {
+            //Change color to red
+            playerPlace = pOut.curPlace - 1;
 
+            pOut.eliminatedPlayer++;
+        }
     }
 
     public void PlayerIn()
     {
-        //Change color to white
+        if (playerPlace != -1)
+        {
+            //Change color to white
+            playerPlace = -1;
+            pOut.curPlace++;
 
+            pOut.eliminatedPlayer--;
+        }
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (!outIn)
+        if (eventData.button == PointerEventData.InputButton.Left)
         {
-            if (eventData.button == PointerEventData.InputButton.Left)
-            {
-                //Debug.Log("Left Clicked");
-                AddScore();
-            }
-            else if (eventData.button == PointerEventData.InputButton.Right)
-            {
-                //Debug.Log("Right Clicked");
-                SubScore();
-            }
+            if (!outIn) AddScore();
+            else PlayerOut();
         }
-        else
+        else if (eventData.button == PointerEventData.InputButton.Right)
         {
-            if (eventData.button == PointerEventData.InputButton.Left)
-            {
-                //Debug.Log("Left Clicked");
-                PlayerOut();
-            }
-            else if (eventData.button == PointerEventData.InputButton.Right)
-            {
-                //Debug.Log("Right Clicked");
-                PlayerIn();
-            }
+            //Debug.Log("Right Clicked");
+            if (!outIn) SubScore();
+            else PlayerIn();
         }
     }
 }

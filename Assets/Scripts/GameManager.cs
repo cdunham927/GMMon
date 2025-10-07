@@ -83,7 +83,7 @@ public class GameManager : MonoBehaviour
             scoreButtons[i].thisPlayer = i;
             scoreButtons[i].gameObject.SetActive(true);
 
-            scoreText[i].thisPlayer = i;
+            //scoreText[i].thisPlayer = i;
             scoreText[i].gameObject.SetActive(true);
         }
     }
@@ -103,7 +103,7 @@ public class GameManager : MonoBehaviour
             scoreButtons[i].thisPlayer = i;
             scoreButtons[i].gameObject.SetActive(true);
 
-            scoreText[i].thisPlayer = i;
+            //scoreText[i].thisPlayer = i;
             scoreText[i].gameObject.SetActive(true);
         }
     }
