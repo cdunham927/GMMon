@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public int maxGames;
 
     public bool paused = false;
+    public GameObject endGameObj;
 
     private void Awake()
     {
@@ -90,22 +91,24 @@ public class GameManager : MonoBehaviour
 
     public void ShowEndgame()
     {
-        PlayerScoreButton[] scoreButtons = FindObjectOfType<EndGameFunctions>().playerScores;
-        PlayerScore[] scoreText = FindObjectOfType<PlayerFunctions>().playerScoresText;
+        //PlayerScoreButton[] scoreButtons = FindObjectOfType<EndGameFunctions>().playerScores;
+        //PlayerScore[] scoreText = FindObjectOfType<PlayerFunctions>().playerScoresText;
 
-        foreach (PlayerScoreButton g in scoreButtons)
-        {
-            g.gameObject.SetActive(false);
-        }
+        //foreach (PlayerScoreButton g in scoreButtons)
+        //{
+        //    g.gameObject.SetActive(false);
+        //}
+        //
+        //for (int i = 0; i < players; i++)
+        //{
+        //    scoreButtons[i].thisPlayer = i;
+        //    scoreButtons[i].gameObject.SetActive(true);
+        //
+        //    //scoreText[i].thisPlayer = i;
+        //    scoreText[i].gameObject.SetActive(true);
+        //}
 
-        for (int i = 0; i < players; i++)
-        {
-            scoreButtons[i].thisPlayer = i;
-            scoreButtons[i].gameObject.SetActive(true);
-
-            //scoreText[i].thisPlayer = i;
-            scoreText[i].gameObject.SetActive(true);
-        }
+        GameObject o = Instantiate(endGameObj);
     }
 
     public void Pause()

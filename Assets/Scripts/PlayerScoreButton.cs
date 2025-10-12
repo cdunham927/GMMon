@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class PlayerScoreButton : MonoBehaviour, IPointerClickHandler
 {
-    GameManager cont;
     [HideInInspector]
     public int playerPlace;
     IPlayerOut pOut;
@@ -19,7 +18,6 @@ public class PlayerScoreButton : MonoBehaviour, IPointerClickHandler
 
     private void Start()
     {
-        cont = FindObjectOfType<GameManager>();
         playerPlace = -1;
         text = GetComponentInChildren<TMP_Text>();
         pOut = FindObjectOfType<IPlayerOut>();

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class YurpusSaysController : IPlayerOut
+public class FlawInYourLogicController : IPlayerOut
 {
     public string[] commands = { "Up", "Down", "Left", "Right", "Not" };
     public string[] yurpusCommands = { "Glorp", "Norf", "Mim", "Farn", "Zerp" };
@@ -11,8 +11,6 @@ public class YurpusSaysController : IPlayerOut
     public GameObject hintObj;
     public TMP_Text commandText;
     public TMP_Text yurpusCommandText;
-
-    public GameObject playerHudText;
 
     private void Start()
     {
@@ -23,17 +21,11 @@ public class YurpusSaysController : IPlayerOut
     {
         round++;
         if (round == 3 && hintObj != null) hintObj.SetActive(false);
-        if (eliminatedPlayer > 0) curPlace-= eliminatedPlayer;
+        if (eliminatedPlayer > 0) curPlace -= eliminatedPlayer;
         eliminatedPlayer = 0;
 
         //Get new command
         GetCommand();
-
-        if (curPlace <= 1)
-        {
-            playerHudText.SetActive(false);
-            GameManager.instance.ShowEndgame();
-        }
     }
 
     public void GetCommand()
@@ -53,3 +45,4 @@ public class YurpusSaysController : IPlayerOut
         }
     }
 }
+
