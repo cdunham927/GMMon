@@ -490,7 +490,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5377888767051015564, guid: d5b4f1e0a978e764c8d2aa87b0c217e0, type: 3}
       propertyPath: m_Name
-      value: GameManager (1)
+      value: GameManager
       objectReference: {fileID: 0}
     - target: {fileID: 5377888767051015565, guid: d5b4f1e0a978e764c8d2aa87b0c217e0, type: 3}
       propertyPath: players
@@ -663,49 +663,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 826410387}
-  - component: {fileID: 826410386}
+  - component: {fileID: 826410388}
   m_Layer: 0
-  m_Name: TaxonomicInterrogationController
+  m_Name: SymbolicReconfigurationController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &826410386
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 826410385}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 966022245edd11e4ab70b613f01356ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scores:
-  - 10
-  - 9
-  - 8
-  - 7
-  - 6
-  - 5
-  - 4
-  - 3
-  - 2
-  - 1
-  curPlace: 10
-  round: 0
-  eliminatedPlayer: 0
-  categories:
-  - Colors
-  - Presidents
-  - Types of Birds
-  - Disney Movies
-  - Board Games
-  categoryText: {fileID: 111168651}
-  yurpusCategoryText: {fileID: 985938078}
-  selectedPlayer: 0
 --- !u!4 &826410387
 Transform:
   m_ObjectHideFlags: 0
@@ -720,6 +685,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &826410388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 826410385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f19a739694bbf774c96441602e8c44d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &837377584
 GameObject:
   m_ObjectHideFlags: 0
@@ -6565,7 +6542,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 826410386}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: TaxonomicInterrogationController, Assembly-CSharp
         m_MethodName: NextRound
         m_Mode: 1
