@@ -35,21 +35,23 @@ public class SubordinationTrainingController : MonoBehaviour
 
     private void Update()
     {
-        
+        if (curTime > 0) curTime -= Time.deltaTime;
+
+        //Show time remaining
+        int seconds = ((int)curTime % 60);
+        int minutes = ((int)curTime / 60);
+        timeRemaining.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
     public void GetInstruction()
     {
         curTime = minigameTime;
-        //Show time remaining
-        timeRemaining.text = curTime.ToString();
-
 
         int index = Random.Range(0, principles.Length - 1);
 
         commandText.text = principles[index];
         yurpusCommandText.text = "Hint: " + hints[index];
 
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
     }
 }
