@@ -20,7 +20,7 @@ public class FlawInYourLogicController : MonoBehaviour
 
     public void GetPrinciple()
     {
-        int index = Random.Range(0, principles.Length);
+        int index = Random.Range(0, principles.Length - 1);
         
         commandText.text = principles[index];
         yurpusCommandText.text = "Hint: " + hints[index];
