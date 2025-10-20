@@ -26,6 +26,7 @@ public class SubordinationTrainingController : MonoBehaviour
     public float minigameTime = 30f;
     float curTime;
     public TMP_Text timeRemaining;
+    public TMP_Text timeRemaining2;
 
     public void StartRound()
     {
@@ -41,13 +42,14 @@ public class SubordinationTrainingController : MonoBehaviour
         int seconds = ((int)curTime % 60);
         int minutes = ((int)curTime / 60);
         timeRemaining.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        timeRemaining2.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
     public void GetInstruction()
     {
         curTime = minigameTime;
 
-        int index = Random.Range(0, principles.Length - 1);
+        int index = Random.Range(0, principles.Length);
 
         commandText.text = principles[index];
         yurpusCommandText.text = "Hint: " + hints[index];

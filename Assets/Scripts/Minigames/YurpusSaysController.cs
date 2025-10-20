@@ -38,7 +38,7 @@ public class YurpusSaysController : IPlayerOut
 
     public void GetCommand()
     {
-        int index = Random.Range(0, commands.Length - 1);
+        int index = Random.Range(0, commands.Length);
 
         float ran = Random.value;
         if (ran > 0.5f)

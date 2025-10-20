@@ -35,7 +35,7 @@ public class TaxonomicInterrogationController : IPlayerOut
 
     public void GetCategory()
     {
-        int index = Random.Range(0, categories.Length - 1);
+        int index = Random.Range(0, categories.Length);
 
         categoryText.text = "Category: " + categories[index] + "\nStarting Player: " + selectedPlayer.ToString();
         yurpusCategoryText.text = "Category: " + categories[index];
