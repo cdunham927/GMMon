@@ -1,66 +1,69 @@
 using UnityEngine;
-using System.IO.Ports;
 using UnityEngine.Events;
+using System;
+using System.Text;
+using System.Net;
+using System.Net.Sockets;
+using System.Threading;
 
 public class BuzzerManager : MonoBehaviour
 {
-    public string portName = "COM3";
-    private SerialPort serialPort;
-    private string incomingMessage = "";
+    // --- Network Settings ---
+    public int listenPort = 11000; // Must match the port in the ESP32 code
 
+    // --- Events (These don't change) ---
     public UnityEvent onBuzzer1Pressed;
     public UnityEvent onBuzzer2Pressed;
-    public UnityEvent onBuzzer3Pressed;
-    public UnityEvent onBuzzer4Pressed;
-    public UnityEvent onBuzzer5Pressed;
-    public UnityEvent onBuzzer6Pressed;
+    // ...etc...
+
+    // --- UDP Listener ---
+    private Thread receiveThread;
+    private UdpClient client;
+    private volatile string latestMessage = ""; // A thread-safe way to pass messages
 
     void Start()
     {
-        try
-        {
-            serialPort = new SerialPort(portName, 115200);
-            serialPort.ReadTimeout = 100;
-            serialPort.Open();
-            Debug.Log("Successfully opened port: " + portName);
-        }
-        catch (System.Exception e)
-        {
-            Debug.LogError("Could not open serial port: " + e.Message);
-        }
+        // Start a background thread to listen for UDP messages
+        receiveThread = new Thread(new ThreadStart(ReceiveData));
+        receiveThread.IsBackground = true;
+        receiveThread.Start();
+        Debug.Log("UDP Listener started on port " + listenPort);
     }
+
     void Update()
     {
-        if (serialPort != null && serialPort.IsOpen)
+        // Check every frame if a new message has arrived from the background thread
+        if (latestMessage != "")
         {
-            try // Try to perform the risky operation
-            {
-                incomingMessage += serialPort.ReadExisting();
+            string messageToProcess = latestMessage;
+            latestMessage = ""; // Clear the message so we only process it once
+            ProcessMessage(messageToProcess);
+        }
+    }
 
-                int newlineIndex = incomingMessage.IndexOf('\n');
-                if (newlineIndex >= 0)
-                {
-                    string message = incomingMessage.Substring(0, newlineIndex).Trim();
-                    incomingMessage = incomingMessage.Substring(newlineIndex + 1);
-
-                    ProcessMessage(message);
-                }
-            }
-            catch (System.IO.IOException) // Catch the exact error you're getting
+    private void ReceiveData()
+    {
+        client = new UdpClient(listenPort);
+        while (true)
+        {
+            try
             {
-                // This will catch the error without crashing.
-                // It just prints a warning so you know it happened.
-                Debug.LogWarning("IOException: The port was likely disconnected. This is now handled.");
+                IPEndPoint anyIP = new IPEndPoint(IPAddress.Any, 0);
+                byte[] data = client.Receive(ref anyIP);
+                string text = Encoding.UTF8.GetString(data);
+                latestMessage = text; // Store the received message
             }
-            catch (System.TimeoutException)
+            catch (Exception err)
             {
-                /* This is normal, just means no data was available */
+                Debug.LogError(err.ToString());
             }
         }
     }
 
     void ProcessMessage(string message)
     {
+        // This part of the logic is exactly the same as before
+        Debug.Log(">> Received message: " + message);
         string[] parts = message.Split(':');
         if (parts.Length == 2)
         {
@@ -76,9 +79,14 @@ public class BuzzerManager : MonoBehaviour
 
     void OnApplicationQuit()
     {
-        if (serialPort != null && serialPort.IsOpen)
+        // Clean up the thread when the game closes
+        if (receiveThread != null && receiveThread.IsAlive)
         {
-            serialPort.Close();
+            receiveThread.Abort();
+        }
+        if (client != null)
+        {
+            client.Close();
         }
     }
 }
