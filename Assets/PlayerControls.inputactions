@@ -1,0 +1,109 @@
+{
+    "name": "PlayerControls",
+    "maps": [
+        {
+            "name": "Player",
+            "id": "44f5f2c8-5023-436e-84a1-9e179fe198ad",
+            "actions": [
+                {
+                    "name": "Move",
+                    "type": "Value",
+                    "id": "0c3dac71-e333-4d0e-bb9e-d4ce061140e5",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Button",
+                    "type": "Button",
+                    "id": "5d91b553-626d-47e4-bcb1-15bbb6e5c615",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Button2",
+                    "type": "Button",
+                    "id": "c30acb10-0f5a-4ecd-8626-117359443ab0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Button3",
+                    "type": "Button",
+                    "id": "ca7bd211-1d50-451c-af9a-4ce09c23bab2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Button4",
+                    "type": "Button",
+                    "id": "42b57b4f-d8b6-46de-ba5a-6be99ba50e13",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "3598b05c-cb1d-4c19-ad57-334f29ed53a4",
+                    "path": "<HID::DragonRise Inc.   Generic   USB  Joystick  >/button2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Button",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "728fd86d-a922-4b83-b14b-4f8e65562530",
+                    "path": "<Joystick>/stick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ce304020-9b4f-4abd-b934-b184f05f00ed",
+                    "path": "<HID::DragonRise Inc.   Generic   USB  Joystick  >/button3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Button2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6b1965ae-3a7f-4762-87ed-7de60670527b",
+                    "path": "<HID::DragonRise Inc.   Generic   USB  Joystick  >/button4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Button3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "656ec829-36e1-4b31-8ac9-7fe881dc935a",
+                    "path": "<HID::DragonRise Inc.   Generic   USB  Joystick  >/button5",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Button4",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

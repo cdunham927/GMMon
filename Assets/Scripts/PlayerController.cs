@@ -1,29 +1,42 @@
 using UnityEngine;
-using UnityEngine.InputSystem; // Make sure this line is here!
+using UnityEngine.InputSystem; // Don't forget this line!
 
 public class PlayerController : MonoBehaviour
 {
-    // The name "OnAnswer" and the parameter (InputAction.CallbackContext context)
-    // MUST be exactly like this.
-    public void OnAnswer(InputAction.CallbackContext context)
+    public float moveSpeed = 5f;
+    private Vector2 moveInput;
+    private Rigidbody2D rb;
+
+    void Start()
     {
-        if (context.performed)
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    // This function is called by the "Player Input" component when the "Move" action is triggered.
+    public void OnMove(InputValue value)
+    {
+        moveInput = value.Get<Vector2>();
+    }
+
+    // This function is called by the "Player Input" component when the "Buzzer" action is triggered.
+    public void OnButton(InputValue value)
+    {
+        // Check if the button was pressed down this frame
+        if (value.isPressed)
         {
-            int playerNumber = GetComponent<PlayerInput>().playerIndex + 1;
-            Debug.Log($"Player {playerNumber} buzzed in!");
+            Debug.Log("Button Pressed!");
+            // Add your game show buzzer logic here!
+            // For example, light up the player's podium or lock out other players.
         }
     }
 
-    // The name "OnMove" and the parameter (InputAction.CallbackContext context)
-    // MUST also be exactly like this.
-    public void OnMove(InputAction.CallbackContext context)
+    // Use FixedUpdate for physics-based movement
+    void FixedUpdate()
     {
-        Vector2 moveInput = context.ReadValue<Vector2>();
-
-        if (moveInput.magnitude > 0.1f)
+        // Apply the movement
+        if (rb != null)
         {
-            int playerNumber = GetComponent<PlayerInput>().playerIndex + 1;
-            Debug.Log($"Player {playerNumber} is moving: {moveInput}");
+            rb.velocity = moveInput * moveSpeed;
         }
     }
 }
