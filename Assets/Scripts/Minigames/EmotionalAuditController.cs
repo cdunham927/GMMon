@@ -37,7 +37,7 @@ public class EmotionalAuditController : MonoBehaviour
         timeRemaining.text = string.Format("{0:00}:{1:00}", minutes, seconds);
         timeRemaining2.text = string.Format("{0:00}:{1:00}", minutes, seconds);
 
-        if (curTime <= 0)
+        if (curTime <= 0 && !chosePlayer)
         {
             chosePlayer = true;
             yurpusCommandText.gameObject.SetActive(false);
