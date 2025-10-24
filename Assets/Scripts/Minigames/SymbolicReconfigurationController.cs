@@ -26,9 +26,10 @@ public class SymbolicReconfigurationController : MonoBehaviour
 
     public void StartRound()
     {
-        if (curRound < 9) curRound++;
         //Get new command
         GetWord();
+
+        if (curRound < 9) curRound++;
     }
 
     public void ShuffleWord()

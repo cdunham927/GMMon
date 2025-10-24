@@ -643,59 +643,58 @@ MonoBehaviour:
   - RAY
   - POD
   words2:
-  - BOT
-  - ION
-  - LAB
-  - RAY
-  - POD
+  - BEAM
+  - CORE
+  - DATA
+  - MOON
+  - STAR
   words3:
-  - BOT
-  - ION
-  - LAB
-  - RAY
-  - POD
+  - ALIEN
+  - COMET
+  - LASER
+  - LUNAR
+  - PROBE
   words4:
-  - BOT
-  - ION
-  - LAB
-  - RAY
-  - POD
+  - GALAXY
+  - METEOR
+  - ORBIT
+  - PLASMA
+  - SYSTEM
   words5:
-  - BOT
-  - ION
-  - LAB
-  - RAY
-  - POD
+  - GRAVITY
+  - QUANTUM
+  - REACTOR
+  - SCANNER
+  - STATION
   words6:
-  - GRAVIRY
-  - QUANTUM
-  - REACTOR
-  - SCANNER
-  - STATION
+  - ASTEROID
+  - NEBULA
+  - QUADRANT
+  - TERRAFORM
+  - UNIVERSE
   words7:
-  - GRAVIRY
-  - QUANTUM
-  - REACTOR
-  - SCANNER
-  - STATION
+  - DIMENSION
+  - DISCOVERY
+  - HYPERDRIVE
+  - ORGANISM
+  - TELEPORT
   words8:
-  - GRAVIRY
-  - QUANTUM
-  - REACTOR
-  - SCANNER
-  - STATION
+  - CONSTELLATION
+  - EXOPLANET
+  - GENERATION
+  - TECHNOLOGY
+  - WORMHOLE
   words9:
-  - GRAVIRY
-  - QUANTUM
-  - REACTOR
-  - SCANNER
-  - STATION
+  - COLONIZATION
+  - EXPLORATION
+  - INTERSTELLAR
+  - SINGULARITY
+  - XENOBIOLOGY
   words10:
-  - GRAVIRY
-  - QUANTUM
-  - REACTOR
-  - SCANNER
-  - STATION
+  - ASTROPHYSICS
+  - CYBERNETICS
+  - EXTRATERRESTRIAL
+  - INTERDIMENSIONAL
   unshuffledWord: 
   shuffledWord: 
   commandText: {fileID: 1172677093}
