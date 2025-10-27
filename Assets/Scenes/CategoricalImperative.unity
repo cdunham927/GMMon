@@ -481,20 +481,25 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 142063623267088235, guid: 289a89d79a25c5f46960f688b9381796, type: 3}
       propertyPath: m_text
-      value: 'You will wait for an instruction to appear!
+      value: 'You will use the joystick categorize a set of objects! (by color, shape,
+        direction).
 
-        You must press
-        the corresponding instruction!
+        You will categorize according to the instruction on
+        screen!
 
-        Press too early and you lose a point!
+        The categorization rule might change! PAY ATTENTION!
 
-        Press
-        the wrong button and you lose a point
+        You
+        receive a point per correct categorization!
 
-        Press no button and you lose
-        a point!
+        You also receive a
+        cumulative point for every 5 items you categorize correctly!
 
-        The winner is the first to five points!'
+        Bad
+        categorization means you reset the cumulative points!
+
+        The best
+        categorizer wins!'
       objectReference: {fileID: 0}
     - target: {fileID: 391009157730901203, guid: 289a89d79a25c5f46960f688b9381796, type: 3}
       propertyPath: m_Pivot.x
@@ -582,7 +587,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1862852452342283344, guid: 289a89d79a25c5f46960f688b9381796, type: 3}
       propertyPath: m_text
-      value: Reflex Competency
+      value: Categorical Imperative
       objectReference: {fileID: 0}
     - target: {fileID: 2013114710967317702, guid: 289a89d79a25c5f46960f688b9381796, type: 3}
       propertyPath: m_Name
@@ -604,9 +609,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1067983071}
-  - component: {fileID: 1067983072}
   m_Layer: 0
-  m_Name: ReflexCompetencyController
+  m_Name: CategoricalImperativeController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -626,34 +630,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1067983072
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1067983070}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 210229ea274d8a142837dee2227877c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  directions:
-  - {x: 0, y: 1}
-  - {x: 0, y: -1}
-  - {x: -1, y: 0}
-  - {x: 1, y: 0}
-  directionsText:
-  - Up
-  - Down
-  - Left
-  - Right
-  currentDirection: {x: 0, y: 0}
-  commandText: {fileID: 0}
-  yurpusCommandText: {fileID: 0}
-  minigameTime: 30
-  timeRemaining: {fileID: 0}
-  timeRemaining2: {fileID: 0}
 --- !u!1 &1172677090
 GameObject:
   m_ObjectHideFlags: 0
@@ -1058,17 +1034,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6790341311785821656, guid: 3b5a9563cbc6bac45a7a55ab9d82ec2e, type: 3}
       propertyPath: m_text
-      value: '"A quick creature is not always a sentient creature, but a slow one
-        is never a sentient creatrue. In this test, you must prepare yourselves,
-        for at the flash of an instruction, you will be required to press a button
-        as quickly as possible. Press too ealy, and you lose a point. Press the wrong
-        button, and you still lose a point. Wait too long to press a button and you
-        still lose a poinT The first who is able to press the button first and correctly
-        five times wins this test!'
+      value: '"Creatures quick in mind will be able to organize the world around
+        them in a flash. You will be given a set of objects to categorize. Their
+        categories are rather elementary...shapes, colors, words. You will use the
+        joystick to place the object in the correct category. Periodically, the rule
+        for categorization will change, so pay attention! You receive a point per
+        correct categorization, and every set of five you categorize correctly will
+        earn you a cumulative point on top of that! If you categorize incorrectly,
+        you will reset the cumulative points! The best categorizer wins!'
       objectReference: {fileID: 0}
     - target: {fileID: 8588683341165220169, guid: 3b5a9563cbc6bac45a7a55ab9d82ec2e, type: 3}
       propertyPath: m_text
-      value: Reflex Competency
+      value: Categorical Imperative
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b5a9563cbc6bac45a7a55ab9d82ec2e, type: 3}
