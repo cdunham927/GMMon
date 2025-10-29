@@ -2,15 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
-public class ReflexCompetencyController : MonoBehaviour
+public class MicrocosmicDeductionController : MonoBehaviour
 {
-    public Vector2[] directions = { Vector2.up, Vector2.down, Vector2.left, Vector2.right };
-    public string[] directionsText = { "Up", "Down", "Left", "Right" };
-    public Vector2 currentDirection;
+    public Sprite[] images;
+    public Image zoomedImage;
 
     public TMP_Text commandText;
     public TMP_Text yurpusCommandText;
+
 
     public float roundTimeSmall = 2f;
     public float roundTimeBig = 10f;
@@ -33,21 +34,16 @@ public class ReflexCompetencyController : MonoBehaviour
         //int minutes = ((int)curTime / 60);
         //timeRemaining.text = string.Format("{0:00}:{1:00}", minutes, seconds);
         //timeRemaining2.text = string.Format("{0:00}:{1:00}", minutes, seconds);
-
-
     }
 
     public void GetInstruction()
     {
-        curTime = Random.Range(roundTimeSmall, roundTimeBig);
+        int index = Random.Range(0, images.Length);
+        zoomedImage.sprite = images[index];
 
+        //commandText.text = currentObject;
+        //yurpusCommandText.text = currentObject;
 
-        int index = Random.Range(0, directionsText.Length);
-        currentDirection = directions[index];
-
-        commandText.text = directionsText[index];
-        yurpusCommandText.text = directionsText[index];
-
-        //gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
 }

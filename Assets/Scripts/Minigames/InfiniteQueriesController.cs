@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class ReflexCompetencyController : MonoBehaviour
+public class InfiniteQueriesController : MonoBehaviour
 {
-    public Vector2[] directions = { Vector2.up, Vector2.down, Vector2.left, Vector2.right };
-    public string[] directionsText = { "Up", "Down", "Left", "Right" };
-    public Vector2 currentDirection;
+    public string[] objects = { "Rubber Duck", "Paperclip", "'Stop' Sign", "Key", "Birthday Candle", "Toothbrush", "Ice Cube" };
+    public string currentObject;
 
     public TMP_Text commandText;
     public TMP_Text yurpusCommandText;
@@ -33,21 +32,16 @@ public class ReflexCompetencyController : MonoBehaviour
         //int minutes = ((int)curTime / 60);
         //timeRemaining.text = string.Format("{0:00}:{1:00}", minutes, seconds);
         //timeRemaining2.text = string.Format("{0:00}:{1:00}", minutes, seconds);
-
-
     }
 
     public void GetInstruction()
     {
-        curTime = Random.Range(roundTimeSmall, roundTimeBig);
+        int index = Random.Range(0, objects.Length);
+        currentObject = objects[index];
 
+        commandText.text = currentObject;
+        yurpusCommandText.text = currentObject;
 
-        int index = Random.Range(0, directionsText.Length);
-        currentDirection = directions[index];
-
-        commandText.text = directionsText[index];
-        yurpusCommandText.text = directionsText[index];
-
-        //gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
 }

@@ -184,81 +184,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5b4f1e0a978e764c8d2aa87b0c217e0, type: 3}
---- !u!1 &391121211
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 391121212}
-  - component: {fileID: 391121214}
-  - component: {fileID: 391121213}
-  m_Layer: 2
-  m_Name: Image
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &391121212
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 391121211}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 796535788}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &391121213
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 391121211}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &391121214
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 391121211}
-  m_CullTransparentMesh: 1
 --- !u!1 &532594479
 GameObject:
   m_ObjectHideFlags: 0
@@ -342,8 +267,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SymbolicReconfigurationController, Assembly-CSharp
+      - m_Target: {fileID: 1067983072}
+        m_TargetAssemblyTypeName: InfiniteQueriesController, Assembly-CSharp
         m_MethodName: StartRound
         m_Mode: 1
         m_Arguments:
@@ -556,24 +481,30 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 142063623267088235, guid: 289a89d79a25c5f46960f688b9381796, type: 3}
       propertyPath: m_text
-      value: 'You will use the joystick categorize a set of objects! (by color, shape,
-        direction).
+      value: 'I am thinking of an earth object!
 
-        You will categorize according to the instruction on
-        screen!
+        You will use the top button
+        to buzz in whenever you want!
 
-        The categorization rule might change! PAY ATTENTION!
+        If you buzz in when others buzz before
+        you, you will be put in a queue!
 
-        You
-        receive a point per correct categorization!
+        Ask me a question, and I will answer
+        it!
 
-        You also receive a cumulative
-        point for every 5 items you categorize correctly!
+        If you know the answer, press the bottom button to announce
+        it!
 
-        Bad categorization
-        means you reset the cumulative points!
+        I will write it down and let the rest continue guessing!
 
-        The best categorizer wins!'
+        Do
+        not be the last one left to guess, or else you won''t be able to!
+
+        The
+        first player to get the answer right wins!
+
+        If no one gets it right,
+        the closest answer wins!'
       objectReference: {fileID: 0}
     - target: {fileID: 391009157730901203, guid: 289a89d79a25c5f46960f688b9381796, type: 3}
       propertyPath: m_Pivot.x
@@ -661,7 +592,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1862852452342283344, guid: 289a89d79a25c5f46960f688b9381796, type: 3}
       propertyPath: m_text
-      value: Categorical Imperative
+      value: Infinite Queries
       objectReference: {fileID: 0}
     - target: {fileID: 2013114710967317702, guid: 289a89d79a25c5f46960f688b9381796, type: 3}
       propertyPath: m_Name
@@ -672,11 +603,6 @@ PrefabInstance:
 --- !u!224 &796535787 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5430860054896562080, guid: 289a89d79a25c5f46960f688b9381796, type: 3}
-  m_PrefabInstance: {fileID: 796535786}
-  m_PrefabAsset: {fileID: 0}
---- !u!224 &796535788 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 391009157730901203, guid: 289a89d79a25c5f46960f688b9381796, type: 3}
   m_PrefabInstance: {fileID: 796535786}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1067983070
@@ -690,7 +616,7 @@ GameObject:
   - component: {fileID: 1067983071}
   - component: {fileID: 1067983072}
   m_Layer: 0
-  m_Name: CategoricalImperativeController
+  m_Name: InfiniteQueriesController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -719,26 +645,35 @@ MonoBehaviour:
   m_GameObject: {fileID: 1067983070}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53917e32366dcfa4db0135780cbf9845, type: 3}
+  m_Script: {fileID: 11500000, guid: 88e51eb912fffff46b929069b9693538, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  directions:
-  - Up
-  - Down
-  - Left
-  - Right
-  colors:
-  - {r: 1, g: 0, b: 0, a: 1}
-  - {r: 0, g: 0, b: 1, a: 1}
-  - {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  shapes:
-  - Triangle
-  - Circle
-  - Square
-  - Star
+  objects:
+  - Rubber Duck
+  - Paperclip
+  - '''Stop'' Sign'
+  - Key
+  - Birthday Candle
+  - Toothbrush
+  - Ice cube
+  - Bar of soap
+  - Dollar bill
+  - Feather
+  - Cat
+  - Zipper
+  - Slinky
+  - Mirror
+  - Potato
+  - Battery
+  - Garden Gnome
+  - Tennis ball
+  - Egg
+  - Pair of glasses
+  currentObject: 
   commandText: {fileID: 0}
   yurpusCommandText: {fileID: 0}
-  minigameTime: 30
+  roundTimeSmall: 2
+  roundTimeBig: 10
   timeRemaining: {fileID: 0}
   timeRemaining2: {fileID: 0}
 --- !u!1 &1172677090
@@ -1145,18 +1080,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6790341311785821656, guid: 3b5a9563cbc6bac45a7a55ab9d82ec2e, type: 3}
       propertyPath: m_text
-      value: '"Creatures quick in mind will be able to organize the world around
-        them in a flash. You will be given a set of objects to categorize. Their
-        categories are rather elementary...shapes, colors, words. You will use the
-        joystick to place the object in the correct category. Periodically, the rule
-        for categorization will change, so pay attention! You receive a point per
-        correct categorization, and every set of five you categorize correctly will
-        earn you a cumulative point on top of that! If you categorize incorrectly,
-        you will reset the cumulative points! The best categorizer wins!'
+      value: '"Let us see if your small minds can approach the caliber of one inducted
+        into the Intergalactic Coalition of Enlightened Minds. ALL HAIL THE INTERGALACTIC
+        COALITION OF ENLIGHTENED MINDS. I am thinking of an earth object. All of
+        you can use the top button to buzz in and ask me a question about the object
+        whenever you want: if you buzz in when others are going, you will be questioned
+        in order. I will provide a short answer, such as "YES," "NO," "SOMETIMES,"
+        "UNKNOWN," "IRRELEVANT," "MAYBE," etc. You may also use the bottom button
+        to announce your answer. At that point, I will write down your answer and
+        then allow the rest to continue guessing. Careful not to wait too long! The
+        last player left to guess will not be able to provide a guess! The winner
+        is the first player to get the answer right! If none of you get it right,
+        then the closest answer will win!"'
       objectReference: {fileID: 0}
     - target: {fileID: 8588683341165220169, guid: 3b5a9563cbc6bac45a7a55ab9d82ec2e, type: 3}
       propertyPath: m_text
-      value: Categorical Imperative
+      value: Infinite Queries
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b5a9563cbc6bac45a7a55ab9d82ec2e, type: 3}
