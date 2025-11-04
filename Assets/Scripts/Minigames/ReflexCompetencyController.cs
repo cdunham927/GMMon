@@ -2,52 +2,144 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class ReflexCompetencyController : MonoBehaviour
 {
     public Vector2[] directions = { Vector2.up, Vector2.down, Vector2.left, Vector2.right };
-    public string[] directionsText = { "Up", "Down", "Left", "Right" };
+    public Sprite[] directionsSprites = { };
     public Vector2 currentDirection;
 
-    public TMP_Text commandText;
-    public TMP_Text yurpusCommandText;
+    public Sprite blankSprite;
+
+    public Image commandImage;
+    public Image commandImage2;
 
     public float roundTimeSmall = 2f;
     public float roundTimeBig = 10f;
     float curTime;
-    public TMP_Text timeRemaining;
-    public TMP_Text timeRemaining2;
+    bool countdown = false;
+    //public TMP_Text timeRemaining;
+    //public TMP_Text timeRemaining2;
+
+    float curReflexTime = 0f;
+    public float reflexTime = 1f;
+
+    int players;
+    bool[] checkedInput;
+    int[] playerPoints;
+    Vector2[] joystickInputs;
+    public int pointsToEnd = 5;
+    bool end = false;
+
+    private void Awake()
+    {
+        countdown = false;
+        players = GameManager.instance.players;
+
+        System.Array.Resize(ref joystickInputs, players);
+        System.Array.Resize(ref checkedInput, players);
+        System.Array.Resize(ref playerPoints, players);
+    }
 
     public void StartRound()
     {
-        //Get new command
-        GetInstruction();
+        countdown = true;
+        curTime = Random.Range(roundTimeSmall, roundTimeBig);
+    }
+
+    void CheckInput(int p, Vector2 inp)
+    {
+        checkedInput[p] = true;
+
+        if (inp == currentDirection)
+        {
+            GivePoint(p);
+        }
+    }
+
+    void GivePoint(int p)
+    {
+        GameManager.instance.playerScores[p]++;
+        playerPoints[p]++;
+
+        if (playerPoints[p] >= pointsToEnd) end = true;
+    }
+
+    void TakePoint(int p)
+    {
+        GameManager.instance.playerScores[p]--;
     }
 
     private void Update()
     {
-        //if (curTime > 0) curTime -= Time.deltaTime;
+        if (!end)
+        {
+            //Countdown to new direction
+            if (countdown && curTime > 0) curTime -= Time.deltaTime;
 
-        //Show time remaining
-        //int seconds = ((int)curTime % 60);
-        //int minutes = ((int)curTime / 60);
-        //timeRemaining.text = string.Format("{0:00}:{1:00}", minutes, seconds);
-        //timeRemaining2.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+            //Get and show new direction
+            if (countdown && curTime <= 0)
+            {
+                countdown = false;
 
+                curReflexTime = reflexTime;
+                GetInstruction();
+            }
 
+            //During the round
+            if (curTime <= 0 && curReflexTime > 0)
+            {
+                curReflexTime -= Time.deltaTime;
+
+                //Check for player inputs in here
+                for (int i = 0; i < players; i++)
+                {
+
+                    if (!checkedInput[i] && joystickInputs[i] != Vector2.zero)
+                    {
+                        CheckInput(i, joystickInputs[i]);
+                    }
+                }
+            }
+
+            //Round is over, check for any player that hasnt input yet and take away points
+            if (curTime <= 0 && curReflexTime < 0)
+            {
+                commandImage.sprite = blankSprite;
+                commandImage2.sprite = blankSprite;
+
+                //Deduct points from no inputs from players
+                for (int i = 0; i < players; i++)
+                {
+                    if (!checkedInput[i]) TakePoint(i);
+                }
+
+                //Start new round
+                countdown = true;
+                curTime = Random.Range(roundTimeSmall, roundTimeBig);
+            }
+
+            //Check for player inputs in here
+            for (int i = 0; i < players; i++)
+            {
+                joystickInputs[i] = new Vector2(Input.GetAxisRaw("Horizontal" + (i + 1).ToString()), Input.GetAxisRaw("Vertical" + (i + 1).ToString()));
+                //Debug.Log(joystickInputs[i]);
+            }
+        }
     }
 
     public void GetInstruction()
     {
-        curTime = Random.Range(roundTimeSmall, roundTimeBig);
-
-
-        int index = Random.Range(0, directionsText.Length);
+        int index = Random.Range(0, directionsSprites.Length);
         currentDirection = directions[index];
 
-        commandText.text = directionsText[index];
-        yurpusCommandText.text = directionsText[index];
+        commandImage.sprite = directionsSprites[index];
+        commandImage2.sprite = directionsSprites[index];
 
-        //gameObject.SetActive(false);
+        for (int i = 0; i > players; i++)
+        {
+            checkedInput[i] = false;
+        }
     }
 }
