@@ -26,9 +26,9 @@ public class ReflexCompetencyController : MonoBehaviour
     public float reflexTime = 1f;
 
     int players;
-    bool[] checkedInput;
-    int[] playerPoints;
-    Vector2[] joystickInputs;
+    public bool[] checkedInput;
+    public int[] playerPoints;
+    public Vector2[] joystickInputs;
     public int pointsToEnd = 5;
     bool end = false;
 
@@ -50,11 +50,13 @@ public class ReflexCompetencyController : MonoBehaviour
 
     void CheckInput(int p, Vector2 inp)
     {
-        checkedInput[p] = true;
-
         if (inp == currentDirection)
         {
             GivePoint(p);
+        }
+        else
+        {
+            TakePoint(p);
         }
     }
 
@@ -69,6 +71,7 @@ public class ReflexCompetencyController : MonoBehaviour
     void TakePoint(int p)
     {
         GameManager.instance.playerScores[p]--;
+        playerPoints[p]--;
     }
 
     private void Update()
@@ -84,6 +87,7 @@ public class ReflexCompetencyController : MonoBehaviour
                 countdown = false;
 
                 curReflexTime = reflexTime;
+
                 GetInstruction();
             }
 
@@ -95,9 +99,9 @@ public class ReflexCompetencyController : MonoBehaviour
                 //Check for player inputs in here
                 for (int i = 0; i < players; i++)
                 {
-
                     if (!checkedInput[i] && joystickInputs[i] != Vector2.zero)
                     {
+                        checkedInput[i] = true;
                         CheckInput(i, joystickInputs[i]);
                     }
                 }
@@ -113,6 +117,8 @@ public class ReflexCompetencyController : MonoBehaviour
                 for (int i = 0; i < players; i++)
                 {
                     if (!checkedInput[i]) TakePoint(i);
+
+                    checkedInput[i] = false;
                 }
 
                 //Start new round
@@ -123,7 +129,7 @@ public class ReflexCompetencyController : MonoBehaviour
             //Check for player inputs in here
             for (int i = 0; i < players; i++)
             {
-                joystickInputs[i] = new Vector2(Input.GetAxisRaw("Horizontal" + (i + 1).ToString()), Input.GetAxisRaw("Vertical" + (i + 1).ToString()));
+                joystickInputs[i] = new Vector2(Mathf.RoundToInt(Input.GetAxisRaw("Horizontal" + (i + 1).ToString())), Mathf.RoundToInt(Input.GetAxisRaw("Vertical" + (i + 1).ToString())));
                 //Debug.Log(joystickInputs[i]);
             }
         }
@@ -136,10 +142,5 @@ public class ReflexCompetencyController : MonoBehaviour
 
         commandImage.sprite = directionsSprites[index];
         commandImage2.sprite = directionsSprites[index];
-
-        for (int i = 0; i > players; i++)
-        {
-            checkedInput[i] = false;
-        }
     }
 }
