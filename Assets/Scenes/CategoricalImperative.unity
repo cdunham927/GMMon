@@ -805,20 +805,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53917e32366dcfa4db0135780cbf9845, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  directions:
-  - Up
-  - Down
-  - Left
-  - Right
-  colors:
-  - {r: 1, g: 0, b: 0, a: 1}
-  - {r: 0, g: 0, b: 1, a: 1}
-  - {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  shapes:
-  - Triangle
-  - Circle
-  - Square
-  - Star
+  questions:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  answers:
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  playerCurQuestion: []
+  curQuestionIndex: 
+  joystickInputs: []
   commandText: {fileID: 0}
   yurpusCommandText: {fileID: 0}
   minigameTime: 30

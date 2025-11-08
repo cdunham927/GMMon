@@ -6,9 +6,13 @@ using UnityEngine.UI;
 
 public class CategoricalImperativeController : MonoBehaviour
 {
+    bool playing = false;
     public Sprite[] questions = { };
     public Vector2[] answers = { };
     public Vector2[] playerCurQuestion;
+    public int[] curQuestionIndex;
+
+    public Vector2[] joystickInputs;
 
 
     public TMP_Text commandText;
@@ -19,29 +23,64 @@ public class CategoricalImperativeController : MonoBehaviour
     public TMP_Text timeRemaining;
     public TMP_Text timeRemaining2;
 
-    public void StartRound()
+    int players;
+
+    private void Awake()
+    {
+        players = GameManager.instance.players;
+
+        //Resize arrays
+        System.Array.Resize(ref joystickInputs, players);
+        System.Array.Resize(ref playerCurQuestion, players);
+        System.Array.Resize(ref curQuestionIndex, players);
+    }
+
+    void ShuffleQuestions()
+    {
+        //Shuffle question and answer arrays once before the game starts
+    }
+
+    public void StartGame()
     {
         //Get new command
+        playing = true;
         GetInstruction();
     }
 
     private void Update()
     {
-        //if (curTime > 0) curTime -= Time.deltaTime;
+        if (playing)
+        {
 
-        //Show time remaining
-        //int seconds = ((int)curTime % 60);
-        //int minutes = ((int)curTime / 60);
-        //timeRemaining.text = string.Format("{0:00}:{1:00}", minutes, seconds);
-        //timeRemaining2.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        }
 
 
+
+        //Check for player inputs in here
+        for (int i = 0; i < players; i++)
+        {
+            joystickInputs[i] = new Vector2(Mathf.RoundToInt(Input.GetAxisRaw("Horizontal" + (i + 1).ToString())), Mathf.RoundToInt(Input.GetAxisRaw("Vertical" + (i + 1).ToString())));
+            //Debug.Log(joystickInputs[i]);
+        }
+    }
+
+    void CorrectAnswer(int p)
+    {
+        curQuestionIndex[p]++;
+    }
+
+    void IncorrectAnswer(int p)
+    {
+        curQuestionIndex[p]--;
     }
 
     public void GetInstruction()
     {
-        int i = Random.Range(0, questions.Length);
+        for (int i = 0; i < players; i++)
+        {
+            curQuestionIndex[i] = 0;
 
-
+            playerCurQuestion[curQuestionIndex[i]] = answers[i];
+        }
     }
 }
