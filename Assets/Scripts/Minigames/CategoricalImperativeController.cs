@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class CategoricalImperativeController : MonoBehaviour
 {
-    public string[] directions = { "Up", "Down", "Left", "Right" };
-    public Color[] colors = { Color.red, Color.blue, Color.yellow };
-    public string[] shapes = { "Triangle", "Circle", "Square", "Star" };
+    public Sprite[] questions = { };
+    public Vector2[] answers = { };
+    public Vector2[] playerCurQuestion;
+
 
     public TMP_Text commandText;
     public TMP_Text yurpusCommandText;
@@ -38,16 +40,8 @@ public class CategoricalImperativeController : MonoBehaviour
 
     public void GetInstruction()
     {
-        //curTime = minigameTime;
+        int i = Random.Range(0, questions.Length);
 
-        int dir = Random.Range(0, directions.Length);
-        int col = Random.Range(0, colors.Length);
-        int sha = Random.Range(0, shapes.Length);
-        //currentDirection = directions[dir];
 
-        //commandText.text = directionsText[index];
-        //yurpusCommandText.text = directionsText[index];
-
-        //gameObject.SetActive(false);
     }
 }
