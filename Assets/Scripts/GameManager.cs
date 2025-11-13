@@ -20,6 +20,10 @@ public class GameManager : MonoBehaviour
     public bool paused = false;
     public GameObject endGameObj;
 
+    //Audio
+    AudioSource src;
+    AudioClip buzzClip;
+
     private void Awake()
     {
         if (instance == null)
@@ -34,6 +38,8 @@ public class GameManager : MonoBehaviour
 
         if (Display.displays.Length > 1)
             Display.displays[1].Activate();
+
+        src = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -151,6 +157,14 @@ public class GameManager : MonoBehaviour
 
         selectMenu.SetActive(true);
         mainMenu.SetActive(false);
+    }
+
+    public void PlaySound(AudioClip c, float vol = 1f)
+    {
+        float startVol = src.volume;
+        src.volume = vol;
+        src.PlayOneShot(c);
+        src.volume = startVol;
     }
 
     public void Quit()

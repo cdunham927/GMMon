@@ -421,9 +421,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SymbolicReconfigurationController, Assembly-CSharp
-        m_MethodName: StartRound
+      - m_Target: {fileID: 1067983072}
+        m_TargetAssemblyTypeName: CategoricalImperativeController, Assembly-CSharp
+        m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -806,31 +806,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questions:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: af432f8626cfb434494f2cf2fb645eed, type: 3}
+  - {fileID: 21300000, guid: 273892012a21c6b4ca18d88adc83a137, type: 3}
+  - {fileID: 21300000, guid: 1d0e7c0f5b886be43b9e3d9836a39b64, type: 3}
+  - {fileID: 21300000, guid: b39f35377a3a55a4e86653c72ddae21b, type: 3}
+  - {fileID: 21300000, guid: fc6771e891fda3547aee2886b44a519c, type: 3}
+  - {fileID: 21300000, guid: 5e9601fc31be52c4babbf85f8ddf914d, type: 3}
+  - {fileID: 21300000, guid: 5283b32171fa9c043bceffad8c08a1c8, type: 3}
+  - {fileID: 21300000, guid: 260273c6b6e007f46830a5148933a845, type: 3}
+  - {fileID: 21300000, guid: e068f50a72faae74e976654511c7f402, type: 3}
+  - {fileID: 21300000, guid: 635dc3fc6fe8dda4da016e9c0f98cdec, type: 3}
+  - {fileID: 21300000, guid: f0b825ecbac3eec448061c4bb2d1321d, type: 3}
+  - {fileID: 21300000, guid: 196bbc6c354a32c46b0e9affa1084e52, type: 3}
   answers:
-  - {x: 0, y: 0}
-  - {x: 0, y: 0}
-  - {x: 0, y: 0}
-  - {x: 0, y: 0}
-  - {x: 0, y: 0}
-  - {x: 0, y: 0}
-  - {x: 0, y: 0}
-  - {x: 0, y: 0}
-  - {x: 0, y: 0}
-  - {x: 0, y: 0}
-  - {x: 0, y: 0}
-  - {x: 0, y: 0}
+  - {x: 1, y: 0}
+  - {x: 0, y: 1}
+  - {x: 0, y: -1}
+  - {x: -1, y: 0}
+  - {x: 0, y: 1}
+  - {x: 1, y: 0}
+  - {x: 0, y: -1}
+  - {x: -1, y: 0}
+  - {x: 0, y: -1}
+  - {x: 1, y: 0}
+  - {x: -1, y: 0}
+  - {x: 0, y: 1}
+  playerCurAnswer: []
   playerCurQuestion: []
   curQuestionIndex: 
   joystickInputs: []

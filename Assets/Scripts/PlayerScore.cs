@@ -11,6 +11,7 @@ public class PlayerScore : MonoBehaviour
     public PlayerScoreButton parent;
     TMP_Text text;
     Image i;
+    public Image catImpImage;
 
     private void Awake()
     {
