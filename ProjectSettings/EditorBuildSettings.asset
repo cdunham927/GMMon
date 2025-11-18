@@ -15,6 +15,30 @@ EditorBuildSettings:
     path: Assets/Scenes/YurpusSays.unity
     guid: 9ff9c003bf279384ea6d6381fb0c2965
   - enabled: 1
+    path: Assets/Scenes/EmotionalAudit.unity
+    guid: 6bcf29cbb4c7e5b4faef1a5c4caf157c
+  - enabled: 1
+    path: Assets/Scenes/ReflexCompetency.unity
+    guid: 59ec6e49af5762f4494105980bae6dc5
+  - enabled: 1
+    path: Assets/Scenes/CategoricalImperative.unity
+    guid: 40fdada4cf43ddb41becf4d47ca9f488
+  - enabled: 1
+    path: Assets/Scenes/TaxonomicInterrogation.unity
+    guid: 9205a333504b7d540a9336b34636fe36
+  - enabled: 1
+    path: Assets/Scenes/SubordinationTraining.unity
+    guid: 0859a518abcc9d840b2eed6ad7aee887
+  - enabled: 1
+    path: Assets/Scenes/SymbolicReconfiguration.unity
+    guid: 94e59e1bde6ce6b42aad52f61f474e94
+  - enabled: 1
+    path: Assets/Scenes/InfiniteQueries.unity
+    guid: aab3360751a58df4d94e0ac48c843060
+  - enabled: 1
+    path: Assets/Scenes/MicrocosmicDeduction.unity
+    guid: 40efc0f4fd5f07647b0b4fcf63e2818c
+  - enabled: 1
     path: Assets/Scenes/EndGame.unity
     guid: 9d971b78676390440865837688c1a6a2
   m_configObjects: {}
