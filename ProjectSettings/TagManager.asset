@@ -41,3 +41,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Monitor2
+    uniqueID: 2901036895
+    locked: 0
