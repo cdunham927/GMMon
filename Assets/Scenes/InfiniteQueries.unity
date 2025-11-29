@@ -666,11 +666,6 @@ MonoBehaviour:
   - Pair of glasses
   currentObject: 
   commandText: {fileID: 779953845}
-  yurpusCommandText: {fileID: 0}
-  roundTimeSmall: 2
-  roundTimeBig: 10
-  timeRemaining: {fileID: 0}
-  timeRemaining2: {fileID: 0}
 --- !u!1 &1515644210
 GameObject:
   m_ObjectHideFlags: 0
