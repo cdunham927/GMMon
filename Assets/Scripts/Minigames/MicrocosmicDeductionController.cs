@@ -65,7 +65,7 @@ public class MicrocosmicDeductionController : MonoBehaviour
         cam2.orthographicSize = startSize;
         zoomout = true;
 
-        int index = Random.Range(0, images.Length);
+        int index = Random.Range(0, images.Length - 1);
         zoomedImage.sprite = images[index];
     }
 }
