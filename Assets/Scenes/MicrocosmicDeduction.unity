@@ -265,7 +265,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &532594479
 GameObject:
@@ -545,7 +545,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1067983072
 MonoBehaviour:
@@ -580,6 +580,48 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 21390f1edd99c0242b886d4eef86c652, type: 3}
   - {fileID: 21300000, guid: 903ff96df8efe3b4092a8af84483a16a, type: 3}
   - {fileID: 21300000, guid: 4c27d9c81a9f7e4448950b125bd5064e, type: 3}
+  imageStartPositions:
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  imageZoomSpeed:
+  - 0.02
+  - 0.02
+  - 0.02
+  - 0.02
+  - 0.02
+  - 0.02
+  - 0.02
+  - 0.02
+  - 0.02
+  - 0.02
+  - 0.02
+  - 0.02
+  - 0.02
+  - 0.02
+  - 0.02
+  - 0.02
+  - 0.02
+  - 0.02
+  - 0.02
+  - 0.02
   zoomedImage: {fileID: 219604879}
   guessTime: 3
   zoomoutTime: 0.0175
@@ -949,7 +991,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2010040098
 GameObject:

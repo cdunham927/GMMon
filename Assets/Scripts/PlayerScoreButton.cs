@@ -33,17 +33,17 @@ public class PlayerScoreButton : MonoBehaviour, IPointerClickHandler
             string t = "";
             if (playerPlace != -1)
             {
-                if (playerPlace == 1) t = (playerPlace + 1).ToString() + "st";
-                else if (playerPlace == 2) t = (playerPlace + 1).ToString() + "nd";
-                else if (playerPlace == 3) t = (playerPlace + 1).ToString() + "rd";
-                else t = (playerPlace + 1).ToString() + "th";
+                if (playerPlace == 1) t = (playerPlace).ToString() + "st";
+                else if (playerPlace == 2) t = (playerPlace).ToString() + "nd";
+                else if (playerPlace == 3) t = (playerPlace).ToString() + "rd";
+                else t = (playerPlace).ToString() + "th";
 
                 text.text = "Player " + (thisPlayer + 1).ToString() + " - " + t;
             }
             else {
-                if (pOut.curPlace == 1) t = (pOut.curPlace + 1) + "st";
-                else if (pOut.curPlace == 2) t = (pOut.curPlace + 1) + "nd";
-                else if (pOut.curPlace == 3) t = (pOut.curPlace + 1) + "rd";
+                if (pOut.curPlace == 1) t = (pOut.curPlace) + "st";
+                else if (pOut.curPlace == 2) t = (pOut.curPlace) + "nd";
+                else if (pOut.curPlace == 3) t = (pOut.curPlace) + "rd";
                 else t = (pOut.curPlace).ToString() + "th";
 
                 text.text = "Player " + (thisPlayer + 1).ToString() + " - " + t;
@@ -68,7 +68,7 @@ public class PlayerScoreButton : MonoBehaviour, IPointerClickHandler
         if (playerPlace == -1)
         {
             //Change color to red
-            playerPlace = pOut.curPlace - 1;
+            playerPlace = pOut.curPlace;
 
             pOut.eliminatedPlayer++;
         }

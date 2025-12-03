@@ -141,6 +141,12 @@ public class GameManager : MonoBehaviour
     {
         if (games.Count > 0)
         {
+            //Set all scores to 0 and set players to the original amount
+            for (int i = 0; i < players; i++)
+            {
+                playerScores[i] = 0;
+            }
+
             //Load first scene
             SceneManager.LoadScene(games[0]);
             games.Remove(games[0]);

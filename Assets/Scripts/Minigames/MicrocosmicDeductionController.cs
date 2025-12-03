@@ -7,6 +7,8 @@ using UnityEngine.UI;
 public class MicrocosmicDeductionController : MonoBehaviour
 {
     public Sprite[] images;
+    public Vector2[] imageStartPositions;
+    public float[] imageZoomSpeed;
     public SpriteRenderer zoomedImage;
 
     bool zoomout = false;
@@ -66,6 +68,8 @@ public class MicrocosmicDeductionController : MonoBehaviour
         zoomout = true;
 
         int index = Random.Range(0, images.Length - 1);
+        zoomedImage.transform.position = imageStartPositions[index];
         zoomedImage.sprite = images[index];
+        zoomoutTime = imageZoomSpeed[index];
     }
 }

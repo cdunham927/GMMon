@@ -21,9 +21,15 @@ public class YurpusSaysController : IPlayerOut
 
     public void NextRound()
     {
+        //Need to keep a list of all playerscorebuttons currently clicked
+        //Update all their places to be plus 1 of current included players(curPlace)
+            //IE instead of 3 8th place players they become 3 5th place ones
+        //Clear the list after we update them
+        //Also have a bool in the playerscorebutton that prevents us from unclicking after we have gone to the next round
+
         round++;
         if (round == 3 && hintObj != null) hintObj.SetActive(false);
-        if (eliminatedPlayer > 0) curPlace-= eliminatedPlayer;
+        if (eliminatedPlayer > 0) curPlace -= eliminatedPlayer;
         eliminatedPlayer = 0;
 
         //Get new command

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class TaxonomicInterrogationController : IPlayerOut
 {
@@ -11,6 +12,10 @@ public class TaxonomicInterrogationController : IPlayerOut
     public TMP_Text yurpusCategoryText;
 
     public int selectedPlayer;
+
+    public Image dirImg;
+    public Sprite lArrow;
+    public Sprite rArrow;
 
     private void Start()
     {
@@ -22,6 +27,14 @@ public class TaxonomicInterrogationController : IPlayerOut
         round++;
         if (eliminatedPlayer > 0) curPlace -= eliminatedPlayer;
         eliminatedPlayer = 0;
+
+        dirImg.sprite = (Random.value > 0.5f) ? lArrow : rArrow;
+
+        if (curPlace <= 1)
+        {
+            //playerHudText.SetActive(false);
+            GameManager.instance.ShowEndgame();
+        }
 
         //Get new command
         GetRandomPlayer();
