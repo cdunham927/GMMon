@@ -10,6 +10,7 @@ public class YurpusSaysController : IPlayerOut
 
     public GameObject hintObj;
     public TMP_Text commandText;
+    public TMP_Text commandText2;
     public TMP_Text yurpusCommandText;
 
     public GameObject playerHudText;
@@ -44,17 +45,19 @@ public class YurpusSaysController : IPlayerOut
 
     public void GetCommand()
     {
-        int index = Random.Range(0, commands.Length);
+        int index = Random.Range(0, commands.Length - 1);
 
         float ran = Random.value;
         if (ran > 0.5f)
         {
             commandText.text = "Current command: Not " + commands[index];
+            commandText2.text = "Zerp " + yurpusCommands[index];
             yurpusCommandText.text = "Zerp " + yurpusCommands[index];
         }
         else
         {
             commandText.text = "Current command: " + commands[index];
+            commandText2.text = yurpusCommands[index];
             yurpusCommandText.text = yurpusCommands[index];
         }
     }

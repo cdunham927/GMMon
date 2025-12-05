@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using TMPro;
 
 public class SelectableGame : MonoBehaviour, IPointerClickHandler
 {
     public string gameName;
     Button b;
     private Color originalColor;
+    public TMP_Text text;
 
     void Awake()
     {
