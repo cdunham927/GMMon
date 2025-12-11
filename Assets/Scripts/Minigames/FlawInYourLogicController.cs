@@ -11,11 +11,19 @@ public class FlawInYourLogicController : MonoBehaviour
     public TMP_Text commandText;
     public TMP_Text yurpusCommandText;
 
+    public bool multiRound;
+    public GameObject roundButton;
+
+    private void Start()
+    {
+        multiRound = false;
+    }
 
     public void StartRound()
     {
         //Get new command
         GetPrinciple();
+        roundButton.SetActive(false);
     }
 
     public void GetPrinciple()

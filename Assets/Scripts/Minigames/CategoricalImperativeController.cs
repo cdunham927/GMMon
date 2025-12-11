@@ -32,6 +32,14 @@ public class CategoricalImperativeController : MonoBehaviour
         ShuffleQuestions();
     }
 
+    public bool multiRound;
+    public GameObject roundButton;
+
+    private void Start()
+    {
+        multiRound = true;
+    }
+
     void ShuffleQuestions()
     {
         //Shuffle question and answer arrays once before the game starts
@@ -54,6 +62,7 @@ public class CategoricalImperativeController : MonoBehaviour
     {
         if (!playing)
         {
+            roundButton.SetActive(false);
             //Get new command
             playing = true;
 

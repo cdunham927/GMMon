@@ -42,10 +42,19 @@ public class ReflexCompetencyController : MonoBehaviour
         System.Array.Resize(ref playerPoints, players);
     }
 
+    public bool multiRound;
+    public GameObject roundButton;
+
+    private void Start()
+    {
+        multiRound = true;
+    }
+
     public void StartRound()
     {
         countdown = true;
         curTime = Random.Range(roundTimeSmall, roundTimeBig);
+        roundButton.SetActive(false);
     }
 
     void CheckInput(int p, Vector2 inp)

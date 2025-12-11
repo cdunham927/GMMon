@@ -834,12 +834,12 @@ MonoBehaviour:
   playerCurAnswer: []
   playerCurQuestion: []
   curQuestionIndex: 
+  checkedAnswer: []
+  checkTime: 0.2
   joystickInputs: []
-  commandText: {fileID: 0}
-  yurpusCommandText: {fileID: 0}
   minigameTime: 30
-  timeRemaining: {fileID: 0}
-  timeRemaining2: {fileID: 0}
+  multiRound: 0
+  roundButton: {fileID: 532594479}
 --- !u!1 &1172677090
 GameObject:
   m_ObjectHideFlags: 0

@@ -1445,6 +1445,8 @@ MonoBehaviour:
   minigameTime: 30
   timeRemaining: {fileID: 1575202578}
   timeRemaining2: {fileID: 1184721052}
+  multiRound: 0
+  roundButton: {fileID: 482218467}
 --- !u!1 &2010040098
 GameObject:
   m_ObjectHideFlags: 0

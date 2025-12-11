@@ -23,6 +23,12 @@ public class SymbolicReconfigurationController : MonoBehaviour
     public TMP_Text commandText;
     public TMP_Text yurpusCommandText;
 
+    public bool multiRound;
+
+    private void Start()
+    {
+        multiRound = true;
+    }
 
     public void StartRound()
     {

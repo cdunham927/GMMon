@@ -477,6 +477,8 @@ MonoBehaviour:
   - You are dumb, but perfect for being pets.
   commandText: {fileID: 2113623752}
   yurpusCommandText: {fileID: 265757389}
+  multiRound: 0
+  roundButton: {fileID: 1722192912}
 --- !u!4 &674726830
 Transform:
   m_ObjectHideFlags: 0

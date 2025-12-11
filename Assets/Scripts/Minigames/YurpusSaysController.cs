@@ -15,9 +15,12 @@ public class YurpusSaysController : IPlayerOut
 
     public GameObject playerHudText;
 
+    public bool multiRound;
+
     private void Start()
     {
         curPlace = GameManager.instance.players;
+        multiRound = true;
     }
 
     public void NextRound()

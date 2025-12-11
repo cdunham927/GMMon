@@ -17,8 +17,11 @@ public class TaxonomicInterrogationController : IPlayerOut
     public Sprite lArrow;
     public Sprite rArrow;
 
+    public bool multiRound;
+
     private void Start()
     {
+        multiRound = true;
         curPlace = GameManager.instance.players;
     }
 

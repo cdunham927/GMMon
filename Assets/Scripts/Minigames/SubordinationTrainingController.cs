@@ -28,10 +28,19 @@ public class SubordinationTrainingController : MonoBehaviour
     public TMP_Text timeRemaining;
     public TMP_Text timeRemaining2;
 
+    public bool multiRound;
+    public GameObject roundButton;
+
+    private void Start()
+    {
+        multiRound = true;
+    }
+
     public void StartRound()
     {
         //Get new command
         GetInstruction();
+        roundButton.SetActive(false);
     }
 
     private void Update()

@@ -500,6 +500,7 @@ MonoBehaviour:
   commandText2: {fileID: 1194309059}
   yurpusCommandText: {fileID: 985938078}
   playerHudText: {fileID: 6390589861304556393}
+  multiRound: 1
 --- !u!4 &826410387
 Transform:
   m_ObjectHideFlags: 0

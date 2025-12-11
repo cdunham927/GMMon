@@ -20,9 +20,15 @@ public class GameManager : MonoBehaviour
     public bool paused = false;
     public GameObject endGameObj;
 
+    public bool multiRound = true;
+
     //Audio
     AudioSource src;
-    AudioClip buzzClip;
+    public AudioClip buzzSnd;
+
+    public int curNumMinigame = 0;
+
+    public SelectableGame[] gamesButtons;
 
     private void Awake()
     {
@@ -40,6 +46,11 @@ public class GameManager : MonoBehaviour
             Display.displays[1].Activate();
 
         src = GetComponent<AudioSource>();
+        curNumMinigame = 0;
+
+
+        //resize games to maxgame size
+
     }
 
     private void Update()
@@ -50,24 +61,81 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    int HasMinigame(string g)
+    {
+        for (int i = 0; i < games.Count; i++)
+        {
+            if (games[i] == g)
+            {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    //void RemoveMinigame(int n)
+    //{
+    //    if (n == curNumMinigame - 1)
+    //    {
+    //        games[n] = "";
+    //        curNumMinigame--;
+    //        return;
+    //    }
+    //
+    //    for (int i = n; i < curNumMinigame - 1; i++)
+    //    {
+    //        gamesButtons[n + 1].curNum = n;
+    //        games[n + 1] = games[n];
+    //    }
+    //
+    //    curNumMinigame--;
+    //}
+
+    public void ResetMinigames()
+    {
+        //for (int i = 0; i < maxGames; i++)
+        //{
+        //    games[i] = "";
+        //}
+
+        for (int i = 0; i < gamesButtons.Length; i++)
+        {
+            gamesButtons[i].curNum = -1;
+        }
+
+        games.Clear();
+        curNumMinigame = 0;
+    }
+
     public void AddMinigame(string game)
     {
-        if (games.Count < maxGames && !games.Contains(game))
+        //if (curNumMinigame < maxGames && HasMinigame(game) == -1)
+        //{
+        //    games[curNumMinigame] = game;
+        //    curNumMinigame++;
+        //}
+        if (!games.Contains(game))
         {
+            //curNumMinigame++;
             games.Add(game);
         }
     }
 
-    public void SubMinigame(string game)
-    {
-        if (games.Contains(game)) games.Remove(game);
-    }
+    //public void SubMinigame(string game)
+    //{
+    //    int h = HasMinigame(game);
+    //
+    //    if (h != -1)
+    //    {
+    //        RemoveMinigame(h);
+    //    }
+    //}
 
     public void Continue()
     {
-        if (games.Count > 0)
+        if (curNumMinigame > 0)
         {
-            ListExtensions.Shuffle(games);
+            //ListExtensions.Shuffle(games);
 
             //Load first scene
             SceneManager.LoadScene(games[0]);
@@ -135,11 +203,15 @@ public class GameManager : MonoBehaviour
 
         //Then load the main menu
         SceneManager.LoadScene(0);
+
+        if (curNumMinigame <= 0) return;
+
+        ResetMinigames();
     }
 
     public void NextGame()
     {
-        if (games.Count > 0)
+        if (curNumMinigame > 0)
         {
             //Set all scores to 0 and set players to the original amount
             for (int i = 0; i < players; i++)

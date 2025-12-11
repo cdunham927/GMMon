@@ -627,7 +627,8 @@ MonoBehaviour:
   zoomoutTime: 0.0175
   cam: {fileID: 1515644212}
   cam2: {fileID: 1721225378}
-  joystickInputs: 
+  buzzerInputs: 
+  multiRound: 1
 --- !u!1 &1515644210
 GameObject:
   m_ObjectHideFlags: 0

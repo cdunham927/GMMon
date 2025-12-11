@@ -570,6 +570,12 @@ MonoBehaviour:
   roundTimeSmall: 2
   roundTimeBig: 10
   reflexTime: 1
+  checkedInput: 
+  playerPoints: 
+  joystickInputs: []
+  pointsToEnd: 5
+  multiRound: 0
+  roundButton: {fileID: 532594479}
 --- !u!1 &1515644210
 GameObject:
   m_ObjectHideFlags: 0

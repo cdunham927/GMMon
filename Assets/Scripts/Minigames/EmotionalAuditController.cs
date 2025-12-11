@@ -20,6 +20,13 @@ public class EmotionalAuditController : MonoBehaviour
     bool chosePlayer = false;
     public int selectedPlayer;
 
+    public bool multiRound;
+
+    private void Start()
+    {
+        multiRound = true;
+    }
+
     public void StartRound()
     {
         chosePlayer = false;

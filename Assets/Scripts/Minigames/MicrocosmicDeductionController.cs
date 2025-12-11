@@ -19,7 +19,7 @@ public class MicrocosmicDeductionController : MonoBehaviour
     public Camera cam2;
     float startSize;
 
-    public bool[] joystickInputs;
+    public bool[] buzzerInputs;
     int players;
 
     private void Awake()
@@ -27,10 +27,17 @@ public class MicrocosmicDeductionController : MonoBehaviour
         players = GameManager.instance.players;
 
         //Resize arrays
-        System.Array.Resize(ref joystickInputs, players);
+        System.Array.Resize(ref buzzerInputs, players);
         
         startSize = cam.orthographicSize;
         guessing = 0f;
+    }
+
+    public bool multiRound;
+
+    private void Start()
+    {
+        multiRound = true;
     }
 
     public void StartRound()
@@ -52,11 +59,18 @@ public class MicrocosmicDeductionController : MonoBehaviour
         //Check for player inputs in here
         for (int i = 0; i < players; i++)
         {
-            joystickInputs[i] = Input.GetButtonDown("Buzz" + (i + 1).ToString());
+            buzzerInputs[i] = Input.GetButtonDown("Buzz" + (i + 1).ToString());
 
-            if (joystickInputs[i] && guessing <= 0)
+            if (buzzerInputs[i])
             {
-                guessing = guessTime;
+                //Play buzz sound
+                GameManager.instance.PlaySound(GameManager.instance.buzzSnd);
+
+                //Pause so they can guess what the image is
+                if (guessing <= 0)
+                {
+                    guessing = guessTime;
+                }
             }
         }
     }

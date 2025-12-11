@@ -9,10 +9,19 @@ public class InfiniteQueriesController : MonoBehaviour
     public string currentObject;
     public TMP_Text commandText;
 
+    public bool multiRound;
+    public GameObject roundButton;
+
+    private void Start()
+    {
+        multiRound = true;
+    }
+
     public void StartRound()
     {
         //Get new command
         GetInstruction();
+        roundButton.SetActive(false);
     }
 
     private void Update()
