@@ -53,6 +53,10 @@ MonoBehaviour:
   maxGames: 10
   paused: 0
   endGameObj: {fileID: 6873020515081172186, guid: e87bab3169ec422408d0e48e9499aced, type: 3}
+  multiRound: 1
+  buzzSnd: {fileID: 8300000, guid: 1e9e99f8e69632c40876b49f57094e9b, type: 3}
+  curNumMinigame: 0
+  gamesButtons: []
 --- !u!82 &2771910060824526160
 AudioSource:
   m_ObjectHideFlags: 0

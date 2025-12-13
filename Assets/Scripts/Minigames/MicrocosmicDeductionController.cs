@@ -64,7 +64,7 @@ public class MicrocosmicDeductionController : MonoBehaviour
             if (buzzerInputs[i])
             {
                 //Play buzz sound
-                GameManager.instance.PlaySound(GameManager.instance.buzzSnd);
+                GameManager.instance.PlaySound(GameManager.instance.buzzSnd, 0.6f, true);
 
                 //Pause so they can guess what the image is
                 if (guessing <= 0)

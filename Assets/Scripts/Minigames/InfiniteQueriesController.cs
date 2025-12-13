@@ -12,6 +12,14 @@ public class InfiniteQueriesController : MonoBehaviour
     public bool multiRound;
     public GameObject roundButton;
 
+    public bool[] buzzerInputs;
+    int players;
+
+    private void Awake()
+    {
+        players = GameManager.instance.players;
+    }
+
     private void Start()
     {
         multiRound = true;
@@ -26,7 +34,18 @@ public class InfiniteQueriesController : MonoBehaviour
 
     private void Update()
     {
+        //Check for player inputs in here
+        for (int i = 0; i < players; i++)
+        {
+            buzzerInputs[i] = Input.GetButtonDown("Buzz" + (i + 1).ToString());
 
+            if (buzzerInputs[i])
+            {
+                //Play buzz sound
+                GameManager.instance.PlaySound(GameManager.instance.buzzSnd, 0.6f, true);
+
+            }
+        }
     }
 
     public void GetInstruction()
