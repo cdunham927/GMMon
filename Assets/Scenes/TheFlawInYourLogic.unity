@@ -471,10 +471,28 @@ MonoBehaviour:
   - Statement must be a question
   - Statement must have 8 words
   - Statement must have the conjunction 'but
+  - Statement must be consisting entirely of one-syllable words.
+  - Statement must be in the past tense
+  - Statement must use a double negative.
+  - Every word in the statement must start with the same letter.
+  - Statement's words must be in alphabetical order.
+  - Statement must use only one type of vowel
+  - Statement must contain an internal rhyme.
+  - Statement must contain an onomatopoeia
+  - Statement must contain an oxymoron
   hints:
   - Are you smarter than a biggusglorbo?
   - The fractal trees on Yagrina 5 are purple.
   - You are dumb, but perfect for being pets.
+  - Do not touch the slime, Bob.
+  - Zorg disintegrated the last player who tried that.
+  - We don't allow no telepathy in this round.
+  - Martians make many mean machines.
+  - Aliens build cold dark engines.
+  - Greed feeds green eels.
+  - The cat sat on the mat.
+  - Zap the red bot in the pit!
+  - A deafening silence filled the vast void.
   commandText: {fileID: 2113623752}
   yurpusCommandText: {fileID: 265757389}
   multiRound: 0
