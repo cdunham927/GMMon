@@ -31,6 +31,14 @@ public class SubordinationTrainingController : MonoBehaviour
     public bool multiRound;
     public GameObject roundButton;
 
+    public bool[] buzzerInputs;
+    int players;
+
+    private void Awake()
+    {
+        players = GameManager.instance.players;
+    }
+
     private void Start()
     {
         multiRound = true;
@@ -52,6 +60,19 @@ public class SubordinationTrainingController : MonoBehaviour
         int minutes = ((int)curTime / 60);
         timeRemaining.text = string.Format("{0:00}:{1:00}", minutes, seconds);
         timeRemaining2.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+
+        //Check for player inputs in here
+        for (int i = 0; i < players; i++)
+        {
+            buzzerInputs[i] = Input.GetButtonDown("Buzz" + (i + 1).ToString());
+
+            if (buzzerInputs[i])
+            {
+                //Play buzz sound
+                GameManager.instance.PlaySound(GameManager.instance.buzzSnd, 0.6f, true);
+
+            }
+        }
     }
 
     public void GetInstruction()

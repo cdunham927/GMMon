@@ -16,6 +16,8 @@ public class CategoricalImperativeController : MonoBehaviour
     public float checkTime = 0.2f;
     public Vector2[] joystickInputs;
     public float minigameTime = 30f;
+
+    public bool[] buzzerInputs;
     int players;
 
     private void Awake()
@@ -95,10 +97,23 @@ public class CategoricalImperativeController : MonoBehaviour
                     }
                 }
             }
+
+            //Check for player inputs in here
+            for (int i = 0; i < players; i++)
+            {
+                buzzerInputs[i] = Input.GetButtonDown("Buzz" + (i + 1).ToString());
+
+                if (buzzerInputs[i])
+                {
+                    //Play buzz sound
+                    GameManager.instance.PlaySound(GameManager.instance.buzzSnd, 0.6f, true);
+
+                }
+            }
         }
 
-        //Check for player inputs in here
-        for (int i = 0; i < players; i++)
+                //Check for player inputs in here
+                for (int i = 0; i < players; i++)
         {
             joystickInputs[i] = new Vector2(Mathf.RoundToInt(Input.GetAxisRaw("Horizontal" + (i + 1).ToString())), Mathf.RoundToInt(Input.GetAxisRaw("Vertical" + (i + 1).ToString())));
             //Debug.Log(joystickInputs[i]);

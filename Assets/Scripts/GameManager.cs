@@ -237,11 +237,21 @@ public class GameManager : MonoBehaviour
         mainMenu.SetActive(false);
     }
 
-    public void PlaySound(AudioClip c, float vol = 1f)
+    public void PlaySound(AudioClip c, float vol = 1f, bool pitched = false)
     {
+        if (pitched)
+        {
+            src.pitch = Random.Range(0.9f, 1.2f);
+        }
+        else
+        {
+            src.pitch = 1f;
+        }
+
         float startVol = src.volume;
         src.volume = vol;
-        src.PlayOneShot(c);
+        src.clip = c;
+        src.Play();
         src.volume = startVol;
     }
 
