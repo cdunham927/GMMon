@@ -8,7 +8,7 @@ public class SymbolicReconfigurationController : MonoBehaviour
 {
     public int curRound = 0;
     public string[] words1 = { "BOT", "ION", "LAB", "RAY", "POD" };
-    public string[] words2= { "BEAM", "CORE", "DATA", "MOON", "STAR" };
+    public string[] words2 = { "BEAM", "CORE", "DATA", "MOON", "STAR" };
     public string[] words3 = { "ALIEN", "COMET", "LASER", "LUNAR", "PROBE" };
     public string[] words4 = { "GALAXY", "METEOR", "ORBIT", "PLASMA", "SYSTEM" };
     public string[] words5 = { "GRAVITY", "QUANTUM", "REACTOR", "SCANNER", "STATION" };
@@ -27,6 +27,9 @@ public class SymbolicReconfigurationController : MonoBehaviour
 
     public bool[] buzzerInputs;
     int players;
+
+    public int roundsToChange = 3;
+    int curRoundChange = 0;
 
     private void Awake()
     {
@@ -59,7 +62,11 @@ public class SymbolicReconfigurationController : MonoBehaviour
         //Get new command
         GetWord();
 
-        if (curRound < 9) curRound++;
+        if (curRound < 9 && curRoundChange >= roundsToChange)
+        {
+            curRoundChange = 0;
+            curRound++;
+        }
     }
 
     public void ShuffleWord()
@@ -108,6 +115,7 @@ public class SymbolicReconfigurationController : MonoBehaviour
 
     public void GetWord()
     {
+        curRoundChange++;
         ShuffleWord();
         commandText.text = shuffledWord;
         yurpusCommandText.text = "Word: " + unshuffledWord;

@@ -497,6 +497,7 @@ MonoBehaviour:
   yurpusCommandText: {fileID: 265757389}
   multiRound: 0
   roundButton: {fileID: 1722192912}
+  buzzerInputs: 00000000000000000000
 --- !u!4 &674726830
 Transform:
   m_ObjectHideFlags: 0

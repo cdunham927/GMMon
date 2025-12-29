@@ -730,6 +730,7 @@ MonoBehaviour:
   lArrow: {fileID: 21300000, guid: b39f35377a3a55a4e86653c72ddae21b, type: 3}
   rArrow: {fileID: 21300000, guid: af432f8626cfb434494f2cf2fb645eed, type: 3}
   multiRound: 1
+  buzzerInputs: 00000000000000000000
 --- !u!4 &826410387
 Transform:
   m_ObjectHideFlags: 0

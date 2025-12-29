@@ -793,6 +793,7 @@ MonoBehaviour:
   timeRemaining2: {fileID: 1594245969}
   selectedPlayer: 0
   multiRound: 1
+  buzzerInputs: 00000000000000000000
 --- !u!1 &1254278898
 GameObject:
   m_ObjectHideFlags: 0

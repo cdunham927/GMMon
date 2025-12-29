@@ -7,6 +7,7 @@ public class YurpusSaysController : IPlayerOut
 {
     public string[] commands = { "Up", "Down", "Left", "Right", "Not" };
     public string[] yurpusCommands = { "Glorp", "Norf", "Mim", "Farn", "Zerp" };
+    public List<string> fullCommands = new List<string>();
 
     public GameObject hintObj;
     public TMP_Text commandText;
@@ -18,11 +19,18 @@ public class YurpusSaysController : IPlayerOut
     public bool multiRound;
 
     public bool[] buzzerInputs;
+    public Vector2[] joystickInputs;
+    public float[] checkedAnswer;
+    public float checkTime = 0.2f;
     int players;
+    //public Vector2[] playerCurAnswer = { };
+    //public Image[] playerCurQuestion = { };
 
     private void Awake()
     {
         players = GameManager.instance.players;
+        System.Array.Resize(ref joystickInputs, players);
+        ListExtensions.Shuffle(fullCommands);
     }
 
     private void Start()
@@ -68,7 +76,51 @@ public class YurpusSaysController : IPlayerOut
 
             }
         }
+
+        //for (int i = 0; i < players; i++)
+        //{
+        //    if (joystickInputs[i] != Vector2.zero && checkedAnswer[i] <= 0f)
+        //    {
+        //        checkedAnswer[i] = checkTime;
+        //
+        //        if (joystickInputs[i] == playerCurAnswer[i])
+        //        {
+        //            CorrectAnswer(i);
+        //        }
+        //        else
+        //        {
+        //            IncorrectAnswer(i);
+        //        }
+        //    }
+        //}
     }
+
+    //void CorrectAnswer(int p)
+    //{
+    //    if (curQuestionIndex[p] < questions.Length - 1)
+    //    {
+    //        curQuestionIndex[p]++;
+    //
+    //        playerCurAnswer[p] = answers[curQuestionIndex[p]];
+    //        playerCurQuestion[p].sprite = questions[curQuestionIndex[p]];
+    //    }
+    //    else
+    //    {
+    //        //Win game
+    //        playing = false;
+    //    }
+    //}
+    //
+    //void IncorrectAnswer(int p)
+    //{
+    //    if (curQuestionIndex[p] > 0)
+    //    {
+    //        curQuestionIndex[p] = 0;
+    //
+    //        playerCurAnswer[p] = answers[curQuestionIndex[p]];
+    //        playerCurQuestion[p].sprite = questions[curQuestionIndex[p]];
+    //    }
+    //}
 
     public void GetCommand()
     {

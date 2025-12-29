@@ -559,6 +559,69 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 244f14c94cce82e44bbba13af5ad871e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  imagesList:
+  - {fileID: 21300000, guid: 31219bee4d4cddb44849e4eaf9975beb, type: 3}
+  - {fileID: 21300000, guid: c6d6084cde9c25e43a0a37933038f7c8, type: 3}
+  - {fileID: 21300000, guid: 0de34ac8a9842104190123fd95cb8e62, type: 3}
+  - {fileID: 21300000, guid: 3c20eb006a29ef04cbf7fa1fbe061983, type: 3}
+  - {fileID: 21300000, guid: 1af0a50f0972776408a49ca785da7290, type: 3}
+  - {fileID: 21300000, guid: 63bfb543703b93d4482051d846566c18, type: 3}
+  - {fileID: 21300000, guid: 8e2389ade1280b747855de3f4b748ff8, type: 3}
+  - {fileID: 21300000, guid: 86ab4c70e26df974680e301ea3c42be5, type: 3}
+  - {fileID: 21300000, guid: 1b32480a499f4814c8a7a3bedd75263d, type: 3}
+  - {fileID: 21300000, guid: ce248b93b1176b349886a5eaf10b2021, type: 3}
+  - {fileID: 21300000, guid: 2556116cc779d154f9a0b0686091a893, type: 3}
+  - {fileID: 21300000, guid: 5980c99f5bdc16a4bb6e6fbf6e57aa2c, type: 3}
+  - {fileID: 21300000, guid: c5840033167454e40a6eb69711c70361, type: 3}
+  - {fileID: 21300000, guid: f22c7c14f62b6c44eb1b7d8837bf69d3, type: 3}
+  - {fileID: 21300000, guid: bc197b71e226355459aea6059106b10a, type: 3}
+  - {fileID: 21300000, guid: ce12f9ce7c73e364f9fd81d7d826de7e, type: 3}
+  - {fileID: 21300000, guid: 9528e112e4c35d04082f57cabcc08418, type: 3}
+  - {fileID: 21300000, guid: 21390f1edd99c0242b886d4eef86c652, type: 3}
+  - {fileID: 21300000, guid: 903ff96df8efe3b4092a8af84483a16a, type: 3}
+  - {fileID: 21300000, guid: 4c27d9c81a9f7e4448950b125bd5064e, type: 3}
+  imageStartPositionList:
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  imageZoomSpeedList:
+  - 0.02
+  - 0.02
+  - 0.02
+  - 0.02
+  - 0.02
+  - 0.02
+  - 0.02
+  - 0.02
+  - 0.02
+  - 0.02
+  - 0.02
+  - 0.02
+  - 0.02
+  - 0.02
+  - 0.02
+  - 0.02
+  - 0.02
+  - 0.02
+  - 0.02
+  - 0.02
   images:
   - {fileID: 21300000, guid: 31219bee4d4cddb44849e4eaf9975beb, type: 3}
   - {fileID: 21300000, guid: c6d6084cde9c25e43a0a37933038f7c8, type: 3}
@@ -627,7 +690,7 @@ MonoBehaviour:
   zoomoutTime: 0.0175
   cam: {fileID: 1515644212}
   cam2: {fileID: 1721225378}
-  buzzerInputs: 
+  buzzerInputs: 00000000000000000000
   multiRound: 1
 --- !u!1 &1515644210
 GameObject:

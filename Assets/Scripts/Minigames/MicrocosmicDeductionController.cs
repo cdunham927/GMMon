@@ -6,6 +6,11 @@ using UnityEngine.UI;
 
 public class MicrocosmicDeductionController : MonoBehaviour
 {
+    //Lists instead of arrays so we can remove items
+    public List<Sprite> imagesList;
+    public List<Vector2> imageStartPositionList;
+    public List<float> imageZoomSpeedList;
+
     public Sprite[] images;
     public Vector2[] imageStartPositions;
     public float[] imageZoomSpeed;
@@ -75,15 +80,39 @@ public class MicrocosmicDeductionController : MonoBehaviour
         }
     }
 
+    Vector2 curStartPos;
+    Sprite curSprite;
+    float curZoomout;
+
     public void GetInstruction()
     {
+        if (imageStartPositionList.Count < 2) return;
+
         cam.orthographicSize = startSize;
         cam2.orthographicSize = startSize;
         zoomout = true;
 
-        int index = Random.Range(0, images.Length - 1);
-        zoomedImage.transform.position = imageStartPositions[index];
-        zoomedImage.sprite = images[index];
-        zoomoutTime = imageZoomSpeed[index];
+        //int index = Random.Range(0, images.Length - 1);
+        //zoomedImage.transform.position = imageStartPositions[index];
+        //zoomedImage.sprite = images[index];
+        //zoomoutTime = imageZoomSpeed[index];
+        
+        int index = Random.Range(0, imageStartPositionList.Count);
+
+        //Grab new values
+        curStartPos = imageStartPositionList[index];
+        curSprite = imagesList[index];
+        curZoomout = imageZoomSpeedList[index];
+
+        //Remove first part of list
+        imageStartPositionList.RemoveAt(index);
+        imagesList.RemoveAt(index);
+        imageZoomSpeedList.RemoveAt(index);
+
+        //Set the values we need
+        zoomedImage.transform.position = curStartPos;
+        zoomedImage.sprite = curSprite;
+        zoomoutTime = curZoomout;
+
     }
 }

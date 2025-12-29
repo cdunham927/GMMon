@@ -112,8 +112,8 @@ public class CategoricalImperativeController : MonoBehaviour
             }
         }
 
-                //Check for player inputs in here
-                for (int i = 0; i < players; i++)
+        //Check for player inputs in here
+        for (int i = 0; i < players; i++)
         {
             joystickInputs[i] = new Vector2(Mathf.RoundToInt(Input.GetAxisRaw("Horizontal" + (i + 1).ToString())), Mathf.RoundToInt(Input.GetAxisRaw("Vertical" + (i + 1).ToString())));
             //Debug.Log(joystickInputs[i]);
@@ -142,7 +142,7 @@ public class CategoricalImperativeController : MonoBehaviour
     {
         if (curQuestionIndex[p] > 0)
         {
-            curQuestionIndex[p]--;
+            curQuestionIndex[p] = 0;
 
             playerCurAnswer[p] = answers[curQuestionIndex[p]];
             playerCurQuestion[p].sprite = questions[curQuestionIndex[p]];

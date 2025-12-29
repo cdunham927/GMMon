@@ -1467,6 +1467,7 @@ MonoBehaviour:
   timeRemaining2: {fileID: 1184721052}
   multiRound: 0
   roundButton: {fileID: 482218467}
+  buzzerInputs: 00000000000000000000
 --- !u!1 &2010040098
 GameObject:
   m_ObjectHideFlags: 0

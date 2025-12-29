@@ -495,12 +495,25 @@ MonoBehaviour:
   - Mim
   - Farn
   - Zerp
+  fullCommands:
+  - Up
+  - Down
+  - Left
+  - Right
+  - Not Up
+  - Not Down
+  - Not Left
+  - Not Right
   hintObj: {fileID: 3881133820870301503}
   commandText: {fileID: 111168651}
   commandText2: {fileID: 1194309059}
   yurpusCommandText: {fileID: 985938078}
   playerHudText: {fileID: 6390589861304556393}
   multiRound: 1
+  buzzerInputs: 00000000000000000000
+  joystickInputs: []
+  checkedAnswer: []
+  checkTime: 0.2
 --- !u!4 &826410387
 Transform:
   m_ObjectHideFlags: 0

@@ -838,6 +838,7 @@ MonoBehaviour:
   checkTime: 0.2
   joystickInputs: []
   minigameTime: 30
+  buzzerInputs: 00000000000000000000
   multiRound: 0
   roundButton: {fileID: 532594479}
 --- !u!1 &1172677090
