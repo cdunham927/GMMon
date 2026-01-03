@@ -31,6 +31,15 @@ public class SymbolicReconfigurationController : MonoBehaviour
     public int roundsToChange = 3;
     int curRoundChange = 0;
 
+    bool started = false;
+
+    public float initialScrambleTime;
+    public TMP_Text unscrambleHintText;
+    public string unshuffledHint;
+    public int unscramblePosition = 0;
+    public float timeToUnscramble;
+    float curUnscrambleTime;
+
     private void Awake()
     {
         players = GameManager.instance.players;
@@ -55,10 +64,27 @@ public class SymbolicReconfigurationController : MonoBehaviour
 
             }
         }
+
+        if (started)
+        {
+            if (curUnscrambleTime > 0) curUnscrambleTime -= Time.deltaTime;
+            if (curUnscrambleTime <= 0 && unscramblePosition < unshuffledWord.Length)
+            {
+                unshuffledHint += unshuffledWord[unscramblePosition];
+                curUnscrambleTime = timeToUnscramble;
+                unscramblePosition++;
+            }
+        }
+        unscrambleHintText.text = unshuffledHint;
     }
 
     public void StartRound()
     {
+        unshuffledHint = "";
+        curUnscrambleTime = initialScrambleTime;
+        started = true;
+        unscramblePosition = 0;
+
         //Get new command
         GetWord();
 

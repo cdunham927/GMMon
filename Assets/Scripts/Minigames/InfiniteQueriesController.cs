@@ -102,7 +102,7 @@ public class InfiniteQueriesController : MonoBehaviour
                 //Play buzz sound
                 GameManager.instance.PlaySound(GameManager.instance.buzzSnd, 0.6f, true);
                 buzzCools = buzzInCooldown;
-                buzzInText.text = i.ToString() + " BUZZED IN!";
+                buzzInText.text = (i + 1).ToString() + " BUZZED IN!";
             }
         }
 
@@ -119,6 +119,6 @@ public class InfiniteQueriesController : MonoBehaviour
 
         commandText.text = currentObject;
 
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
     }
 }
