@@ -57,6 +57,43 @@ MonoBehaviour:
   buzzSnd: {fileID: 8300000, guid: 1e9e99f8e69632c40876b49f57094e9b, type: 3}
   curNumMinigame: 0
   gamesButtons: []
+  finalCode1:
+  - {fileID: 21300000, guid: af432f8626cfb434494f2cf2fb645eed, type: 3}
+  - {fileID: 21300000, guid: af432f8626cfb434494f2cf2fb645eed, type: 3}
+  - {fileID: 21300000, guid: af432f8626cfb434494f2cf2fb645eed, type: 3}
+  - {fileID: 21300000, guid: af432f8626cfb434494f2cf2fb645eed, type: 3}
+  - {fileID: 21300000, guid: af432f8626cfb434494f2cf2fb645eed, type: 3}
+  finalCode2:
+  - {fileID: 21300000, guid: 273892012a21c6b4ca18d88adc83a137, type: 3}
+  - {fileID: 21300000, guid: 273892012a21c6b4ca18d88adc83a137, type: 3}
+  - {fileID: 21300000, guid: 273892012a21c6b4ca18d88adc83a137, type: 3}
+  - {fileID: 21300000, guid: 273892012a21c6b4ca18d88adc83a137, type: 3}
+  - {fileID: 21300000, guid: 273892012a21c6b4ca18d88adc83a137, type: 3}
+  finalCode3:
+  - {fileID: 21300000, guid: 1d0e7c0f5b886be43b9e3d9836a39b64, type: 3}
+  - {fileID: 21300000, guid: 1d0e7c0f5b886be43b9e3d9836a39b64, type: 3}
+  - {fileID: 21300000, guid: 1d0e7c0f5b886be43b9e3d9836a39b64, type: 3}
+  - {fileID: 21300000, guid: 1d0e7c0f5b886be43b9e3d9836a39b64, type: 3}
+  - {fileID: 21300000, guid: 1d0e7c0f5b886be43b9e3d9836a39b64, type: 3}
+  finalCode4:
+  - {fileID: 21300000, guid: b39f35377a3a55a4e86653c72ddae21b, type: 3}
+  - {fileID: 21300000, guid: b39f35377a3a55a4e86653c72ddae21b, type: 3}
+  - {fileID: 21300000, guid: b39f35377a3a55a4e86653c72ddae21b, type: 3}
+  - {fileID: 21300000, guid: b39f35377a3a55a4e86653c72ddae21b, type: 3}
+  - {fileID: 21300000, guid: b39f35377a3a55a4e86653c72ddae21b, type: 3}
+  finalCode5:
+  - {fileID: 21300000, guid: af432f8626cfb434494f2cf2fb645eed, type: 3}
+  - {fileID: 21300000, guid: af432f8626cfb434494f2cf2fb645eed, type: 3}
+  - {fileID: 21300000, guid: af432f8626cfb434494f2cf2fb645eed, type: 3}
+  - {fileID: 21300000, guid: af432f8626cfb434494f2cf2fb645eed, type: 3}
+  - {fileID: 21300000, guid: af432f8626cfb434494f2cf2fb645eed, type: 3}
+  finalCode6:
+  - {fileID: 21300000, guid: b39f35377a3a55a4e86653c72ddae21b, type: 3}
+  - {fileID: 21300000, guid: b39f35377a3a55a4e86653c72ddae21b, type: 3}
+  - {fileID: 21300000, guid: b39f35377a3a55a4e86653c72ddae21b, type: 3}
+  - {fileID: 21300000, guid: b39f35377a3a55a4e86653c72ddae21b, type: 3}
+  - {fileID: 21300000, guid: b39f35377a3a55a4e86653c72ddae21b, type: 3}
+  endgame: {fileID: 0}
 --- !u!82 &2771910060824526160
 AudioSource:
   m_ObjectHideFlags: 0

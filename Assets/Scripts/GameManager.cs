@@ -30,6 +30,18 @@ public class GameManager : MonoBehaviour
 
     public SelectableGame[] gamesButtons;
 
+    //Endgame stuff
+    [Space]
+    [Header("Endgame")]
+    public Sprite[] finalCode1;
+    public Sprite[] finalCode2;
+    public Sprite[] finalCode3;
+    public Sprite[] finalCode4;
+    public Sprite[] finalCode5;
+    public Sprite[] finalCode6;
+
+    public EndGameFunctions endgame;
+
     private void Awake()
     {
         if (instance == null)
