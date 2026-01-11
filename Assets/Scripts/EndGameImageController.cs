@@ -15,6 +15,8 @@ public class EndGameImageController : MonoBehaviour
     public Image highlightImage;
     public Image keyImage;
 
+    public GameObject upImg, downImg;
+
     public Sprite[] images;
 
     public int imageSlot = 0;
@@ -22,6 +24,18 @@ public class EndGameImageController : MonoBehaviour
     private void Awake()
     {
         keyImage.sprite = images[imageSlot];
+    }
+
+    public void ActivateArrows()
+    {
+        upImg.SetActive(true);
+        downImg.SetActive(true);
+    }
+
+    public void DeactivateArrows()
+    {
+        upImg.SetActive(false);
+        downImg.SetActive(false);
     }
 
     public void CorrectImage()

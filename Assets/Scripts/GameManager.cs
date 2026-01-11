@@ -33,12 +33,7 @@ public class GameManager : MonoBehaviour
     //Endgame stuff
     [Space]
     [Header("Endgame")]
-    public Sprite[] finalCode1;
-    public Sprite[] finalCode2;
-    public Sprite[] finalCode3;
-    public Sprite[] finalCode4;
-    public Sprite[] finalCode5;
-    public Sprite[] finalCode6;
+    public List<PlayerSolutions> finalCodes;
 
     public EndGameFunctions endgame;
 

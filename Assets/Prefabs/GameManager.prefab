@@ -93,6 +93,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: b39f35377a3a55a4e86653c72ddae21b, type: 3}
   - {fileID: 21300000, guid: b39f35377a3a55a4e86653c72ddae21b, type: 3}
   - {fileID: 21300000, guid: b39f35377a3a55a4e86653c72ddae21b, type: 3}
+  finalCodes:
+  - {fileID: 11400000, guid: b093aa7a741b89440bc7a8795975153e, type: 2}
+  - {fileID: 11400000, guid: c830d8fb4d1469345b98fffceeb6e4e5, type: 2}
+  - {fileID: 11400000, guid: 781dbf2368bcf2f4d9fa4ddb7629dbd3, type: 2}
+  - {fileID: 11400000, guid: 2cdd96b8a2116a64c908a5a53134f2e8, type: 2}
+  - {fileID: 11400000, guid: 3864961e533bfbc4fa8ecad985778894, type: 2}
+  - {fileID: 11400000, guid: 14150b55393845e44b660fa1d436a9dc, type: 2}
   endgame: {fileID: 0}
 --- !u!82 &2771910060824526160
 AudioSource:
