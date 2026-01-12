@@ -8,24 +8,26 @@ public class EndGameFunctions : MonoBehaviour
 {
     public PlayerScoreButton[] playerScores;
 
-    public int curKeycard = 0;
+    //public int curKeycard = 0;
     public List<EndGameImageController> player1Keycards;
     public List<EndGameImageController> player2Keycards;
     public List<EndGameImageController> player3Keycards;
     public List<EndGameImageController> player4Keycards;
     public List<EndGameImageController> player5Keycards;
     public List<EndGameImageController> player6Keycards;
-    public List<EndGameImageController> curKeycards;
-    public int keycardSlot = 0;
+    public int[] keycardSlot;
     public bool finished = true;
 
     public bool[] buzzerInputs;
     public Vector2[] joystickInputs;
     int players;
-    float selectCools;
+    float[] selectCools;
     public float timeBetweenSelects = 0.2f;
 
+    //public TMP_Text currentPlayerText;
+    //public TMP_Text currentPlayerText2;
     public TMP_Text timerText;
+    public TMP_Text timerText2;
     public float keycardSelectTime;
     float timer;
 
@@ -34,9 +36,25 @@ public class EndGameFunctions : MonoBehaviour
         players = GameManager.instance.players;
         //GameManager.instance.ShowEndgame();
         GameManager.instance.endgame = this;
-        curKeycards = player1Keycards;
-        curKeycards[keycardSlot].highlightImage.color = curKeycards[keycardSlot].highlightColor;
-        curKeycards[keycardSlot].ActivateArrows();
+
+        //Activate first keycards
+        player1Keycards[0].highlightImage.color = player1Keycards[0].highlightColor;
+        player1Keycards[0].ActivateArrows();
+        player2Keycards[0].highlightImage.color = player2Keycards[0].highlightColor;
+        player2Keycards[0].ActivateArrows();
+        player3Keycards[0].highlightImage.color = player3Keycards[0].highlightColor;
+        player3Keycards[0].ActivateArrows();
+        player4Keycards[0].highlightImage.color = player4Keycards[0].highlightColor;
+        player4Keycards[0].ActivateArrows();
+        player5Keycards[0].highlightImage.color = player5Keycards[0].highlightColor;
+        player5Keycards[0].ActivateArrows();
+        player6Keycards[0].highlightImage.color = player6Keycards[0].highlightColor;
+        player6Keycards[0].ActivateArrows();
+    }
+
+    public void Next()
+    {
+
     }
 
     public void StartTimer()
@@ -50,7 +68,7 @@ public class EndGameFunctions : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.U))
             {
-                ConfirmGuess();
+                ConfirmGuessAll();
             }
         }
 
@@ -58,11 +76,41 @@ public class EndGameFunctions : MonoBehaviour
         {
             timer -= Time.deltaTime;
 
+            //Show time remaining
+            int seconds = ((int)timer % 60);
+            int minutes = ((int)timer / 60);
+            timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+            timerText2.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+
             //Check for player inputs in here
             for (int i = 0; i < players; i++)
             {
                 joystickInputs[i] = new Vector2(Mathf.RoundToInt(Input.GetAxisRaw("Horizontal" + (i + 1).ToString())), Mathf.RoundToInt(Input.GetAxisRaw("Vertical" + (i + 1).ToString())));
                 //Debug.Log(joystickInputs[i]);
+
+
+                //If the current player pushes up or down, change the image
+                if (joystickInputs[i].y != 0 && selectCools[i] <= 0)
+                {
+                    NextImage(i);
+                    selectCools[i] = timeBetweenSelects;
+                }
+
+                //Move left or right to select different keycards
+                if (joystickInputs[i].x > 0 && selectCools[i] <= 0)
+                {
+                    NextKeycard(i);
+                    selectCools[i] = timeBetweenSelects;
+
+                }
+                if (joystickInputs[i].x < 0 && selectCools[i] <= 0)
+                {
+                    PreviousKeycard(i);
+                    selectCools[i] = timeBetweenSelects;
+                }
+
+
+                if (selectCools[i] > 0) selectCools[i] -= Time.deltaTime;
             }
 
             //Check for player inputs in here
@@ -74,144 +122,426 @@ public class EndGameFunctions : MonoBehaviour
                 {
                     //Play buzz sound
                     GameManager.instance.PlaySound(GameManager.instance.buzzSnd, 0.6f, true);
+
+                    ConfirmGuess(i);
                 }
             }
 
-            if (selectCools > 0) selectCools -= Time.deltaTime;
-
-            //If the current player pushes up or down, change the image
-            if (joystickInputs[curKeycard].y != 0 && selectCools <= 0)
-            {
-                NextImage();
-                selectCools = timeBetweenSelects;
-            }
-
-            //Move left or right to select different keycards
-            if (joystickInputs[curKeycard].x > 0 && selectCools <= 0)
-            {
-                NextKeycard();
-                selectCools = timeBetweenSelects;
-
-            }
-            if (joystickInputs[curKeycard].x < 0 && selectCools <= 0)
-            {
-                PreviousKeycard();
-                selectCools = timeBetweenSelects;
-            }
-
-            if (buzzerInputs[curKeycard])
-            {
-                ConfirmGuess();
-            }
-        }
-    }
-
-    public void NextPlayer()
-    {
-        if (!finished)
-        {
-            if (curKeycards == player1Keycards)
-            {
-                curKeycards[keycardSlot].highlightImage.color = curKeycards[keycardSlot].unhighlightColor;
-                keycardSlot = 0;
-                curKeycards = player2Keycards;
-                curKeycard = 1;
-            }
-            else if (curKeycards == player2Keycards)
-            {
-                curKeycards[keycardSlot].highlightImage.color = curKeycards[keycardSlot].unhighlightColor;
-                keycardSlot = 0;
-                curKeycards = player3Keycards;
-                curKeycard = 2;
-            }
-            else if (curKeycards == player3Keycards)
-            {
-                curKeycards[keycardSlot].highlightImage.color = curKeycards[keycardSlot].unhighlightColor;
-                keycardSlot = 0;
-                curKeycards = player4Keycards;
-                curKeycard = 3;
-            }
-            else if (curKeycards == player4Keycards)
-            {
-                curKeycards[keycardSlot].highlightImage.color = curKeycards[keycardSlot].unhighlightColor;
-                keycardSlot = 0;
-                curKeycards = player5Keycards;
-                curKeycard = 4;
-            }
-            else if (curKeycards == player5Keycards)
-            {
-                curKeycards[keycardSlot].highlightImage.color = curKeycards[keycardSlot].unhighlightColor;
-                keycardSlot = 0;
-                curKeycards = player6Keycards;
-                curKeycard = 5;
-            }
-            else
-            {
-                curKeycards[keycardSlot].highlightImage.color = curKeycards[keycardSlot].unhighlightColor;
-                keycardSlot = 0;
-                curKeycards = player1Keycards;
-                curKeycard = 0;
-                finished = true;
-            }
-        }
-    }
-
-    public void NextKeycard()
-    {
-        if (keycardSlot < curKeycards.Count - 1)
-        {
-            curKeycards[keycardSlot].highlightImage.color = curKeycards[keycardSlot].unhighlightColor;
-            curKeycards[keycardSlot].DeactivateArrows();
-            keycardSlot++;
-            curKeycards[keycardSlot].highlightImage.color = curKeycards[keycardSlot].highlightColor;
-            curKeycards[keycardSlot].ActivateArrows();
+            //currentPlayerText.text = "Player " + (curKeycard + 1).ToString() + " Turn";
+            //currentPlayerText2.text = "Player " + (curKeycard + 1).ToString() + " Turn";
         }
         else
         {
-            curKeycards[keycardSlot].DeactivateArrows();
-            curKeycards[keycardSlot].highlightImage.color = curKeycards[keycardSlot].unhighlightColor;
-            keycardSlot = 0;
-            curKeycards[keycardSlot].ActivateArrows();
-            curKeycards[keycardSlot].highlightImage.color = curKeycards[keycardSlot].highlightColor;
+            //currentPlayerText.text = "";
+            //currentPlayerText2.text = "";
+            //timerText.text = "";
+            //timerText2.text = "";
         }
     }
 
-    public void PreviousKeycard()
-    {
-        if (keycardSlot > 0)
-        {
-            curKeycards[keycardSlot].highlightImage.color = curKeycards[keycardSlot].unhighlightColor;
-            keycardSlot--;
-            curKeycards[keycardSlot].highlightImage.color = curKeycards[keycardSlot].highlightColor;
-        }
-        else
-        {
-            curKeycards[keycardSlot].highlightImage.color = curKeycards[keycardSlot].unhighlightColor;
-            keycardSlot = curKeycards.Count - 1;
-            curKeycards[keycardSlot].highlightImage.color = curKeycards[keycardSlot].highlightColor;
-        }
-    }
+    //public void NextPlayer()
+    //{
+    //    if (!finished)
+    //    {
+    //        if (curKeycards == player1Keycards)
+    //        {
+    //            curKeycards[keycardSlot].highlightImage.color = curKeycards[keycardSlot].unhighlightColor;
+    //            keycardSlot = 0;
+    //            curKeycards = player2Keycards;
+    //            curKeycard = 1;
+    //        }
+    //        else if (curKeycards == player2Keycards)
+    //        {
+    //            curKeycards[keycardSlot].highlightImage.color = curKeycards[keycardSlot].unhighlightColor;
+    //            keycardSlot = 0;
+    //            curKeycards = player3Keycards;
+    //            curKeycard = 2;
+    //        }
+    //        else if (curKeycards == player3Keycards)
+    //        {
+    //            curKeycards[keycardSlot].highlightImage.color = curKeycards[keycardSlot].unhighlightColor;
+    //            keycardSlot = 0;
+    //            curKeycards = player4Keycards;
+    //            curKeycard = 3;
+    //        }
+    //        else if (curKeycards == player4Keycards)
+    //        {
+    //            curKeycards[keycardSlot].highlightImage.color = curKeycards[keycardSlot].unhighlightColor;
+    //            keycardSlot = 0;
+    //            curKeycards = player5Keycards;
+    //            curKeycard = 4;
+    //        }
+    //        else if (curKeycards == player5Keycards)
+    //        {
+    //            curKeycards[keycardSlot].highlightImage.color = curKeycards[keycardSlot].unhighlightColor;
+    //            keycardSlot = 0;
+    //            curKeycards = player6Keycards;
+    //            curKeycard = 5;
+    //        }
+    //        else
+    //        {
+    //            curKeycards[keycardSlot].highlightImage.color = curKeycards[keycardSlot].unhighlightColor;
+    //            keycardSlot = 0;
+    //            curKeycards = player1Keycards;
+    //            curKeycard = 0;
+    //            finished = true;
+    //        }
+    //    }
+    //}
 
-    public void NextImage()
+    public void NextKeycard(int p)
     {
-        curKeycards[keycardSlot].NextImage();
-    }
-
-    public void ConfirmGuess()
-    {
-        for (int i = 0; i < curKeycards.Count; i++)
+        switch(p)
         {
-            if (GameManager.instance.finalCodes[curKeycard].keys.Contains(curKeycards[i].keyImage.sprite))
-            {
-                if (GameManager.instance.finalCodes[curKeycard].keys.IndexOf(curKeycards[i].keyImage.sprite) == i)
+            case 0:
+                if (keycardSlot[p] < player1Keycards.Count - 1)
                 {
-                    curKeycards[i].CorrectImage();
+                    player1Keycards[keycardSlot[p]].highlightImage.color = player1Keycards[keycardSlot[p]].unhighlightColor;
+                    player1Keycards[keycardSlot[p]].DeactivateArrows();
+                    keycardSlot[p]++;
+                    player1Keycards[keycardSlot[p]].highlightImage.color = player1Keycards[keycardSlot[p]].highlightColor;
+                    player1Keycards[keycardSlot[p]].ActivateArrows();
                 }
-                else curKeycards[i].WrongSpotImage();
-            }
-            else curKeycards[i].IncorrectImage();
+                else
+                {
+                    player1Keycards[keycardSlot[p]].highlightImage.color = player1Keycards[keycardSlot[p]].unhighlightColor;
+                    player1Keycards[keycardSlot[p]].DeactivateArrows();
+                    keycardSlot[p] = 0;
+                    player1Keycards[keycardSlot[p]].highlightImage.color = player1Keycards[keycardSlot[p]].highlightColor;
+                    player1Keycards[keycardSlot[p]].ActivateArrows();
+                }
+                break;
+            case 1:
+                if (keycardSlot[p] < player2Keycards.Count - 1)
+                {
+                    player2Keycards[keycardSlot[p]].highlightImage.color = player2Keycards[keycardSlot[p]].unhighlightColor;
+                    player2Keycards[keycardSlot[p]].DeactivateArrows();
+                    keycardSlot[p]++;
+                    player2Keycards[keycardSlot[p]].highlightImage.color = player2Keycards[keycardSlot[p]].highlightColor;
+                    player2Keycards[keycardSlot[p]].ActivateArrows();
+                }
+                else
+                {
+                    player2Keycards[keycardSlot[p]].highlightImage.color = player2Keycards[keycardSlot[p]].unhighlightColor;
+                    player2Keycards[keycardSlot[p]].DeactivateArrows();
+                    keycardSlot[p] = 0;
+                    player2Keycards[keycardSlot[p]].highlightImage.color = player2Keycards[keycardSlot[p]].highlightColor;
+                    player2Keycards[keycardSlot[p]].ActivateArrows();
+                }
+                break;
+            case 2:
+                if (keycardSlot[p] < player3Keycards.Count - 1)
+                {
+                    player3Keycards[keycardSlot[p]].highlightImage.color = player3Keycards[keycardSlot[p]].unhighlightColor;
+                    player3Keycards[keycardSlot[p]].DeactivateArrows();
+                    keycardSlot[p]++;
+                    player3Keycards[keycardSlot[p]].highlightImage.color = player3Keycards[keycardSlot[p]].highlightColor;
+                    player3Keycards[keycardSlot[p]].ActivateArrows();
+                }
+                else
+                {
+                    player3Keycards[keycardSlot[p]].highlightImage.color = player3Keycards[keycardSlot[p]].unhighlightColor;
+                    player3Keycards[keycardSlot[p]].DeactivateArrows();
+                    keycardSlot[p] = 0;
+                    player3Keycards[keycardSlot[p]].highlightImage.color = player3Keycards[keycardSlot[p]].highlightColor;
+                    player3Keycards[keycardSlot[p]].ActivateArrows();
+                }
+                break;
+            case 3:
+                if (keycardSlot[p] < player4Keycards.Count - 1)
+                {
+                    player4Keycards[keycardSlot[p]].highlightImage.color = player4Keycards[keycardSlot[p]].unhighlightColor;
+                    player4Keycards[keycardSlot[p]].DeactivateArrows();
+                    keycardSlot[p]++;
+                    player4Keycards[keycardSlot[p]].highlightImage.color = player4Keycards[keycardSlot[p]].highlightColor;
+                    player4Keycards[keycardSlot[p]].ActivateArrows();
+                }
+                else
+                {
+                    player4Keycards[keycardSlot[p]].highlightImage.color = player4Keycards[keycardSlot[p]].unhighlightColor;
+                    player4Keycards[keycardSlot[p]].DeactivateArrows();
+                    keycardSlot[p] = 0;
+                    player4Keycards[keycardSlot[p]].highlightImage.color = player4Keycards[keycardSlot[p]].highlightColor;
+                    player4Keycards[keycardSlot[p]].ActivateArrows();
+                }
+                break;
+            case 4:
+                if (keycardSlot[p] < player5Keycards.Count - 1)
+                {
+                    player5Keycards[keycardSlot[p]].highlightImage.color = player5Keycards[keycardSlot[p]].unhighlightColor;
+                    player5Keycards[keycardSlot[p]].DeactivateArrows();
+                    keycardSlot[p]++;
+                    player5Keycards[keycardSlot[p]].highlightImage.color = player5Keycards[keycardSlot[p]].highlightColor;
+                    player5Keycards[keycardSlot[p]].ActivateArrows();
+                }
+                else
+                {
+                    player5Keycards[keycardSlot[p]].highlightImage.color = player5Keycards[keycardSlot[p]].unhighlightColor;
+                    player5Keycards[keycardSlot[p]].DeactivateArrows();
+                    keycardSlot[p] = 0;
+                    player5Keycards[keycardSlot[p]].highlightImage.color = player5Keycards[keycardSlot[p]].highlightColor;
+                    player5Keycards[keycardSlot[p]].ActivateArrows();
+                }
+                break;
+            case 5:
+                if (keycardSlot[p] < player6Keycards.Count - 1)
+                {
+                    player6Keycards[keycardSlot[p]].highlightImage.color = player6Keycards[keycardSlot[p]].unhighlightColor;
+                    player6Keycards[keycardSlot[p]].DeactivateArrows();
+                    keycardSlot[p]++;
+                    player6Keycards[keycardSlot[p]].highlightImage.color = player6Keycards[keycardSlot[p]].highlightColor;
+                    player6Keycards[keycardSlot[p]].ActivateArrows();
+                }
+                else
+                {
+                    player6Keycards[keycardSlot[p]].highlightImage.color = player6Keycards[keycardSlot[p]].unhighlightColor;
+                    player6Keycards[keycardSlot[p]].DeactivateArrows();
+                    keycardSlot[p] = 0;
+                    player6Keycards[keycardSlot[p]].highlightImage.color = player6Keycards[keycardSlot[p]].highlightColor;
+                    player6Keycards[keycardSlot[p]].ActivateArrows();
+                }
+                break;
         }
     }
+
+    public void PreviousKeycard(int p)
+    {
+        switch (p)
+        {
+            case 0:
+                if (keycardSlot[p] > 0)
+                {
+                    player1Keycards[keycardSlot[p]].highlightImage.color = player1Keycards[keycardSlot[p]].unhighlightColor;
+                    player1Keycards[keycardSlot[p]].DeactivateArrows();
+                    keycardSlot[p]--;
+                    player1Keycards[keycardSlot[p]].highlightImage.color = player1Keycards[keycardSlot[p]].highlightColor;
+                    player1Keycards[keycardSlot[p]].ActivateArrows();
+                }
+                else
+                {
+                    player1Keycards[keycardSlot[p]].highlightImage.color = player1Keycards[keycardSlot[p]].unhighlightColor;
+                    player1Keycards[keycardSlot[p]].DeactivateArrows();
+                    keycardSlot[p] = player1Keycards.Count - 1;
+                    player1Keycards[keycardSlot[p]].highlightImage.color = player1Keycards[keycardSlot[p]].highlightColor;
+                    player1Keycards[keycardSlot[p]].ActivateArrows();
+                }
+                break;
+            case 1:
+                if (keycardSlot[p] > 0)
+                {
+                    player2Keycards[keycardSlot[p]].highlightImage.color = player2Keycards[keycardSlot[p]].unhighlightColor;
+                    player2Keycards[keycardSlot[p]].DeactivateArrows();
+                    keycardSlot[p]--;
+                    player2Keycards[keycardSlot[p]].highlightImage.color = player2Keycards[keycardSlot[p]].highlightColor;
+                    player2Keycards[keycardSlot[p]].ActivateArrows();
+                }
+                else
+                {
+                    player2Keycards[keycardSlot[p]].highlightImage.color = player2Keycards[keycardSlot[p]].unhighlightColor;
+                    player2Keycards[keycardSlot[p]].DeactivateArrows();
+                    keycardSlot[p] = player2Keycards.Count - 1;
+                    player2Keycards[keycardSlot[p]].highlightImage.color = player2Keycards[keycardSlot[p]].highlightColor;
+                    player2Keycards[keycardSlot[p]].ActivateArrows();
+                }
+                break;
+            case 2:
+                if (keycardSlot[p] > 0)
+                {
+                    player3Keycards[keycardSlot[p]].highlightImage.color = player3Keycards[keycardSlot[p]].unhighlightColor;
+                    player3Keycards[keycardSlot[p]].DeactivateArrows();
+                    keycardSlot[p]++;
+                    player3Keycards[keycardSlot[p]].highlightImage.color = player3Keycards[keycardSlot[p]].highlightColor;
+                    player3Keycards[keycardSlot[p]].ActivateArrows();
+                }
+                else
+                {
+                    player3Keycards[keycardSlot[p]].highlightImage.color = player3Keycards[keycardSlot[p]].unhighlightColor;
+                    player3Keycards[keycardSlot[p]].DeactivateArrows();
+                    keycardSlot[p] = player3Keycards.Count - 1;
+                    player3Keycards[keycardSlot[p]].highlightImage.color = player3Keycards[keycardSlot[p]].highlightColor;
+                    player3Keycards[keycardSlot[p]].ActivateArrows();
+                }
+                break;
+            case 3:
+                if (keycardSlot[p] > 0)
+                {
+                    player4Keycards[keycardSlot[p]].highlightImage.color = player4Keycards[keycardSlot[p]].unhighlightColor;
+                    player4Keycards[keycardSlot[p]].DeactivateArrows();
+                    keycardSlot[p]++;
+                    player4Keycards[keycardSlot[p]].highlightImage.color = player4Keycards[keycardSlot[p]].highlightColor;
+                    player4Keycards[keycardSlot[p]].ActivateArrows();
+                }
+                else
+                {
+                    player4Keycards[keycardSlot[p]].highlightImage.color = player4Keycards[keycardSlot[p]].unhighlightColor;
+                    player4Keycards[keycardSlot[p]].DeactivateArrows();
+                    keycardSlot[p] = player4Keycards.Count - 1;
+                    player4Keycards[keycardSlot[p]].highlightImage.color = player4Keycards[keycardSlot[p]].highlightColor;
+                    player4Keycards[keycardSlot[p]].ActivateArrows();
+                }
+                break;
+            case 4:
+                if (keycardSlot[p] > 0)
+                {
+                    player5Keycards[keycardSlot[p]].highlightImage.color = player5Keycards[keycardSlot[p]].unhighlightColor;
+                    player5Keycards[keycardSlot[p]].DeactivateArrows();
+                    keycardSlot[p]++;
+                    player5Keycards[keycardSlot[p]].highlightImage.color = player5Keycards[keycardSlot[p]].highlightColor;
+                    player5Keycards[keycardSlot[p]].ActivateArrows();
+                }
+                else
+                {
+                    player5Keycards[keycardSlot[p]].highlightImage.color = player5Keycards[keycardSlot[p]].unhighlightColor;
+                    player5Keycards[keycardSlot[p]].DeactivateArrows();
+                    keycardSlot[p] = player5Keycards.Count - 1;
+                    player5Keycards[keycardSlot[p]].highlightImage.color = player5Keycards[keycardSlot[p]].highlightColor;
+                    player5Keycards[keycardSlot[p]].ActivateArrows();
+                }
+                break;
+            case 5:
+                if (keycardSlot[p] > 0)
+                {
+                    player6Keycards[keycardSlot[p]].highlightImage.color = player6Keycards[keycardSlot[p]].unhighlightColor;
+                    player6Keycards[keycardSlot[p]].DeactivateArrows();
+                    keycardSlot[p]++;
+                    player6Keycards[keycardSlot[p]].highlightImage.color = player6Keycards[keycardSlot[p]].highlightColor;
+                    player6Keycards[keycardSlot[p]].ActivateArrows();
+                }
+                else
+                {
+                    player6Keycards[keycardSlot[p]].highlightImage.color = player6Keycards[keycardSlot[p]].unhighlightColor;
+                    player6Keycards[keycardSlot[p]].DeactivateArrows();
+                    keycardSlot[p] = player6Keycards.Count - 1;
+                    player6Keycards[keycardSlot[p]].highlightImage.color = player6Keycards[keycardSlot[p]].highlightColor;
+                    player6Keycards[keycardSlot[p]].ActivateArrows();
+                }
+                break;
+        }
+    }
+
+    public void NextImage(int p)
+    {
+        switch(p)
+        {
+            case 0:
+                player1Keycards[keycardSlot[p]].NextImage();
+                break;
+            case 1:
+                player2Keycards[keycardSlot[p]].NextImage();
+                break;
+            case 2:
+                player3Keycards[keycardSlot[p]].NextImage();
+                break;
+            case 3:
+                player4Keycards[keycardSlot[p]].NextImage();
+                break;
+            case 4:
+                player5Keycards[keycardSlot[p]].NextImage();
+                break;
+            case 5:
+                player6Keycards[keycardSlot[p]].NextImage();
+                break;
+        }
+    }
+
+    public void ConfirmGuessAll()
+    {
+        for (int i = 0; i < players; i++)
+        {
+            ConfirmGuess(i);
+        }
+    }
+
+    public void ConfirmGuess(int p)
+    {
+        switch (p)
+        {
+            case 0:
+                for (int i = 0; i < player1Keycards.Count; i++)
+                {
+                    if (GameManager.instance.finalCodes[p].keys.Contains(player1Keycards[i].keyImage.sprite))
+                    {
+                        if (GameManager.instance.finalCodes[p].keys.IndexOf(player1Keycards[i].keyImage.sprite) == i)
+                        {
+                            player1Keycards[i].CorrectImage();
+                        }
+                        else player1Keycards[i].WrongSpotImage();
+                    }
+                    else player1Keycards[i].IncorrectImage();
+                }
+                break;
+            case 1:
+                for (int i = 0; i < player2Keycards.Count; i++)
+                {
+                    if (GameManager.instance.finalCodes[p].keys.Contains(player2Keycards[i].keyImage.sprite))
+                    {
+                        if (GameManager.instance.finalCodes[p].keys.IndexOf(player2Keycards[i].keyImage.sprite) == i)
+                        {
+                            player2Keycards[i].CorrectImage();
+                        }
+                        else player2Keycards[i].WrongSpotImage();
+                    }
+                    else player2Keycards[i].IncorrectImage();
+                }
+                break;
+            case 2:
+                for (int i = 0; i < player3Keycards.Count; i++)
+                {
+                    if (GameManager.instance.finalCodes[p].keys.Contains(player3Keycards[i].keyImage.sprite))
+                    {
+                        if (GameManager.instance.finalCodes[p].keys.IndexOf(player3Keycards[i].keyImage.sprite) == i)
+                        {
+                            player3Keycards[i].CorrectImage();
+                        }
+                        else player3Keycards[i].WrongSpotImage();
+                    }
+                    else player3Keycards[i].IncorrectImage();
+                }
+                break;
+            case 3:
+                for (int i = 0; i < player4Keycards.Count; i++)
+                {
+                    if (GameManager.instance.finalCodes[p].keys.Contains(player4Keycards[i].keyImage.sprite))
+                    {
+                        if (GameManager.instance.finalCodes[p].keys.IndexOf(player4Keycards[i].keyImage.sprite) == i)
+                        {
+                            player4Keycards[i].CorrectImage();
+                        }
+                        else player4Keycards[i].WrongSpotImage();
+                    }
+                    else player4Keycards[i].IncorrectImage();
+                }
+                break;
+            case 4:
+                for (int i = 0; i < player5Keycards.Count; i++)
+                {
+                    if (GameManager.instance.finalCodes[p].keys.Contains(player5Keycards[i].keyImage.sprite))
+                    {
+                        if (GameManager.instance.finalCodes[p].keys.IndexOf(player5Keycards[i].keyImage.sprite) == i)
+                        {
+                            player5Keycards[i].CorrectImage();
+                        }
+                        else player5Keycards[i].WrongSpotImage();
+                    }
+                    else player5Keycards[i].IncorrectImage();
+                }
+                break;
+            case 5:
+                for (int i = 0; i < player6Keycards.Count; i++)
+                {
+                    if (GameManager.instance.finalCodes[p].keys.Contains(player6Keycards[i].keyImage.sprite))
+                    {
+                        if (GameManager.instance.finalCodes[p].keys.IndexOf(player6Keycards[i].keyImage.sprite) == i)
+                        {
+                            player6Keycards[i].CorrectImage();
+                        }
+                        else player6Keycards[i].WrongSpotImage();
+                    }
+                    else player6Keycards[i].IncorrectImage();
+                }
+                break;
+        }
+}
 
     public void QuitToMenu()
     {
