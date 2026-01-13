@@ -31,30 +31,120 @@ public class EndGameFunctions : MonoBehaviour
     public float keycardSelectTime;
     float timer;
 
+    public enum endgameFlow { intro, assign, rules, hints, start, finalHelp, end };
+    public endgameFlow endPosition;
+
+    public GameObject introText;
+    public GameObject assignText;
+    public GameObject rulesText;
+    public GameObject hintsText;
+    public GameObject startText;
+    public GameObject finalHelpText;
+    public GameObject endText;
+    public GameObject endButton;
+
     void Start()
     {
         players = GameManager.instance.players;
+        System.Array.Resize(ref selectCools, players);
         //GameManager.instance.ShowEndgame();
         GameManager.instance.endgame = this;
+    }
 
-        //Activate first keycards
-        player1Keycards[0].highlightImage.color = player1Keycards[0].highlightColor;
-        player1Keycards[0].ActivateArrows();
-        player2Keycards[0].highlightImage.color = player2Keycards[0].highlightColor;
-        player2Keycards[0].ActivateArrows();
-        player3Keycards[0].highlightImage.color = player3Keycards[0].highlightColor;
-        player3Keycards[0].ActivateArrows();
-        player4Keycards[0].highlightImage.color = player4Keycards[0].highlightColor;
-        player4Keycards[0].ActivateArrows();
-        player5Keycards[0].highlightImage.color = player5Keycards[0].highlightColor;
-        player5Keycards[0].ActivateArrows();
-        player6Keycards[0].highlightImage.color = player6Keycards[0].highlightColor;
-        player6Keycards[0].ActivateArrows();
+    void ActivateKeycards()
+    {
+        //Activate random keycards
+        int rand1 = Random.Range(0, player1Keycards.Count);
+        int rand2 = Random.Range(0, player2Keycards.Count);
+        int rand3 = Random.Range(0, player3Keycards.Count);
+        int rand4 = Random.Range(0, player4Keycards.Count);
+        int rand5 = Random.Range(0, player5Keycards.Count);
+        int rand6 = Random.Range(0, player6Keycards.Count);
+
+        player1Keycards[rand1].highlightImage.color = player1Keycards[rand1].highlightColor;
+        player1Keycards[rand1].ActivateArrows();
+        player2Keycards[rand2].highlightImage.color = player2Keycards[rand2].highlightColor;
+        player2Keycards[rand2].ActivateArrows();
+        player3Keycards[rand3].highlightImage.color = player3Keycards[rand3].highlightColor;
+        player3Keycards[rand3].ActivateArrows();
+        player4Keycards[rand4].highlightImage.color = player4Keycards[rand4].highlightColor;
+        player4Keycards[rand4].ActivateArrows();
+        player5Keycards[rand5].highlightImage.color = player5Keycards[rand5].highlightColor;
+        player5Keycards[rand5].ActivateArrows();
+        player6Keycards[rand6].highlightImage.color = player6Keycards[rand6].highlightColor;
+        player6Keycards[rand6].ActivateArrows();
+
+        keycardSlot[0] = rand1;
+        keycardSlot[1] = rand2;
+        keycardSlot[2] = rand3;
+        keycardSlot[3] = rand4;
+        keycardSlot[4] = rand5;
+        keycardSlot[5] = rand6;
     }
 
     public void Next()
     {
+        endPosition++;
 
+        switch (endPosition)
+        {
+            case endgameFlow.intro:
+                break;
+            case endgameFlow.assign:
+                ShowAssign();
+                break;
+            case endgameFlow.rules:
+                ShowRules();
+                break;
+            case endgameFlow.hints:
+                ShowHints();
+                break;
+            case endgameFlow.start:
+                ShowStart();
+                break;
+            case endgameFlow.finalHelp:
+                ShowFinalHelp();
+                break;
+            case endgameFlow.end:
+                ShowEnd();
+                break;
+        }
+    }
+
+    public void ShowAssign()
+    {
+        introText.SetActive(false);
+        assignText.SetActive(true);
+    }
+
+    public void ShowRules()
+    {
+        assignText.SetActive(false);
+        rulesText.SetActive(true);
+    }
+
+    public void ShowHints()
+    {
+        rulesText.SetActive(false);
+        hintsText.SetActive(true);
+    }
+    public void ShowStart()
+    {
+        hintsText.SetActive(false);
+        StartTimer();
+        ActivateKeycards();
+    }
+
+    public void ShowFinalHelp()
+    {
+        finalHelpText.SetActive(true);
+    }
+
+    public void ShowEnd()
+    {
+        finalHelpText.SetActive(false);
+        endText.SetActive(true);
+        endButton.SetActive(true);
     }
 
     public void StartTimer()
@@ -446,7 +536,7 @@ public class EndGameFunctions : MonoBehaviour
 
     public void ConfirmGuessAll()
     {
-        for (int i = 0; i < players; i++)
+        for (int i = 0; i < 6; i++)
         {
             ConfirmGuess(i);
         }
