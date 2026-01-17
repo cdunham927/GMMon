@@ -796,7 +796,7 @@ MonoBehaviour:
     while maintaining eye contact during a serious conversation.
   commandText: {fileID: 1633118956}
   yurpusCommandText: {fileID: 943615548}
-  minigameTime: 30
+  minigameTime: 21
   timeRemaining: {fileID: 1254278901}
   timeRemaining2: {fileID: 1594245969}
   selectedPlayer: 0
