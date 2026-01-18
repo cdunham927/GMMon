@@ -823,6 +823,10 @@ PrefabInstance:
       propertyPath: m_Texture
       value: 
       objectReference: {fileID: 8600000, guid: d8e295bc78890dd4089728575229ab18, type: 2}
+    - target: {fileID: 6609693766186995421, guid: 289a89d79a25c5f46960f688b9381796, type: 3}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 8600000, guid: 435f959503ad9f9488f4cfa82600adb5, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 289a89d79a25c5f46960f688b9381796, type: 3}
 --- !u!224 &796535787 stripped
@@ -1129,8 +1133,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fd9002f98fa49444aaf9c9a76b135a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  titleVideo: {fileID: 32900000, guid: a41c4b59bdf68d84b83aca4c178821f6, type: 3}
-  instructionVideo: {fileID: 32900000, guid: f74987939c6095c46b56a2a37d8c86b0, type: 3}
+  titleVideo: {fileID: 32900000, guid: 565c39254d26e514e950e8c2c7d26ed5, type: 3}
+  instructionVideo: {fileID: 32900000, guid: f49b0924de81c39478408c417c2c8e33, type: 3}
   instructions: []
 --- !u!328 &1422438984
 VideoPlayer:
@@ -1144,7 +1148,7 @@ VideoPlayer:
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
-  m_TargetTexture: {fileID: 8600000, guid: 54feff554a499ed419b0a64f13b6310b, type: 2}
+  m_TargetTexture: {fileID: 8600000, guid: 435f959503ad9f9488f4cfa82600adb5, type: 2}
   m_TimeReference: 0
   m_TargetMaterialRenderer: {fileID: 0}
   m_TargetMaterialProperty: _MainTex
@@ -1495,6 +1499,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 904198424823902230, guid: 3b5a9563cbc6bac45a7a55ab9d82ec2e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1422438983}
+    - target: {fileID: 904198424823902230, guid: 3b5a9563cbc6bac45a7a55ab9d82ec2e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DeactivateVideo
+      objectReference: {fileID: 0}
+    - target: {fileID: 2645806616191399777, guid: 3b5a9563cbc6bac45a7a55ab9d82ec2e, type: 3}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 8600000, guid: 435f959503ad9f9488f4cfa82600adb5, type: 2}
     - target: {fileID: 2963364497429343746, guid: 3b5a9563cbc6bac45a7a55ab9d82ec2e, type: 3}
       propertyPath: m_Texture
       value: 

@@ -130,6 +130,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 904198424823902230, guid: 3b5a9563cbc6bac45a7a55ab9d82ec2e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 985790921}
+    - target: {fileID: 904198424823902230, guid: 3b5a9563cbc6bac45a7a55ab9d82ec2e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DeactivateVideo
+      objectReference: {fileID: 0}
+    - target: {fileID: 2645806616191399777, guid: 3b5a9563cbc6bac45a7a55ab9d82ec2e, type: 3}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 8600000, guid: 0af9217141b09f443921959a4d168242, type: 2}
     - target: {fileID: 2963364497429343746, guid: 3b5a9563cbc6bac45a7a55ab9d82ec2e, type: 3}
       propertyPath: m_Texture
       value: 
@@ -556,8 +568,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fd9002f98fa49444aaf9c9a76b135a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  titleVideo: {fileID: 32900000, guid: a41c4b59bdf68d84b83aca4c178821f6, type: 3}
-  instructionVideo: {fileID: 32900000, guid: f74987939c6095c46b56a2a37d8c86b0, type: 3}
+  titleVideo: {fileID: 32900000, guid: a7f69633e73573346927d2c761c7ba50, type: 3}
+  instructionVideo: {fileID: 32900000, guid: 15b732d1215963a458b9ac8f6a414c16, type: 3}
   instructions: []
 --- !u!328 &985790922
 VideoPlayer:
@@ -571,7 +583,7 @@ VideoPlayer:
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
-  m_TargetTexture: {fileID: 8600000, guid: 54feff554a499ed419b0a64f13b6310b, type: 2}
+  m_TargetTexture: {fileID: 8600000, guid: 0af9217141b09f443921959a4d168242, type: 2}
   m_TimeReference: 0
   m_TargetMaterialRenderer: {fileID: 0}
   m_TargetMaterialProperty: _MainTex
@@ -771,6 +783,10 @@ PrefabInstance:
       propertyPath: parent
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 6609693766186995421, guid: 289a89d79a25c5f46960f688b9381796, type: 3}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 8600000, guid: 0af9217141b09f443921959a4d168242, type: 2}
     - target: {fileID: 7185962197409133837, guid: 289a89d79a25c5f46960f688b9381796, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -200
