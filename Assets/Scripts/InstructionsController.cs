@@ -6,15 +6,17 @@ using UnityEngine.Video;
 public class InstructionsController : MonoBehaviour
 {
     VideoPlayer video;
-    public VideoClip introVideo;
+    public VideoClip titleVideo;
     public VideoClip instructionVideo;
     public GameObject[] instructions;
 
     private void Awake()
     {
         video = GetComponent<VideoPlayer>();
+        video.clip = titleVideo;
+        video.Play();
         instructions = GameObject.FindGameObjectsWithTag("Instructions");
-        Invoke("SwitchVideo", (float)introVideo.length);
+        Invoke("SwitchVideo", (float)titleVideo.length);
     }
 
     void SwitchVideo()

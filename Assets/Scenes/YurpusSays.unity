@@ -1641,7 +1641,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fd9002f98fa49444aaf9c9a76b135a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  introVideo: {fileID: 32900000, guid: 48206ba961b612c4286bd8f767485ae3, type: 3}
+  titleVideo: {fileID: 32900000, guid: 48206ba961b612c4286bd8f767485ae3, type: 3}
   instructionVideo: {fileID: 32900000, guid: 7940426a525025b4fb8e5242aec5de97, type: 3}
   instructions: []
 --- !u!1 &1566173834
@@ -2009,7 +2009,7 @@ GameObject:
   - component: {fileID: 2117826271}
   m_Layer: 2
   m_Name: NextButton
-  m_TagString: Untagged
+  m_TagString: Instructions
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

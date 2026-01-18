@@ -29,6 +29,8 @@ public class SubordinationTrainingController : MonoBehaviour
     public TMP_Text timeRemaining2;
 
     public bool multiRound;
+    public int curRound = 0;
+    public int totalRounds = 5;
     public GameObject roundButton;
 
     public bool[] buzzerInputs;
@@ -48,7 +50,7 @@ public class SubordinationTrainingController : MonoBehaviour
     {
         //Get new command
         GetInstruction();
-        roundButton.SetActive(false);
+        //roundButton.SetActive(false);
     }
 
     private void Update()
@@ -77,13 +79,19 @@ public class SubordinationTrainingController : MonoBehaviour
 
     public void GetInstruction()
     {
-        curTime = minigameTime;
+        if (curRound == totalRounds - 1) roundButton.SetActive(false);
 
-        int index = Random.Range(0, principles.Length);
+        if (curRound < totalRounds)
+        {
+            curRound++;
+            curTime = minigameTime;
 
-        commandText.text = principles[index];
-        yurpusCommandText.text = "Hint: " + hints[index];
+            int index = Random.Range(0, principles.Length - 1);
 
-        //gameObject.SetActive(false);
+            commandText.text = principles[index];
+            yurpusCommandText.text = "Hint: " + hints[index];
+
+            //gameObject.SetActive(false);
+        }
     }
 }
