@@ -7135,7 +7135,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 826410386}
         m_TargetAssemblyTypeName: YurpusSaysController, Assembly-CSharp
-        m_MethodName: NextRound
+        m_MethodName: GetCommand
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

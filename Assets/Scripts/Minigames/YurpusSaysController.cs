@@ -10,6 +10,7 @@ public class YurpusSaysController : MonoBehaviour
     //public string[] yurpusCommands = { "Glorp", "Norf", "Mim", "Farn", "Zerp" };
     public List<string> fullCommands = new List<string>();
     public List<string> fullYurpusCommands = new List<string>();
+    public List<string> fullCommandImages = new List<string>();
     Vector2 commandDirection;
 
     public GameObject hintObj;

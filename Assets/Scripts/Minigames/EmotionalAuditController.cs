@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class EmotionalAuditController : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class EmotionalAuditController : MonoBehaviour
         "You are not sure if your Zoom meeting audio is muted, you just farted quite loudly, and you are too scared to check if you were muted."
     };
 
+    public TMP_Text selectedPlayerText;
     public TMP_Text commandText;
     public TMP_Text yurpusCommandText;
 
@@ -21,6 +23,10 @@ public class EmotionalAuditController : MonoBehaviour
     public int selectedPlayer;
 
     public bool multiRound;
+
+    public Image dirImg;
+    public Sprite lArrow;
+    public Sprite rArrow;
 
     public bool[] buzzerInputs;
     int players;
@@ -75,14 +81,19 @@ public class EmotionalAuditController : MonoBehaviour
     public void GetRandomPlayer()
     {
         selectedPlayer = Random.Range(0, GameManager.instance.players);
+
+        dirImg.sprite = (Random.value > 0.5f) ? lArrow : rArrow;
     }
 
     public void GetInstruction()
     {
+        GetRandomPlayer();
+
         curTime = minigameTime;
 
         int index = Random.Range(0, prompt.Length);
 
+        selectedPlayerText.text = "Player: " + (selectedPlayer + 1).ToString();
         commandText.text = prompt[index];
         yurpusCommandText.text = prompt[index];
         yurpusCommandText.gameObject.SetActive(true);
