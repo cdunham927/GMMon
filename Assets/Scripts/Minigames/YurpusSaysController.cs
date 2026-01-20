@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 //public class YurpusSaysController : IPlayerOut
 public class YurpusSaysController : MonoBehaviour
@@ -10,13 +11,16 @@ public class YurpusSaysController : MonoBehaviour
     //public string[] yurpusCommands = { "Glorp", "Norf", "Mim", "Farn", "Zerp" };
     public List<string> fullCommands = new List<string>();
     public List<string> fullYurpusCommands = new List<string>();
-    public List<string> fullCommandImages = new List<string>();
+    public List<Sprite> fullCommandImages = new List<Sprite>();
     Vector2 commandDirection;
 
     public GameObject hintObj;
     public TMP_Text commandText;
     public TMP_Text commandText2;
     public TMP_Text yurpusCommandText;
+
+    public Image commandImage;
+    public Image commandImage2;
 
     public GameObject playerHudText;
 
@@ -93,11 +97,11 @@ public class YurpusSaysController : MonoBehaviour
         if (!end)
         {
             //Get and show new direction
-            if (countdown && curTime <= 0)
-            {
-                countdown = false;
-                GetCommand();
-            }
+            //if (countdown && curTime <= 0)
+            //{
+            //    countdown = false;
+            //    GetCommand();
+            //}
 
             //Round is over, check for any player that hasnt input yet and take away points
             if (curTime <= 0 && curReflexTime < 0)
@@ -211,6 +215,8 @@ public class YurpusSaysController : MonoBehaviour
         commandText2.text = fullYurpusCommands[index];
         yurpusCommandText.text = fullYurpusCommands[index];
         notCommand = fullCommands[index].Contains("Not");
+        commandImage.sprite = fullCommandImages[index];
+        commandImage2.sprite = fullCommandImages[index];
 
         if (fullCommands[index].Contains("Up"))
         {

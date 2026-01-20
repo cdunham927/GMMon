@@ -469,15 +469,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'I will give you a situation!
-
-    You must respond to that situation both
-    facially and bodily!
-
-    Each performer will display their emotion!
-
-    The
-    performer with the best performance wins!'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -908,6 +900,49 @@ MonoBehaviour:
     now have to casually open it the right way.
   - You are trying to get a piece of spinach out of your teeth using only your tongue,
     while maintaining eye contact during a serious conversation.
+  prompts:
+  - You are trying to get a piece of spinach out of your teeth using only your tongue,
+    while maintaining eye contact during a serious conversation.
+  - You just pulled on a "Push" door with all your strength, slammed into it, and
+    now have to casually open it the right way.
+  - "You just realized the Universal Translator has been broken all day, and you
+    have actually been insulting everyone\u2019s mother instead of saying \"Hello.\""
+  - You are at a party and someone just told you a joke. You didn't hear it, but
+    you laughed anyway, and now they are looking at you with concern because it wasn't
+    a joke
+  - Your foot is asleep (pins and needles) but you have to walk up to a podium to
+    accept an award immediately.
+  - You are trying to suppress a yawn during a serious lecture, causing your eyes
+    to water so much it looks like you are crying over the subject matter.
+  - You are in a dead-silent library, and your stomach just let out a growl that
+    sounded exactly like a dying whale.
+  - "You are listening to someone tell a story, and you realized about 30 seconds
+    ago that you have absolutely no idea who they are talking about, but it\u2019s
+    too late to ask."
+  - "You are listening to someone tell a story, and you realized about 30 seconds
+    ago that you have absolutely no idea who they are talking about, but it\u2019s
+    too late to ask."
+  - "You just \"liked\" an Instagram photo from 2016 while stalking someone\u2019s
+    profile at 2:00 AM."
+  - You are trying to herd a flock of invisible Moon-Sheep, but they keep phasing
+    through the fence.
+  - You have just taken a bite of the Royal Glump-Fruit, only to remember that the
+    seeds are highly explosive if chewed.
+  - The Galactic Emperor has just handed you the Sacred Gorb, but it is slimy, warm,
+    and pulsating, and you must not drop it.
+  - You are trying to parallel park, and there is a group of teenagers on the sidewalk
+    watching and judging you.
+  - You just plugged in a USB drive, it didn't fit, you flipped it over, it still
+    didn't fit, and you flipped it back to the first side and it still won't fit.
+  - You have an itch in the absolute middle of your back that you cannot reach, no
+    matter how hard you contort your body.
+  - You are holding the door open for a stranger, but they are much farther away
+    than you thought, and now they are doing that awkward "half-jog" to get to you.
+  - You just showed someone a photo on your phone, and they started swiping left
+    to look at your other photos.
+  - You are not sure if your Zoom meeting audio is muted, you just farted quite loudly,
+    and you are too scared to check if you were muted.
+  - You have just found out your zipple has flammamed the Nerbus, as it were.
   selectedPlayerText: {fileID: 1895547462}
   commandText: {fileID: 1633118956}
   yurpusCommandText: {fileID: 943615548}
@@ -916,10 +951,13 @@ MonoBehaviour:
   timeRemaining2: {fileID: 1594245969}
   selectedPlayer: 0
   multiRound: 1
+  roundButton: {fileID: 1689899022}
   dirImg: {fileID: 1781318560}
   lArrow: {fileID: 21300000, guid: b39f35377a3a55a4e86653c72ddae21b, type: 3}
   rArrow: {fileID: 21300000, guid: af432f8626cfb434494f2cf2fb645eed, type: 3}
   buzzerInputs: 00000000000000000000
+  curRound: 0
+  totalRounds: 10
 --- !u!1 &1254278898
 GameObject:
   m_ObjectHideFlags: 0

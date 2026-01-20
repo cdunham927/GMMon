@@ -43,6 +43,43 @@ public class SymbolicReconfigurationController : MonoBehaviour
     private void Awake()
     {
         players = GameManager.instance.players;
+
+        ShuffleWord(words1);
+        ShuffleWord(words2);
+        ShuffleWord(words3);
+        ShuffleWord(words4);
+        ShuffleWord(words5);
+        ShuffleWord(words6);
+        ShuffleWord(words7);
+        ShuffleWord(words8);
+        ShuffleWord(words9);
+        ShuffleWord(words10);
+    }
+
+    string[] RemoveWord(string[] arr, int index)
+    {
+        for (int a = index; a < arr.Length - 1; a++)
+        {
+            // moving elements downwards, to fill the gap at [index]
+            arr[a] = arr[a + 1];
+        }
+        // finally, let's decrement Array's size by one
+        System.Array.Resize(ref arr, arr.Length - 1);
+        return arr;
+    }
+
+    void ShuffleWord(string[] arr)
+    {
+        //Shuffle question and answer arrays once before the game starts
+        int count = arr.Length;
+        for (int i = count - 1; i > 0; --i)
+        {
+            int randIndex = Random.Range(0, i);
+
+            string temp = arr[i];
+            arr[i] = arr[randIndex];
+            arr[randIndex] = temp;
+        }
     }
 
     private void Start()
@@ -98,37 +135,61 @@ public class SymbolicReconfigurationController : MonoBehaviour
     public void ShuffleWord()
     {
         //Use switch case to get a harder word each round
-        switch(curRound)
+        int ind;
+        switch (curRound)
         {
             case 0:
-                unshuffledWord = words1[Random.Range(0, words1.Length)];
+                ind = Random.Range(0, words1.Length);
+                unshuffledWord = words1[ind];
+                words1 = RemoveWord(words1, ind);
                 break;
             case 1:
-                unshuffledWord = words2[Random.Range(0, words2.Length)];
+                ind = Random.Range(0, words2.Length);
+                unshuffledWord = words2[ind];
+                words2 = RemoveWord(words2, ind);
                 break;
             case 2:
-                unshuffledWord = words3[Random.Range(0, words3.Length)];
+                ind = Random.Range(0, words3.Length);
+                unshuffledWord = words3[ind];
+                words3 = RemoveWord(words3, ind);
                 break;
             case 3:
-                unshuffledWord = words4[Random.Range(0, words4.Length)];
+                ind = Random.Range(0, words4.Length);
+                unshuffledWord = words4[ind];
+                words4 = RemoveWord(words4, ind);
                 break;
             case 4:
-                unshuffledWord = words5[Random.Range(0, words5.Length)];
+                ind = Random.Range(0, words5.Length);
+                unshuffledWord = words5[ind];
+                words5 = RemoveWord(words5, ind);
                 break;
             case 5:
-                unshuffledWord = words6[Random.Range(0, words6.Length)];
+                ind = Random.Range(0, words6.Length);
+                unshuffledWord = words6[ind];
+                words6 = RemoveWord(words6, ind);
                 break;
             case 6:
-                unshuffledWord = words7[Random.Range(0, words7.Length)];
+                ind = Random.Range(0, words7.Length);
+                unshuffledWord = words7[ind];
+                words7 = RemoveWord(words7, ind);
                 break;
             case 7:
-                unshuffledWord = words8[Random.Range(0, words8.Length)];
+                ind = Random.Range(0, words8.Length);
+                unshuffledWord = words8[ind];
+                words8 = RemoveWord(words8, ind);
                 break;
             case 8:
-                unshuffledWord = words9[Random.Range(0, words9.Length)];
+                ind = Random.Range(0, words9.Length);
+                unshuffledWord = words9[ind];
+                words9 = RemoveWord(words9, ind);
                 break;
             case 9:
-                unshuffledWord = words10[Random.Range(0, words10.Length)];
+                if (words10.Length > 0)
+                {
+                    ind = Random.Range(0, words10.Length);
+                    unshuffledWord = words10[ind];
+                    words10 = RemoveWord(words10, ind);
+                }
                 break;
         }
         shuffledWord = new string(unshuffledWord.OrderBy(x => Random.value).ToArray());

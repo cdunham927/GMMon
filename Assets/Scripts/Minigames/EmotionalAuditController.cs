@@ -10,6 +10,8 @@ public class EmotionalAuditController : MonoBehaviour
         "You are not sure if your Zoom meeting audio is muted, you just farted quite loudly, and you are too scared to check if you were muted."
     };
 
+    public List<string> prompts;
+
     public TMP_Text selectedPlayerText;
     public TMP_Text commandText;
     public TMP_Text yurpusCommandText;
@@ -23,6 +25,7 @@ public class EmotionalAuditController : MonoBehaviour
     public int selectedPlayer;
 
     public bool multiRound;
+    public GameObject roundButton;
 
     public Image dirImg;
     public Sprite lArrow;
@@ -30,6 +33,9 @@ public class EmotionalAuditController : MonoBehaviour
 
     public bool[] buzzerInputs;
     int players;
+
+    public int curRound = 0;
+    public int totalRounds;
 
     private void Awake()
     {
@@ -87,17 +93,28 @@ public class EmotionalAuditController : MonoBehaviour
 
     public void GetInstruction()
     {
-        GetRandomPlayer();
+        if (curRound < totalRounds - 1)
+        {
+            curRound++;
 
-        curTime = minigameTime;
+            GetRandomPlayer();
+            selectedPlayerText.text = "Player: " + (selectedPlayer + 1).ToString();
 
-        int index = Random.Range(0, prompt.Length);
+            curTime = minigameTime;
 
-        selectedPlayerText.text = "Player: " + (selectedPlayer + 1).ToString();
-        commandText.text = prompt[index];
-        yurpusCommandText.text = prompt[index];
-        yurpusCommandText.gameObject.SetActive(true);
+            int index = Random.Range(0, prompts.Count);
 
-        //gameObject.SetActive(false);
+            commandText.text = prompts[index];
+            yurpusCommandText.text = prompts[index];
+            yurpusCommandText.gameObject.SetActive(true);
+
+            prompts.RemoveAt(index);
+
+            //gameObject.SetActive(false);
+        }
+        else
+        {
+            roundButton.SetActive(false);
+        }
     }
 }

@@ -20,6 +20,9 @@ public class SubordinationTrainingController : MonoBehaviour
 
     public string[] hints = { "Are you smarter than a biggusglorbo?", "The fractal trees on Yagrina 5 are purple.", "You are dumb, but perfect for being pets." };
 
+    public List<string> newPrinciples;
+    public List<string> newHints;
+
     public TMP_Text commandText;
     public TMP_Text yurpusCommandText;
 
@@ -79,19 +82,20 @@ public class SubordinationTrainingController : MonoBehaviour
 
     public void GetInstruction()
     {
-        if (curRound == totalRounds - 1) roundButton.SetActive(false);
-
-        if (curRound < totalRounds)
+        if (curRound < totalRounds - 1)
         {
             curRound++;
             curTime = minigameTime;
 
-            int index = Random.Range(0, principles.Length - 1);
+            int index = Random.Range(0, newPrinciples.Count);
 
-            commandText.text = principles[index];
-            yurpusCommandText.text = "Hint: " + hints[index];
+            commandText.text = newPrinciples[index];
+            yurpusCommandText.text = "Hint: " + newHints[index];
 
             //gameObject.SetActive(false);
+        }
+        else { 
+            roundButton.SetActive(false); 
         }
     }
 }
