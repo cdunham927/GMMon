@@ -28,6 +28,8 @@ public class EndGameFunctions : MonoBehaviour
     //public TMP_Text currentPlayerText2;
     public TMP_Text timerText;
     public TMP_Text timerText2;
+    public GameObject otherTimeText;
+    public GameObject goHomeText;
     public float keycardSelectTime;
     float timer;
 
@@ -39,6 +41,8 @@ public class EndGameFunctions : MonoBehaviour
     public GameObject rulesText;
     public GameObject hintsText;
     public GameObject startText;
+    public GameObject allHints;
+    public GameObject allKeys;
     public GameObject finalHelpText;
     public GameObject endText;
     public GameObject endButton;
@@ -113,6 +117,7 @@ public class EndGameFunctions : MonoBehaviour
 
     public void ShowAssign()
     {
+        goHomeText.SetActive(false);
         introText.SetActive(false);
         assignText.SetActive(true);
     }
@@ -126,17 +131,21 @@ public class EndGameFunctions : MonoBehaviour
     public void ShowHints()
     {
         rulesText.SetActive(false);
+        allHints.SetActive(true);
         hintsText.SetActive(true);
     }
     public void ShowStart()
     {
+        allHints.SetActive(false);
         hintsText.SetActive(false);
         StartTimer();
+        allKeys.SetActive(true);
         ActivateKeycards();
     }
 
     public void ShowFinalHelp()
     {
+        allKeys.SetActive(false);
         finalHelpText.SetActive(true);
     }
 
@@ -162,8 +171,19 @@ public class EndGameFunctions : MonoBehaviour
             }
         }
 
+        if (timer <= 0)
+        {
+            timerText.gameObject.SetActive(false);
+            timerText2.gameObject.SetActive(false);
+            otherTimeText.SetActive(false);
+        }
+
         if (timer > 0)
         {
+            otherTimeText.SetActive(true);
+            timerText.gameObject.SetActive(true);
+            timerText2.gameObject.SetActive(true);
+
             timer -= Time.deltaTime;
 
             //Show time remaining
