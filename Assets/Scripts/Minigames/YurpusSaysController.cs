@@ -4,8 +4,8 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-//public class YurpusSaysController : IPlayerOut
-public class YurpusSaysController : MonoBehaviour
+public class YurpusSaysController : IPlayerOut
+//public class YurpusSaysController : MonoBehaviour
 {
     //public string[] commands = { "Up", "Down", "Left", "Right", "Not" };
     //public string[] yurpusCommands = { "Glorp", "Norf", "Mim", "Farn", "Zerp" };
@@ -56,7 +56,7 @@ public class YurpusSaysController : MonoBehaviour
 
     private void Start()
     {
-        //curPlace = GameManager.instance.players;
+        curPlace = GameManager.instance.players;
         multiRound = true;
     }
 
@@ -191,8 +191,26 @@ public class YurpusSaysController : MonoBehaviour
     void IncorrectAnswer(int p)
     {
         checkedAnswer[p] = true;
-        if (GameManager.instance.playerScores[p] > 0) GameManager.instance.playerScores[p]--;
-        if (playerPoints[p] > 0) playerPoints[p]--;
+
+        //if (GameManager.instance.playerScores[p] > 0) GameManager.instance.playerScores[p]--;
+        //if (playerPoints[p] > 0) playerPoints[p]--;
+
+        //if (eliminatedPlayer > 0) curPlace -= eliminatedPlayer;
+        //eliminatedPlayer = 0;
+
+        playerButtons[p].playerPlace = curPlace;
+        playerButtons[p].PlayerOut();
+        curPlace--;
+        
+        if (curPlace <= 1 && !end)
+        {
+            end = true;
+            //playerHudText.SetActive(false);
+
+
+
+            GameManager.instance.ShowEndgame();
+        }
     }
 
     int index;
@@ -238,19 +256,5 @@ public class YurpusSaysController : MonoBehaviour
         //Remove both commands from the list
         fullCommands.RemoveAt(index);
         fullYurpusCommands.RemoveAt(index);
-
-        //float ran = Random.value;
-        //if (ran > 0.5f)
-        //{
-        //    commandText.text = "Current command: Not " + commands[index];
-        //    commandText2.text = "Zerp " + yurpusCommands[index];
-        //    yurpusCommandText.text = "Zerp " + yurpusCommands[index];
-        //}
-        //else
-        //{
-        //    commandText.text = "Current command: " + commands[index];
-        //    commandText2.text = yurpusCommands[index];
-        //    yurpusCommandText.text = yurpusCommands[index];
-        //}
     }
 }

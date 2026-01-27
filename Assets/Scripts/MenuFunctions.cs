@@ -28,6 +28,12 @@ public class MenuFunctions : MonoBehaviour
     void Begin()
     {
         GameManager.instance.StartGame();
+
+
+        for (int i = 0; i < playerScores.Length; i++)
+        {
+            playerScores[i].num = i;
+        }
     }
 
     public void NextGame()

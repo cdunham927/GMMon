@@ -13,6 +13,13 @@ public class PlayerScore : MonoBehaviour
     Image i;
     public Image catImpImage;
 
+    public Sprite[] regSprites;
+    public Sprite[] inSprites;
+    public Sprite[] outSprites;
+
+    Transform buttonParent;
+    bool reparented = false;
+
     private void Awake()
     {
         menu = FindObjectOfType<MenuFunctions>();
@@ -20,6 +27,7 @@ public class PlayerScore : MonoBehaviour
         i = GetComponentInChildren<Image>();
 
         parent = menu.playerScores[num];
+        buttonParent = transform.parent;
     }
 
 
@@ -27,6 +35,29 @@ public class PlayerScore : MonoBehaviour
     {
         if (parent != null) text.text = parent.text.text;
 
-        if (parent.outIn) i.color = (parent.playerPlace == -1) ? Color.white : Color.red;
+        //Reparent
+        if (parent.playerPlace != -1 && reparented == false)
+        {
+            reparented = true;
+            transform.SetParent(null);
+            transform.SetParent(buttonParent);
+        }
+
+        if (!parent.outIn)
+        {
+            i.sprite = regSprites[num];
+        }
+
+        if (parent.outIn)
+        {
+            if (regSprites.Length >= num)
+            {
+                i.sprite = (parent.playerPlace == -1) ? inSprites[num] : outSprites[num];
+            }
+            else
+            {
+                i.color = (parent.playerPlace == -1) ? Color.white : Color.red;
+            }
+        }
     }
 }

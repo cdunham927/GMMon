@@ -32,10 +32,10 @@ RectTransform:
   m_Father: {fileID: 339687634911917423}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 2, y: -20}
+  m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7474033778451400650
 CanvasRenderer:
@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Player 1 - 0
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -75,7 +75,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -92,8 +92,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -203,9 +203,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
+  m_Sprite: {fileID: 21300000, guid: a980ec15ff8c026448452b2d8e8265fa, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -272,11 +272,11 @@ MonoBehaviour:
   m_IgnoreLayout: 0
   m_MinWidth: -1
   m_MinHeight: -1
-  m_PreferredWidth: -1
-  m_PreferredHeight: -1
+  m_PreferredWidth: 75
+  m_PreferredHeight: 75
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
-  m_LayoutPriority: 1
+  m_LayoutPriority: 3
 --- !u!114 &8714153365674953408
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -289,4 +289,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8286749068292354285576e4426ee992, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerPlace: 0
+  outIn: 0
+  clickToLose: 0
   thisPlayer: 0
+  text: {fileID: 0}
+  num: -1
+  regSprites:
+  - {fileID: 21300000, guid: a980ec15ff8c026448452b2d8e8265fa, type: 3}
+  - {fileID: 21300000, guid: a49c956b7ec96794dbb07544860c5393, type: 3}
+  - {fileID: 21300000, guid: 12e45d152c7ed7147a3ef94a49a20fe4, type: 3}
+  - {fileID: 21300000, guid: 5c798fe3491bd4d42b0a30ce08610b07, type: 3}
+  - {fileID: 21300000, guid: 0abfb3b697c3bbf48b944b2775761f7b, type: 3}
+  - {fileID: 21300000, guid: b6d3b98f80835fe45b3e6daa1f38a43b, type: 3}
+  - {fileID: 21300000, guid: b6d3b98f80835fe45b3e6daa1f38a43b, type: 3}
+  - {fileID: 21300000, guid: b6d3b98f80835fe45b3e6daa1f38a43b, type: 3}
+  - {fileID: 21300000, guid: b6d3b98f80835fe45b3e6daa1f38a43b, type: 3}
+  inSprites:
+  - {fileID: 21300000, guid: 586224ea7a6e4d64bb13f183c21ef966, type: 3}
+  - {fileID: 21300000, guid: 77d00a139e4f24f4f9a7a13a321bcdd6, type: 3}
+  - {fileID: 21300000, guid: d95a49220974dc445a117560d590dccf, type: 3}
+  - {fileID: 21300000, guid: 108584c7784880a47b53c3b794852571, type: 3}
+  - {fileID: 21300000, guid: 3deba71eff2e5d3479b59b2340f32a41, type: 3}
+  - {fileID: 21300000, guid: f27d45296623b2f4dafea670c8f2b865, type: 3}
+  - {fileID: 21300000, guid: f27d45296623b2f4dafea670c8f2b865, type: 3}
+  - {fileID: 21300000, guid: f27d45296623b2f4dafea670c8f2b865, type: 3}
+  - {fileID: 21300000, guid: f27d45296623b2f4dafea670c8f2b865, type: 3}
+  outSprites:
+  - {fileID: 21300000, guid: 12a423e8312013b4497bbee9353700b9, type: 3}
+  - {fileID: 21300000, guid: d38b89bde8ee00542a02a36c732d57b6, type: 3}
+  - {fileID: 21300000, guid: ba3f451a46c93cf49aec8b541aab3948, type: 3}
+  - {fileID: 21300000, guid: 2d15837c93fd5724aa2720cb21115e6c, type: 3}
+  - {fileID: 21300000, guid: 6c015d9b2db98854787e8e7d84a21e30, type: 3}
+  - {fileID: 21300000, guid: 3035024288b78804d987eb0940074a76, type: 3}
+  - {fileID: 21300000, guid: 3035024288b78804d987eb0940074a76, type: 3}
+  - {fileID: 21300000, guid: 3035024288b78804d987eb0940074a76, type: 3}
+  - {fileID: 21300000, guid: 3035024288b78804d987eb0940074a76, type: 3}

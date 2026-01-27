@@ -683,6 +683,10 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 7185962197409133837, guid: 289a89d79a25c5f46960f688b9381796, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -225
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 289a89d79a25c5f46960f688b9381796, type: 3}
 --- !u!224 &796535787 stripped
@@ -1448,6 +1452,10 @@ PrefabInstance:
       propertyPath: m_Texture
       value: 
       objectReference: {fileID: 8600000, guid: cbaf5e3cc654e124196f61fe674ff75d, type: 2}
+    - target: {fileID: 4358710267832788926, guid: 3b5a9563cbc6bac45a7a55ab9d82ec2e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -225
+      objectReference: {fileID: 0}
     - target: {fileID: 4914711730126349941, guid: 3b5a9563cbc6bac45a7a55ab9d82ec2e, type: 3}
       propertyPath: m_Name
       value: GMCanvas

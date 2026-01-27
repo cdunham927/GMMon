@@ -9,4 +9,6 @@ public class IPlayerOut : MonoBehaviour
     public int round;
     [HideInInspector]
     public int eliminatedPlayer;
+    public PlayerScoreButton[] playerButtons;
+    //public PlayerScoreButton[] playerScores;
 }
