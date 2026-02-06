@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
+    path: Assets/Scenes/Introduction.unity
+    guid: e6ebb680026a18d4f9a252d7252a3ce4
+  - enabled: 0
     path: Assets/Scenes/TheFlawInYourLogic.unity
     guid: f14fa4e9ece24a840a42eabb82d7a324
   - enabled: 1
@@ -17,7 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/EmotionalAudit.unity
     guid: 6bcf29cbb4c7e5b4faef1a5c4caf157c
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ReflexCompetency.unity
     guid: 59ec6e49af5762f4494105980bae6dc5
   - enabled: 1
