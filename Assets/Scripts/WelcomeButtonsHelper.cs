@@ -15,7 +15,8 @@ public class WelcomeButtonsHelper : MonoBehaviour
     {
         selectGamesButton.onClick.AddListener (delegate { GameManager.instance.SelectGamesButton(); });
         quitButton.onClick.AddListener (delegate { GameManager.instance.Quit(); });
-        continueButton.onClick.AddListener (delegate { GameManager.instance.Continue(); });
+        //Not next game anymore, we need to load the introduction scene first
+        continueButton.onClick.AddListener (delegate { GameManager.instance.NextScene(); });
 
         GameManager.instance.selectMenu = selectMenu;
         GameManager.instance.mainMenu = mainMenu;

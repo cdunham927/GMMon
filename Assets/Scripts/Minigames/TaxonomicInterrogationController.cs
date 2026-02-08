@@ -18,6 +18,7 @@ public class TaxonomicInterrogationController : IPlayerOut
     public Sprite rArrow;
 
     public bool multiRound;
+    bool end = false;
 
     public bool[] buzzerInputs;
     int players;
@@ -47,13 +48,20 @@ public class TaxonomicInterrogationController : IPlayerOut
 
             }
         }
+
+        if (curPlace <= 1 && !end)
+        {
+            //playerHudText.SetActive(false);
+            end = true;
+            GameManager.instance.ShowEndgame();
+        }
     }
 
     public void NextRound()
     {
         round++;
-        if (eliminatedPlayer > 0) curPlace -= eliminatedPlayer;
-        eliminatedPlayer = 0;
+        //if (eliminatedPlayer > 0) curPlace -= eliminatedPlayer;
+        //eliminatedPlayer = 0;
 
         dirImg.sprite = (Random.value > 0.5f) ? lArrow : rArrow;
 

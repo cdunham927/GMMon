@@ -16,6 +16,7 @@ public class CategoricalImperativeController : MonoBehaviour
     public float checkTime = 0.2f;
     public Vector2[] joystickInputs;
     public float minigameTime = 30f;
+    public GameObject key;
 
     public bool[] buzzerInputs;
     int players;
@@ -64,6 +65,7 @@ public class CategoricalImperativeController : MonoBehaviour
     {
         if (!playing)
         {
+            key.SetActive(true);
             roundButton.SetActive(false);
             //Get new command
             playing = true;
@@ -89,10 +91,12 @@ public class CategoricalImperativeController : MonoBehaviour
 
                     if (joystickInputs[i] == playerCurAnswer[i])
                     {
+                        GameManager.instance.PlayRandomSound(GameManager.instance.categoricalCorrectSounds);
                         CorrectAnswer(i);
                     }
                     else
                     {
+                        GameManager.instance.PlayRandomSound(GameManager.instance.categoricalIncorrectSounds);
                         IncorrectAnswer(i);
                     }
                 }

@@ -1713,7 +1713,7 @@ MonoBehaviour:
   timeRemaining2: {fileID: 1184721052}
   multiRound: 1
   curRound: 0
-  totalRounds: 5
+  totalRounds: 99
   roundButton: {fileID: 482218467}
   buzzerInputs: 00000000000000000000
 --- !u!1 &2010040098

@@ -25,6 +25,12 @@ public class GameManager : MonoBehaviour
     //Audio
     AudioSource src;
     public AudioClip buzzSnd;
+    public AudioClip[] yurpusInstructionSounds;
+    public AudioClip[] yurpusIncorrectSounds;
+    public AudioClip[] categoricalCorrectSounds;
+    public AudioClip[] categoricalIncorrectSounds;
+    public AudioClip[] playerAddScoreSounds;
+    public AudioClip[] playerSubScoreSounds;
 
     public int curNumMinigame = 0;
 
@@ -150,6 +156,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void NextScene()
+    {
+        if (curNumMinigame > 0)
+        {
+            //Load introduction scene
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+    }
+
     public void StartGame()
     {
         PlayerScoreButton[] scoreButtons = FindObjectOfType<MenuFunctions>().playerScores;
@@ -254,6 +269,26 @@ public class GameManager : MonoBehaviour
         {
             src.pitch = 1f;
         }
+
+        float startVol = src.volume;
+        src.volume = vol;
+        src.clip = c;
+        src.Play();
+        src.volume = startVol;
+    }
+
+    public void PlayRandomSound(AudioClip[] clips, float vol = 1f, bool pitched = false)
+    {
+        if (pitched)
+        {
+            src.pitch = Random.Range(0.9f, 1.2f);
+        }
+        else
+        {
+            src.pitch = 1f;
+        }
+
+        AudioClip c = clips[Random.Range(0, clips.Length)];
 
         float startVol = src.volume;
         src.volume = vol;

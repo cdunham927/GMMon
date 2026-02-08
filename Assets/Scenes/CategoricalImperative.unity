@@ -782,6 +782,7 @@ MonoBehaviour:
   checkTime: 0.2
   joystickInputs: []
   minigameTime: 30
+  key: {fileID: 1932096867}
   buzzerInputs: 00000000000000000000
   multiRound: 0
   roundButton: {fileID: 98840581}
@@ -1581,7 +1582,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1932096868
 RectTransform:
   m_ObjectHideFlags: 0

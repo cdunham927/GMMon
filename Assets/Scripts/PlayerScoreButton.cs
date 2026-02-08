@@ -100,6 +100,7 @@ public class PlayerScoreButton : MonoBehaviour, IPointerClickHandler
             playerPlace = pOut.curPlace;
 
             pOut.eliminatedPlayer++;
+            pOut.curPlace--;
 
             if (!reparented)
             {
@@ -126,14 +127,30 @@ public class PlayerScoreButton : MonoBehaviour, IPointerClickHandler
     {
         if (eventData.button == PointerEventData.InputButton.Left)
         {
-            if (outIn == false && clickToLose == false) AddScore();
-            else PlayerOut();
+            if (outIn == false && clickToLose == false)
+            {
+                GameManager.instance.PlayRandomSound(GameManager.instance.playerAddScoreSounds);
+                AddScore();
+            }
+            else
+            {
+                GameManager.instance.PlayRandomSound(GameManager.instance.playerSubScoreSounds);
+                PlayerOut();
+            }
         }
         else if (eventData.button == PointerEventData.InputButton.Right)
         {
             //Debug.Log("Right Clicked");
-            if (outIn == false && clickToLose == false) SubScore();
-            else PlayerIn();
+            if (outIn == false && clickToLose == false)
+            {
+                GameManager.instance.PlayRandomSound(GameManager.instance.playerSubScoreSounds);
+                SubScore();
+            }
+            else
+            {
+                GameManager.instance.PlayRandomSound(GameManager.instance.playerAddScoreSounds);
+                PlayerIn();
+            }
         }
     }
 }

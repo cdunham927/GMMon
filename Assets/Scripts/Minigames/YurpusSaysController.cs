@@ -84,6 +84,13 @@ public class YurpusSaysController : IPlayerOut
 
     private void Update()
     {
+        if (curPlace <= 1 && !end)
+        {
+            //playerHudText.SetActive(false);
+            end = true;
+            GameManager.instance.ShowEndgame();
+        }
+
         //Countdown to new direction
         if (countdown && curTime > 0) curTime -= Time.deltaTime;
 
@@ -157,6 +164,7 @@ public class YurpusSaysController : IPlayerOut
                         }
                         else
                         {
+                            GameManager.instance.PlayRandomSound(GameManager.instance.yurpusIncorrectSounds);
                             IncorrectAnswer(i);
                         }
                     }
@@ -223,6 +231,8 @@ public class YurpusSaysController : IPlayerOut
             end = true;
             return;
         }
+
+        GameManager.instance.PlayRandomSound(GameManager.instance.yurpusInstructionSounds);
 
         curReflexTime = reflexTime;
 
