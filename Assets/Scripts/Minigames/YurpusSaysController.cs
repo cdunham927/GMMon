@@ -172,6 +172,7 @@ public class YurpusSaysController : IPlayerOut
                     {
                         if (joystickInputs[i] == commandDirection)
                         {
+                            GameManager.instance.PlayRandomSound(GameManager.instance.yurpusIncorrectSounds);
                             IncorrectAnswer(i);
                         }
                         else
