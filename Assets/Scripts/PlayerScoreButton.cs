@@ -25,6 +25,9 @@ public class PlayerScoreButton : MonoBehaviour, IPointerClickHandler
     public Sprite[] inSprites;
     public Sprite[] outSprites;
 
+    public Material regMat;
+    public Material highlightMat;
+
     private void Start()
     {
         playerPlace = -1;

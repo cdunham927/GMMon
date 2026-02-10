@@ -139,7 +139,6 @@ public class YurpusSaysController : IPlayerOut
             {
                 //Play buzz sound
                 GameManager.instance.PlaySound(GameManager.instance.buzzSnd, 0.6f, true);
-
             }
         }
 

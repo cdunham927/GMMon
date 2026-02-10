@@ -40,6 +40,9 @@ public class SymbolicReconfigurationController : MonoBehaviour
     public float timeToUnscramble;
     float curUnscrambleTime;
 
+    bool end = false;
+    public int pointsToWin = 5;
+
     private void Awake()
     {
         players = GameManager.instance.players;
@@ -98,7 +101,12 @@ public class SymbolicReconfigurationController : MonoBehaviour
             {
                 //Play buzz sound
                 GameManager.instance.PlaySound(GameManager.instance.buzzSnd, 0.6f, true);
+            }
 
+            if (GameManager.instance.playerScores[i] >= pointsToWin && !end)
+            {
+                end = true;
+                GameManager.instance.ShowEndgame();
             }
         }
 
