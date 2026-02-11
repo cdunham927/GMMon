@@ -292,6 +292,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 3035024288b78804d987eb0940074a76, type: 3}
   - {fileID: 21300000, guid: 3035024288b78804d987eb0940074a76, type: 3}
   - {fileID: 21300000, guid: 3035024288b78804d987eb0940074a76, type: 3}
+  regMat: {fileID: 2100000, guid: 9caaf4d84772a3d41b896759cf554483, type: 2}
+  highlightMat: {fileID: 2100000, guid: 9a8d3ba0d8d97c2429f11e75f6a08d92, type: 2}
 --- !u!1 &7604306117107753293
 GameObject:
   m_ObjectHideFlags: 0

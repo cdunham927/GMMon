@@ -36,6 +36,10 @@ public class GameManager : MonoBehaviour
 
     public SelectableGame[] gamesButtons;
 
+    [HideInInspector]
+    public PlayerFunctions playerFunctions;
+    public MenuFunctions menuFunctions;
+
     //Endgame stuff
     [Space]
     [Header("Endgame")]
@@ -60,7 +64,8 @@ public class GameManager : MonoBehaviour
 
         src = GetComponent<AudioSource>();
         curNumMinigame = 0;
-
+        playerFunctions = FindObjectOfType<PlayerFunctions>();
+        menuFunctions = FindObjectOfType<MenuFunctions>();
 
         //resize games to maxgame size
 
@@ -72,6 +77,7 @@ public class GameManager : MonoBehaviour
         {
             Pause();
         }
+
     }
 
     int HasMinigame(string g)
@@ -162,6 +168,9 @@ public class GameManager : MonoBehaviour
         {
             //Load introduction scene
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
+            if (playerFunctions == null) playerFunctions = FindObjectOfType<PlayerFunctions>();
+            if (menuFunctions == null) menuFunctions = FindObjectOfType<MenuFunctions>();
         }
     }
 

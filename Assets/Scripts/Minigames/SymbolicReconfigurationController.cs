@@ -106,6 +106,8 @@ public class SymbolicReconfigurationController : MonoBehaviour
             if (GameManager.instance.playerScores[i] >= pointsToWin && !end)
             {
                 end = true;
+                GameManager.instance.playerFunctions.playerScoresText[i].Winner();
+                GameManager.instance.menuFunctions.playerScores[i].Winner();
                 GameManager.instance.ShowEndgame();
             }
         }

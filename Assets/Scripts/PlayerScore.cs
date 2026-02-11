@@ -20,14 +20,23 @@ public class PlayerScore : MonoBehaviour
     Transform buttonParent;
     bool reparented = false;
 
+    public Material regMat;
+    public Material highlightMat;
+
     private void Awake()
     {
         menu = FindObjectOfType<MenuFunctions>();
         text = GetComponentInChildren<TMP_Text>();
         i = GetComponentInChildren<Image>();
+        i.material = regMat;
 
         parent = menu.playerScores[num];
         buttonParent = transform.parent;
+    }
+
+    public void Winner()
+    {
+        i.material = highlightMat;
     }
 
 

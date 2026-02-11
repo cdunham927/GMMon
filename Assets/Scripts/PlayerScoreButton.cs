@@ -34,8 +34,14 @@ public class PlayerScoreButton : MonoBehaviour, IPointerClickHandler
         text = GetComponentInChildren<TMP_Text>();
         pOut = FindObjectOfType<IPlayerOut>();
         i = GetComponent<Button>().GetComponent<Image>();
+        i.material = regMat;
 
         buttonParent = transform.parent;
+    }
+
+    public void Winner()
+    {
+        i.material = highlightMat;
     }
 
     private void Update()
