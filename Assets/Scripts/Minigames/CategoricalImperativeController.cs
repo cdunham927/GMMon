@@ -138,6 +138,8 @@ public class CategoricalImperativeController : MonoBehaviour
         else
         {
             //Win game
+            GameManager.instance.playerFunctions.playerScoresText[p].Winner();
+            GameManager.instance.menuFunctions.playerScores[p].Winner();
             playing = false;
         }
     }

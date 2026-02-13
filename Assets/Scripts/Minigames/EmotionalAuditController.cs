@@ -37,6 +37,9 @@ public class EmotionalAuditController : MonoBehaviour
     public int curRound = 0;
     public int totalRounds;
 
+    public int pointsToWin = 3;
+    public bool end = false;
+
     private void Awake()
     {
         players = GameManager.instance.players;
@@ -80,7 +83,14 @@ public class EmotionalAuditController : MonoBehaviour
             {
                 //Play buzz sound
                 GameManager.instance.PlaySound(GameManager.instance.buzzSnd, 0.6f, true);
+            }
 
+            if (GameManager.instance.playerScores[i] >= pointsToWin && !end)
+            {
+                end = true;
+                GameManager.instance.playerFunctions.playerScoresText[i].Winner();
+                GameManager.instance.menuFunctions.playerScores[i].Winner();
+                GameManager.instance.ShowEndgame();
             }
         }
     }
