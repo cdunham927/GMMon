@@ -28,8 +28,14 @@ public class PlayerScoreButton : MonoBehaviour, IPointerClickHandler
     public Material regMat;
     public Material highlightMat;
 
+    public ParticleSystem parts;
+    public int emitAmount;
+
+    Animator anim;
+
     private void Start()
     {
+        anim = GetComponent<Animator>();
         playerPlace = -1;
         text = GetComponentInChildren<TMP_Text>();
         pOut = FindObjectOfType<IPlayerOut>();
@@ -39,9 +45,16 @@ public class PlayerScoreButton : MonoBehaviour, IPointerClickHandler
         buttonParent = transform.parent;
     }
 
+    public void Confetti()
+    {
+        if (parts != null) parts.Emit(emitAmount);
+    }
+
     public void Winner()
     {
         i.material = highlightMat;
+        anim.Play("PlayerScoreWin");
+        Confetti();
     }
 
     private void Update()
@@ -94,17 +107,23 @@ public class PlayerScoreButton : MonoBehaviour, IPointerClickHandler
     public void AddScore()
     {
         GameManager.instance.playerScores[thisPlayer]++;
+        anim.Play("PlayerScoreGet");
     }
 
     public void SubScore()
     {
-        if (GameManager.instance.playerScores[thisPlayer] > 0) GameManager.instance.playerScores[thisPlayer]--;
+        if (GameManager.instance.playerScores[thisPlayer] > 0)
+        {
+            GameManager.instance.playerScores[thisPlayer]--;
+            anim.Play("PlayerScoreLose");
+        }
     }
 
     public void PlayerOut()
     {
         if (playerPlace == -1)
         {
+            anim.Play("PlayerScoreLose");
             //Change color to red
             playerPlace = pOut.curPlace;
 
@@ -124,6 +143,7 @@ public class PlayerScoreButton : MonoBehaviour, IPointerClickHandler
     {
         if (playerPlace != -1)
         {
+            anim.Play("PlayerScoreGet");
             //Change color to white
             playerPlace = -1;
             pOut.curPlace++;

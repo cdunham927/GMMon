@@ -23,6 +23,9 @@ public class PlayerScore : MonoBehaviour
     public Material regMat;
     public Material highlightMat;
 
+    //public ParticleSystem parts;
+    //public int emitAmount;
+
     private void Awake()
     {
         menu = FindObjectOfType<MenuFunctions>();
@@ -33,6 +36,11 @@ public class PlayerScore : MonoBehaviour
         parent = menu.playerScores[num];
         buttonParent = transform.parent;
     }
+
+    //public void Confetti()
+    //{
+    //    parts.Emit(emitAmount);
+    //}
 
     public void Winner()
     {
