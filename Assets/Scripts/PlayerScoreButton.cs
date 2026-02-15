@@ -32,6 +32,8 @@ public class PlayerScoreButton : MonoBehaviour, IPointerClickHandler
     public int emitAmount;
 
     Animator anim;
+    [HideInInspector]
+    public PlayerScore monitor2Score;
 
     private void Start()
     {
@@ -54,6 +56,7 @@ public class PlayerScoreButton : MonoBehaviour, IPointerClickHandler
     {
         i.material = highlightMat;
         anim.Play("PlayerScoreWin");
+        monitor2Score.Winner();
         Confetti();
     }
 
@@ -108,6 +111,7 @@ public class PlayerScoreButton : MonoBehaviour, IPointerClickHandler
     {
         GameManager.instance.playerScores[thisPlayer]++;
         anim.Play("PlayerScoreGet");
+        monitor2Score.GetPoint();
     }
 
     public void SubScore()
@@ -116,6 +120,7 @@ public class PlayerScoreButton : MonoBehaviour, IPointerClickHandler
         {
             GameManager.instance.playerScores[thisPlayer]--;
             anim.Play("PlayerScoreLose");
+            monitor2Score.LosePoint();
         }
     }
 
@@ -124,6 +129,7 @@ public class PlayerScoreButton : MonoBehaviour, IPointerClickHandler
         if (playerPlace == -1)
         {
             anim.Play("PlayerScoreLose");
+            monitor2Score.LosePoint();
             //Change color to red
             playerPlace = pOut.curPlace;
 
@@ -144,6 +150,7 @@ public class PlayerScoreButton : MonoBehaviour, IPointerClickHandler
         if (playerPlace != -1)
         {
             anim.Play("PlayerScoreGet");
+            monitor2Score.GetPoint();
             //Change color to white
             playerPlace = -1;
             pOut.curPlace++;
