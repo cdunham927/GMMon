@@ -35,6 +35,10 @@ public class PlayerScoreButton : MonoBehaviour, IPointerClickHandler
     [HideInInspector]
     public PlayerScore monitor2Score;
 
+    public Image numberImage;
+    public Sprite[] numbers;
+    public Sprite emptyImage;
+
     private void Start()
     {
         anim = GetComponent<Animator>();
@@ -70,8 +74,14 @@ public class PlayerScoreButton : MonoBehaviour, IPointerClickHandler
         }
 
         //Just the score, if the image shows what each player number is
-        if (!outIn) text.text = GameManager.instance.playerScores[thisPlayer].ToString();
-        else text.text = "";
+        if (!outIn) {
+            text.text = GameManager.instance.playerScores[thisPlayer].ToString();
+            if (numberImage != null) numberImage.sprite = numbers[GameManager.instance.playerScores[thisPlayer]];
+        }
+        else {
+            text.text = "";
+            if (numberImage != null) numberImage.sprite = emptyImage;
+        }
 
         //Write what place each 'out' player is in
         //if (outIn)

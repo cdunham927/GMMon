@@ -25,7 +25,9 @@ public class PlayerScore : MonoBehaviour
 
     public ParticleSystem parts;
     public int emitAmount;
+    
 
+    public Image numberImage;
     Animator anim;
 
     private void Awake()
@@ -65,7 +67,11 @@ public class PlayerScore : MonoBehaviour
 
     private void Update()
     {
-        if (parent != null) text.text = parent.text.text;
+        if (parent != null)
+        {
+            text.text = parent.text.text;
+            if (numberImage != null) numberImage.sprite = parent.numberImage.sprite;
+        }
 
         //Reparent
         if (parent.playerPlace != -1 && reparented == false)
