@@ -20,6 +20,7 @@ public class CategoricalImperativeController : MonoBehaviour
 
     public bool[] buzzerInputs;
     int players;
+    PlayerFunctions pf;
 
     private void Awake()
     {
@@ -41,6 +42,7 @@ public class CategoricalImperativeController : MonoBehaviour
     private void Start()
     {
         multiRound = true;
+        pf = FindObjectOfType<PlayerFunctions>();
     }
 
     void ShuffleQuestions()
@@ -72,7 +74,7 @@ public class CategoricalImperativeController : MonoBehaviour
 
             for (int i = 0; i < players; i++)
             {
-                playerCurQuestion[i] = FindObjectOfType<PlayerFunctions>().playerScoresText[i].catImpImage;
+                playerCurQuestion[i] = pf.playerScoresText[i].catImpImage;
             }
 
             GetInstruction();
@@ -134,6 +136,7 @@ public class CategoricalImperativeController : MonoBehaviour
 
             playerCurAnswer[p] = answers[curQuestionIndex[p]];
             playerCurQuestion[p].sprite = questions[curQuestionIndex[p]];
+            pf.playerScoresText[p].catImpAnim.Play("CatImpRight");
         }
         else
         {
@@ -152,6 +155,7 @@ public class CategoricalImperativeController : MonoBehaviour
 
             playerCurAnswer[p] = answers[curQuestionIndex[p]];
             playerCurQuestion[p].sprite = questions[curQuestionIndex[p]];
+            pf.playerScoresText[p].catImpAnim.Play("CatImpWrong");
         }
     }
 

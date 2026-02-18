@@ -12,6 +12,8 @@ public class PlayerScore : MonoBehaviour
     TMP_Text text;
     Image i;
     public Image catImpImage;
+    [HideInInspector]
+    public Animator catImpAnim;
 
     public Sprite[] regSprites;
     public Sprite[] inSprites;
@@ -26,7 +28,6 @@ public class PlayerScore : MonoBehaviour
     public ParticleSystem parts;
     public int emitAmount;
     
-
     public Image numberImage;
     Animator anim;
 
@@ -37,6 +38,7 @@ public class PlayerScore : MonoBehaviour
         text = GetComponentInChildren<TMP_Text>();
         i = GetComponentInChildren<Image>();
         i.material = regMat;
+        catImpAnim = catImpImage.GetComponent<Animator>();
 
         parent = menu.playerScores[num];
         parent.monitor2Score = this;
