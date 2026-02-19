@@ -153,10 +153,17 @@ public class CategoricalImperativeController : MonoBehaviour
         {
             curQuestionIndex[p] = 0;
 
+            //Invoke("ChangeQuestion", 0.2f);
             playerCurAnswer[p] = answers[curQuestionIndex[p]];
             playerCurQuestion[p].sprite = questions[curQuestionIndex[p]];
             pf.playerScoresText[p].catImpAnim.Play("CatImpWrong");
         }
+    }
+
+    void ChangeQuestion()
+    {
+        //playerCurAnswer[p] = answers[curQuestionIndex[p]];
+        //playerCurQuestion[p].sprite = questions[curQuestionIndex[p]];
     }
 
     public void GetInstruction()

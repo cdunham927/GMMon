@@ -90,7 +90,7 @@ public class EmotionalAuditController : MonoBehaviour
                 end = true;
                 GameManager.instance.playerFunctions.playerScoresText[i].Winner();
                 GameManager.instance.menuFunctions.playerScores[i].Winner();
-                GameManager.instance.ShowEndgame();
+                //GameManager.instance.ShowEndgame();
             }
         }
     }
