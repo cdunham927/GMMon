@@ -17,7 +17,9 @@ public class MicrocosmicDeductionController : MonoBehaviour
     public SpriteRenderer zoomedImage;
 
     bool zoomout = false;
-    float guessing = 0f;
+    //float guessing = 0f;
+    bool guessing = false;
+    int currentGuesser = -1;
     public float guessTime = 3f;
     public float zoomoutTime = 0.1f;
     public Camera cam;
@@ -27,6 +29,9 @@ public class MicrocosmicDeductionController : MonoBehaviour
     public bool[] buzzerInputs;
     int players;
 
+    public TMP_Text currentGuesserText;
+    public GameObject continueRoundButton;
+
     private void Awake()
     {
         players = GameManager.instance.players;
@@ -35,7 +40,7 @@ public class MicrocosmicDeductionController : MonoBehaviour
         System.Array.Resize(ref buzzerInputs, players);
         
         startSize = cam.orthographicSize;
-        guessing = 0f;
+        guessing = false;
     }
 
     public bool multiRound;
@@ -53,13 +58,13 @@ public class MicrocosmicDeductionController : MonoBehaviour
 
     private void Update()
     {
-        if (zoomout && guessing <= 0f)
+        if (zoomout && !guessing)
         {
             cam.orthographicSize += zoomoutTime * Time.deltaTime;
             cam2.orthographicSize += zoomoutTime * Time.deltaTime;
         }
 
-        if (guessing > 0) guessing -= Time.deltaTime;
+        //if (guessing > 0) guessing -= Time.deltaTime;
 
         //Check for player inputs in here
         for (int i = 0; i < players; i++)
@@ -72,12 +77,32 @@ public class MicrocosmicDeductionController : MonoBehaviour
                 GameManager.instance.PlaySound(GameManager.instance.buzzSnd, 0.6f, true);
 
                 //Pause so they can guess what the image is
-                if (guessing <= 0)
+                if (!guessing)
                 {
-                    guessing = guessTime;
+                    //When a player guesses, show text and pause the picture zoomout
+                    //And activate a continue button to continue the game
+                    //Might have to show a full zoomout of the picture afterwards too?
+                    guessing = true;
+                    currentGuesser = i;
+                    currentGuesserText.text = "Player " + currentGuesser.ToString() + " is guessing";
+                    continueRoundButton.SetActive(true);
+                    //guessing = guessTime;
                 }
             }
         }
+
+        if (!guessing)
+        {
+            currentGuesserText.text = "";
+            continueRoundButton.SetActive(false);
+            guessing = false;
+            currentGuesser = -1;
+        }
+    }
+
+    public void ContinueRound()
+    {
+        guessing = false;
     }
 
     Vector2 curStartPos;
