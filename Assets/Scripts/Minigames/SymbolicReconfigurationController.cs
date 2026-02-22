@@ -43,6 +43,11 @@ public class SymbolicReconfigurationController : MonoBehaviour
     bool end = false;
     public int pointsToWin = 5;
 
+    int currentGuesser = -1;
+    bool guessing = false;
+    public TMP_Text currentGuesserText;
+    public GameObject continueRoundButton;
+
     private void Awake()
     {
         players = GameManager.instance.players;
@@ -97,10 +102,23 @@ public class SymbolicReconfigurationController : MonoBehaviour
         {
             buzzerInputs[i] = Input.GetButtonDown("Buzz" + (i + 1).ToString());
 
-            if (buzzerInputs[i])
+            if (buzzerInputs[i] && !guessing)
             {
                 //Play buzz sound
                 GameManager.instance.PlaySound(GameManager.instance.buzzSnd, 0.6f, true);
+
+                //Pause so they can guess what the image is
+                if (!guessing)
+                {
+                    //When a player guesses, show text and pause the picture zoomout
+                    //And activate a continue button to continue the game
+                    //Might have to show a full zoomout of the picture afterwards too?
+                    guessing = true;
+                    currentGuesser = i;
+                    currentGuesserText.text = "Player " + currentGuesser.ToString() + " is guessing";
+                    continueRoundButton.SetActive(true);
+                    //guessing = guessTime;
+                }
             }
 
             if (GameManager.instance.playerScores[i] >= pointsToWin && !end)
@@ -114,7 +132,8 @@ public class SymbolicReconfigurationController : MonoBehaviour
 
         if (started)
         {
-            if (curUnscrambleTime > 0) curUnscrambleTime -= Time.deltaTime;
+            if (curUnscrambleTime > 0 && !guessing) curUnscrambleTime -= Time.deltaTime;
+
             if (curUnscrambleTime <= 0 && unscramblePosition < unshuffledWord.Length)
             {
                 unshuffledHint += unshuffledWord[unscramblePosition];
@@ -123,6 +142,20 @@ public class SymbolicReconfigurationController : MonoBehaviour
             }
         }
         unscrambleHintText.text = unshuffledHint;
+
+
+        if (!guessing)
+        {
+            currentGuesserText.text = "";
+            continueRoundButton.SetActive(false);
+            guessing = false;
+            currentGuesser = -1;
+        }
+    }
+
+    public void ContinueRound()
+    {
+        guessing = false;
     }
 
     public void StartRound()
