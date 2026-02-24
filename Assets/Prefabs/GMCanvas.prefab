@@ -1378,6 +1378,7 @@ MonoBehaviour:
   - {fileID: 7885070981583116993}
   confirmMenu: {fileID: 4967939389370833304}
   pauseMenu: {fileID: 2393669650857609905}
+  buttonParent: {fileID: 8818767737285295545}
 --- !u!1 &4967939389370833304
 GameObject:
   m_ObjectHideFlags: 0

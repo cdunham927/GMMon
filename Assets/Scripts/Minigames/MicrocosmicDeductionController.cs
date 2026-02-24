@@ -32,6 +32,9 @@ public class MicrocosmicDeductionController : MonoBehaviour
     public TMP_Text currentGuesserText;
     public GameObject continueRoundButton;
 
+    public bool end = false;
+    public int pointsToWin = 3;
+
     private void Awake()
     {
         players = GameManager.instance.players;
@@ -41,6 +44,11 @@ public class MicrocosmicDeductionController : MonoBehaviour
         
         startSize = cam.orthographicSize;
         guessing = false;
+
+        foreach (PlayerScoreButton ps in FindObjectOfType<MenuFunctions>().playerScores)
+        {
+            ps.maxScore = pointsToWin;
+        }
     }
 
     public bool multiRound;
@@ -89,6 +97,14 @@ public class MicrocosmicDeductionController : MonoBehaviour
                     //guessing = guessTime;
                 }
             }
+
+            if (GameManager.instance.playerScores[i] >= pointsToWin && !end)
+            {
+                end = true;
+                GameManager.instance.playerFunctions.playerScoresText[i].Winner();
+                GameManager.instance.menuFunctions.playerScores[i].Winner();
+                //GameManager.instance.ShowEndgame();
+            }
         }
 
         if (!guessing)
@@ -116,6 +132,7 @@ public class MicrocosmicDeductionController : MonoBehaviour
         cam.orthographicSize = startSize;
         cam2.orthographicSize = startSize;
         zoomout = true;
+        guessing = false;
 
         //int index = Random.Range(0, images.Length - 1);
         //zoomedImage.transform.position = imageStartPositions[index];

@@ -7,6 +7,7 @@ public class MenuFunctions : MonoBehaviour
     public PlayerScoreButton[] playerScores;
     public GameObject confirmMenu;
     public GameObject pauseMenu;
+    public GameObject buttonParent;
 
     private void Awake()
     {

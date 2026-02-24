@@ -23,10 +23,16 @@ public class InfiniteQueriesController : MonoBehaviour
 
     public bool[] buzzerInputs;
     int players;
+    public bool end = false;
+    public int pointsToWin = 1;
 
     private void Awake()
     {
         players = GameManager.instance.players;
+        foreach (PlayerScoreButton ps in FindObjectOfType<MenuFunctions>().playerScores)
+        {
+            ps.maxScore = pointsToWin;
+        }
     }
 
     private void Start()
@@ -103,6 +109,14 @@ public class InfiniteQueriesController : MonoBehaviour
                 GameManager.instance.PlaySound(GameManager.instance.buzzSnd, 0.6f, true);
                 buzzCools = buzzInCooldown;
                 buzzInText.text = (i + 1).ToString() + " BUZZED IN!";
+            }
+
+            if (GameManager.instance.playerScores[i] >= pointsToWin && !end)
+            {
+                end = true;
+                GameManager.instance.playerFunctions.playerScoresText[i].Winner();
+                GameManager.instance.menuFunctions.playerScores[i].Winner();
+                //GameManager.instance.ShowEndgame();
             }
         }
 

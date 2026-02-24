@@ -52,6 +52,11 @@ public class SymbolicReconfigurationController : MonoBehaviour
     {
         players = GameManager.instance.players;
 
+        foreach (PlayerScoreButton ps in FindObjectOfType<MenuFunctions>().playerScores)
+        {
+            ps.maxScore = pointsToWin;
+        }
+
         ShuffleWord(words1);
         ShuffleWord(words2);
         ShuffleWord(words3);
@@ -164,6 +169,7 @@ public class SymbolicReconfigurationController : MonoBehaviour
         curUnscrambleTime = initialScrambleTime;
         started = true;
         unscramblePosition = 0;
+        guessing = false;
 
         //Get new command
         GetWord();

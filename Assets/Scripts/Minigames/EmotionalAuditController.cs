@@ -43,6 +43,10 @@ public class EmotionalAuditController : MonoBehaviour
     private void Awake()
     {
         players = GameManager.instance.players;
+        foreach (PlayerScoreButton ps in FindObjectOfType<MenuFunctions>().playerScores)
+        {
+            ps.maxScore = pointsToWin;
+        }
     }
 
     private void Start()

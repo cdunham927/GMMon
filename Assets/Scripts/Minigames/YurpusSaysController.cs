@@ -84,13 +84,6 @@ public class YurpusSaysController : IPlayerOut
 
     private void Update()
     {
-        if (curPlace <= 1 && !end)
-        {
-            //playerHudText.SetActive(false);
-            end = true;
-            GameManager.instance.ShowEndgame();
-        }
-
         //Countdown to new direction
         if (countdown && curTime > 0) curTime -= Time.deltaTime;
 
@@ -140,6 +133,15 @@ public class YurpusSaysController : IPlayerOut
                 //Play buzz sound
                 GameManager.instance.PlaySound(GameManager.instance.buzzSnd, 0.6f, true);
             }
+        }
+
+        if (curPlace <= 1 && !end)
+        {
+            //playerHudText.SetActive(false);
+            end = true;
+            //GameManager.instance.ShowEndgame();
+            FindObjectOfType<MenuFunctions>().buttonParent.GetComponentInChildren<PlayerScoreButton>().Winner();
+            //FindObjectOfType<PlayerFunctions>().buttonParent.GetComponentInChildren<PlayerScore>().Winner();
         }
 
         //During the round
@@ -193,7 +195,6 @@ public class YurpusSaysController : IPlayerOut
 
         if (playerPoints[p] > 2) hintObj.SetActive(false);
         if (playerPoints[p] >= pointsToEnd) end = true;
-
     }
     
     void IncorrectAnswer(int p)
@@ -212,12 +213,10 @@ public class YurpusSaysController : IPlayerOut
         
         if (curPlace <= 1 && !end)
         {
-            end = true;
+            //end = true;
             //playerHudText.SetActive(false);
 
-
-
-            GameManager.instance.ShowEndgame();
+            //GameManager.instance.ShowEndgame();
         }
     }
 

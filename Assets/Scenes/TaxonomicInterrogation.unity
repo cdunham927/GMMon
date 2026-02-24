@@ -4803,6 +4803,7 @@ MonoBehaviour:
   - {fileID: 1757376386}
   - {fileID: 478598765}
   - {fileID: 4007526}
+  buttonParent: {fileID: 4031348133009704510}
 --- !u!1001 &4023371260671300135
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5329,6 +5330,7 @@ MonoBehaviour:
   - {fileID: 1897935020}
   confirmMenu: {fileID: 2671468292212852216}
   pauseMenu: {fileID: 4673426971400591057}
+  buttonParent: {fileID: 1982096504052982233}
 --- !u!114 &4839904358897464911
 MonoBehaviour:
   m_ObjectHideFlags: 0

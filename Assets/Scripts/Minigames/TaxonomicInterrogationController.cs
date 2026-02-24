@@ -45,7 +45,6 @@ public class TaxonomicInterrogationController : IPlayerOut
             {
                 //Play buzz sound
                 GameManager.instance.PlaySound(GameManager.instance.buzzSnd, 0.6f, true);
-
             }
         }
 
@@ -53,7 +52,11 @@ public class TaxonomicInterrogationController : IPlayerOut
         {
             //playerHudText.SetActive(false);
             end = true;
-            GameManager.instance.ShowEndgame();
+            //GameManager.instance.ShowEndgame();
+            FindObjectOfType<MenuFunctions>().buttonParent.GetComponentInChildren<PlayerScoreButton>().Winner();
+            //FindObjectOfType<PlayerFunctions>().buttonParent.GetComponentInChildren<PlayerScore>().Winner();
+            //GameManager.instance.playerFunctions.playerScoresText[i].Winner();
+            //GameManager.instance.menuFunctions.playerScores[i].Winner();
         }
     }
 
@@ -68,7 +71,9 @@ public class TaxonomicInterrogationController : IPlayerOut
         if (curPlace <= 1)
         {
             //playerHudText.SetActive(false);
-            GameManager.instance.ShowEndgame();
+            //GameManager.instance.ShowEndgame();
+            //Show winner
+            //FindObjectOfType<MenuFunctions>().playerScores[0].Winner();
         }
 
         //Get new command

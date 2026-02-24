@@ -45,6 +45,11 @@ public class SubordinationTrainingController : MonoBehaviour
     private void Awake()
     {
         players = GameManager.instance.players;
+
+        foreach (PlayerScoreButton ps in FindObjectOfType<MenuFunctions>().playerScores)
+        {
+            ps.maxScore = pointsToWin;
+        }
     }
 
     private void Start()
@@ -85,7 +90,7 @@ public class SubordinationTrainingController : MonoBehaviour
                 end = true;
                 GameManager.instance.playerFunctions.playerScoresText[i].Winner();
                 GameManager.instance.menuFunctions.playerScores[i].Winner();
-                GameManager.instance.ShowEndgame();
+                //GameManager.instance.ShowEndgame();
             }
         }
     }

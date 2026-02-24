@@ -39,6 +39,8 @@ public class PlayerScoreButton : MonoBehaviour, IPointerClickHandler
     public Sprite[] numbers;
     public Sprite emptyImage;
 
+    public int maxScore = 99;
+
     private void Start()
     {
         anim = GetComponent<Animator>();
@@ -119,9 +121,12 @@ public class PlayerScoreButton : MonoBehaviour, IPointerClickHandler
 
     public void AddScore()
     {
-        GameManager.instance.playerScores[thisPlayer]++;
-        anim.Play("PlayerScoreGet");
-        monitor2Score.GetPoint();
+        if (GameManager.instance.playerScores[thisPlayer] < maxScore)
+        {
+            GameManager.instance.playerScores[thisPlayer]++;
+            anim.Play("PlayerScoreGet");
+            monitor2Score.GetPoint();
+        }
     }
 
     public void SubScore()

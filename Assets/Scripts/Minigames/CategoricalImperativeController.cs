@@ -113,7 +113,6 @@ public class CategoricalImperativeController : MonoBehaviour
                 {
                     //Play buzz sound
                     GameManager.instance.PlaySound(GameManager.instance.buzzSnd, 0.6f, true);
-
                 }
             }
         }
